@@ -1,16 +1,75 @@
-
-
-.show {
-
-width:auto;
-
+@import url('https://fonts.googleapis.com/css?family=Athiti:500,700&subset=thai');
+@media screen and (max-width: 340px) {
+    .body {
+        background-color: lightgreen;
+    }
+    .col-xs-6.col-sm-4.product{
+      width:100%;
+    }
 }
-h2 {
+.body{
+  background-color:rgb(240, 240, 240);
+  padding-top:50px;
+  font-family: 'Athiti', sans-serif;
+}
+
+h1 {
   font-size: 5.9vw;
 }
-.col-md-12{
-  background-color: #rgb(79, 54, 54);
+h2 {
+
+}
+.heading{
+  padding:5px;
+  margin-bottom: 10px;
+
+}
+.form-control.buy{
+  background-color: rgb(171, 32, 32);
+  color:white;
+  font-weight:500;
+}
+.form-control.buy:hover{
+  background-color:white;
+  color:rgb(171, 32, 32);
+  border: solid 2px rgb(171, 32, 32);
+  font-weight:500;
+}
+.col-xs-12.product{
+  padding:0px 0px;
+}
+.col-xs-6.col-sm-4.col-md-3.product{
+
+  margin-bottom:5px;
+}
+
+.navbar.navbar-default{
+  border-radius: 0px;
+  z-index: 99;
+  width:100%;
+  position: fixed;
+  top:0px;
+  left:0px;
 }
 .pic{
-  height:300px;
+  height:70%;
+  max-height:
+}
+.show {
+width:auto;
+  height:30%;
+  font-weight:700;
+}
+.pic img{
+  vertical-align: middle;
+}
+.jumbotron.product {
+  width:80%;
+  padding-top: 0px;
+  margin: auto;
+  background-color: white;
+}
+.jumbotron.cover{
+  color:white;
+  background-color: rgb(171, 32, 32);
 }

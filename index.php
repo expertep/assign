@@ -5,9 +5,4 @@ include_once 'template/main.php';
 include_once 'template/footer.php';
 
 
-
-
-
-
-
  ?>

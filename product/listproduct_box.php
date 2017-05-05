@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-xs-12 product">
 <?php
 
  $sql_select_product = 'SELECT * FROM table_product ';
@@ -12,14 +12,14 @@ while ($select_product = $query_select_product->fetch_assoc()){
 
 
 <form method="POST" action="cart.php">
-  <div class="col-xs-6 col-sm-4">
+  <div class="col-xs-6 col-sm-4 col-md-3 product">
   <div class='pic'>
   <img src="<?php echo $select_product['picture_product'] ?>" class="img-responsive" alt="product">
   </div>
   <div class="show">
      <?php echo $select_product['name_product']?><br>
      <?php echo $select_product['price_product'] ?><br>
-     <button class="form-control">สั่งซื้อ</button>
+     <button class="form-control buy">สั่งซื้อ</button>
    </div>
 
 </div>
