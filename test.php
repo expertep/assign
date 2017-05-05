@@ -11,8 +11,12 @@
     }
     div {
  width:50px;
-}
+ padding:5px;
+  border:1px solid black;
 
+}
+    </style>
+  </head>
   <body>
 
   <?php

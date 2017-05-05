@@ -4,16 +4,18 @@ if ($_SESSION['username']== NULL){
 <div class="container">
   <?php
   if (isset($_POST['checklogin'])){
-  $username = $_POST['username'];
+  $email = $_POST['email'];
   $password = $_POST['password'];
 
-    $sql_member = 'SELECT * FROM table_member WHERE username = "'.$username.'" AND password = "'.$password.'"';
+
+    $sql_member = 'SELECT * FROM table_member WHERE email = "'.$email.'" AND password = "'.$password.'"';
     $query_member = $connect->query($sql_member);
 
 
   if ($member = $query_member->fetch_assoc()){
   $_SESSION['user_status'] = $member['status'];
-  $_SESSION['username'] = $username;
+  $_SESSION['username'] = $member['username'];
+  $_SESSION['emailuser'] = $email;
   header('Location:member/..');
 
   }
@@ -32,12 +34,17 @@ if ($_SESSION['username']== NULL){
      <div class="col-xs-12 .col-sm-6 .col-md-8">
        <div class="col-xs-6 .col-sm-2">
          <form method="POST">
-Username  : <input type="text" name="username" placeholder="Username" class="form-control" required><br>
+E-mail  : <input type="email" name="email" placeholder="Username" class="form-control" required><br>
 Passwsord : <input type="password" name="password" placeholder="Password" class="form-control" required><br>
 ลืมรหัสผ่าน? <br>
 <input type="submit" name="checklogin" class="btn btn-default" value="ลงชื่อเข้าใช้">
         </form>
        </div>
+       <div class="col-xs-6 .col-sm-2" style="border-left:2px solid black; ">
+         <br><br>
+         <br><br><br><br>
+         <img src="image/facebook.png" style="width:150px; height:130px;">
+         </div>
 </div>
 </div>
 </div>
