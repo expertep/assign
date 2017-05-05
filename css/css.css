@@ -9,7 +9,9 @@
 }
 .body{
   background-color:rgb(240, 240, 240);
-  padding-top:50px;
+  margin-top: 50px;
+
+  padding-top:10px;
   font-family: 'Athiti', sans-serif;
 }
 
@@ -40,7 +42,7 @@ h2 {
 }
 .col-xs-6.col-sm-4.col-md-3.product{
 
-  margin-bottom:5px;
+
 }
 
 .navbar.navbar-default{
@@ -68,8 +70,14 @@ width:auto;
   padding-top: 0px;
   margin: auto;
   background-color: white;
+  margin-bottom:30px;
 }
 .jumbotron.cover{
   color:white;
   background-color: rgb(171, 32, 32);
+}
+.jumbotron.footer{
+  color: rgb(195, 195, 195);
+  background-color: rgb(30,30,30);
+  margin-bottom: 0px;
 }

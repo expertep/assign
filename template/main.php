@@ -20,32 +20,10 @@
 
 </div>
 </div>
-<div class="row">
-
-
+<div class="jumbotron product">
+  <div class="container">
+  <h1>pomotion</h1>
+  <p>มาม่า ปลากระป๋อง</p>
+  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
 </div>
-
-
-
-<br><br><br><br><br><br><br><br><br><br><br><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+</div>
