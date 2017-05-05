@@ -11,14 +11,17 @@
   </div>
 </div>
   <div class="jumbotron">
+    <h1>product</h1>
   <div class="container">
-    
+
  <?php include 'product/listproduct_box.php'; ?>
 
 </div>
 </div>
-<div class="container">
-โปรโมชั่น
+<div class="row">
+  <div class="col-sm-12">
+    <h1>โปรโมชัน</h1>
+  </div>
 
 </div>
 

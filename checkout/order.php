@@ -1,7 +1,7 @@
 <div class="container">
 <?php
 
-if ($_SESSION['username'] != NULL){
+if (isset($_SESSION['username'])){
 
 ?>
 
@@ -71,7 +71,7 @@ if ($_SESSION['username'] != NULL){
 
                   <input type="number" class="form-control" name="select_cartqty[]" value="<?php  echo $_SESSION['cartqty'][$i]; ?>">
 
-                  
+
                 </td>
 
                 <td>

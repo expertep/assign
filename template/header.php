@@ -69,7 +69,7 @@
       </form>
 
         <ul class="nav navbar-nav navbar-right">
-          <?php  if ($_SESSION['username'] == NULL){ ?>
+          <?php  if (!isset($_SESSION['username'])){ ?>
           <li><a href="member.php?action=login">Login</a></li>
           <li><a href="member.php?action=register">Register</a></li>
 
@@ -77,7 +77,7 @@
 
           <li><a href="cart.php"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"><span class="badge">
         <?php
-         if ($_SESSION['cart'] == NULL){
+         if (!isset($_SESSION['cart'])){
 
          echo "0";
 

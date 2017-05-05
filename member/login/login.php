@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION['username']== NULL){
+if (!isset($_SESSION['username'])){
 ?>
 <div class="container">
   <?php

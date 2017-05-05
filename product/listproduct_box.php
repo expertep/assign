@@ -13,7 +13,9 @@ while ($select_product = $query_select_product->fetch_assoc()){
 
 <form method="POST" action="cart.php">
   <div class="col-xs-6 col-sm-4">
-  <img src="<?php echo $select_product['picture_product'] ?>" class="img-responsive" alt="product"><br>
+  <div class='pic'>
+  <img src="<?php echo $select_product['picture_product'] ?>" class="img-responsive" alt="product">
+  </div>
   <div class="show">
      <?php echo $select_product['name_product']?><br>
      <?php echo $select_product['price_product'] ?><br>
