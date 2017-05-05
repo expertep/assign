@@ -11,11 +11,8 @@
     }
     div {
  width:50px;
- padding:5px;
-  border:1px solid black;
-
 }
-  
+
   <body>
 
   <?php
