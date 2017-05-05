@@ -4,7 +4,7 @@ session_start();
 
 $db_host = "localhost";
 $db_username = "root";
-$db_password = "a0879804209";
+$db_password = "root";
 $db_name = "assignment";
 
 $connect = new mysqli($db_host,$db_username,$db_password,$db_name);
