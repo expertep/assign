@@ -1,15 +1,7 @@
 <div class="container">
-<?php
-
-if (isset($_SESSION['username'])){
-
-?>
 
   <?php
   if (isset($_POST['id_product'])){
-
- $count_session = count($_SESSION['cart']);
-
 
     if ($_SESSION['cart'][0] == ''){
         $_SESSION['cart'][0] = $_POST['id_product'];
@@ -23,10 +15,9 @@ if (isset($_SESSION['username'])){
 
     }
     else  {
+      $count_session = count($_SESSION['cart']);
       $_SESSION['cart'][$count_session] = $_POST['id_product'];
       $_SESSION['cartqty'][$count_session] = 1;
-
-
        }
      }
    }
@@ -64,7 +55,7 @@ if (isset($_SESSION['username'])){
          ?>
          <form method="POST">
             <tr>
-              <td><img src="<?php echo $picture_product_cart[$i]; ?>"</td>
+              <td><img class="cartimg" src="<?php echo $picture_product_cart[$i]; ?>"</td>
               <td><?php echo $name_product_cart[$i]; ?></td>
               <td><?php echo $price_product_cart[$i]; ?></td>
                 <td>
@@ -83,7 +74,11 @@ if (isset($_SESSION['username'])){
 
             </tr>
 
-            <?php } ?>
+            <?php }
+              if(count($_SESSION['cart'])==0){
+                header('Location: index.php');
+              }
+             ?>
             <tr>
               <th colspan="2">ราคาทั้งหมด</th>
               <th colspan="2"><?php echo $total_price; ?></th>
@@ -98,18 +93,11 @@ if (isset($_SESSION['username'])){
           โค๊ดส่วนลด <input type="text" name="discoutCode" class="form-control" placeholder="โค๊ดส่วนลด">
           <button class="btn btn-default"> Apply Coupon </button>
         </form>
+
         <form method="POST" action="checkout.php">
 
-        <button class="btn btn-default"> Checkout </button>
+        <button class="btn btn-default"
+        <?php  if (!isset($_SESSION['username'])){echo 'disabled';}?>> Checkout </button>
       </form>
-          <?php
 
-
-      }
-
-      else {
-
-        header('Location:index.php');
-      }
-?>
 </div>

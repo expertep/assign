@@ -19,6 +19,7 @@
   <body class="body">
     <!-- Latest compiled and minified JavaScript -->
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="javascript/js/bootstrap.min.js" ></script>
 
 
@@ -62,25 +63,23 @@
       </form>
 
         <ul class="nav navbar-nav navbar-right">
+          <li><a href="cart.php"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"><span class="badge">
+            <?php
+             if (!isset($_SESSION['cart'])||$_SESSION['cart']==0){
+
+             echo "0";
+             }
+             else {
+               echo count($_SESSION['cart']);
+             }
+            ?>
           <?php  if (!isset($_SESSION['username'])){ ?>
           <li><a href="member.php?action=login">Login</a></li>
           <li><a href="member.php?action=register">Register</a></li>
 
         <?php } else { ?>
 
-          <li><a href="cart.php"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"><span class="badge">
-        <?php
-         if (!isset($_SESSION['cart'])){
 
-         echo "0";
-
-         }
-         else {
-           echo count($_SESSION['cart']);
-         }
-
-
-        ?>
       </span></span></a></li>
 
 
