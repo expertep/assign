@@ -22,9 +22,20 @@
       background-color: rgba(143, 171, 204, 0);
     }
 </style>
-<?php
-
-?>
+<script type="text/javascript">
+  function checkpass(){
+    if(document.getElementById("newpass").value
+    !=document.getElementById("cnewpass").value){
+      document.getElementById("changepassword").disabled = true;
+      document.getElementById("status").innerHTML="not same";
+    }
+    else {
+      document.getElementById("changepassword").disabled = false;
+      document.getElementById("status").innerHTML="";
+    }
+  }
+  //oldpass
+</script>
 <div class="container">
 
 <div>
@@ -49,12 +60,12 @@
 <form method="post" class="edit name" action="member/updateprofile.php">
 Change Password <br><br>
 <label>รหัสผ่านเก่า : </label><br>
-  <input type="text" name="oldpass" class="form-control" placeholder="Old Password" required><br>
+  <input type="text" name="oldpass" id="oldpass" class="form-control" placeholder="Old Password" required><br>
  <label>รหัสผ่านใหม่ : </label><br>
- <input type="text" name="newpass" class="form-control" placeholder="New Password" required><br>
-<label> ยืนยันรหัสผ่าน : </label><br>
-<input type="text" name="cnewpass" class="form-control" placeholder="Confirm Password" required><br>
-<input type="submit" name="changepassword" class="form-control" value="เปลี่ยนรหัสผ่าน">
+ <input type="text" name="newpass" id="newpass" class="form-control" placeholder="New Password" required><br>
+<label> ยืนยันรหัสผ่าน : </label><span id='status'></span><br>
+<input type="text" name="cnewpass" id="cnewpass" class="form-control" placeholder="Confirm Password" required onchange="checkpass()"><br>
+<input type="submit" name="changepassword" id="changepassword" class="form-control" value="เปลี่ยนรหัสผ่าน">
 </form>
 </div>
 <br><br>

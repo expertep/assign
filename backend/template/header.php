@@ -52,7 +52,7 @@
             <li ><a href="?action=order">รายการสั่งซื้อ<span class="sr-only">(current)</span></a></li>
             <li ><a href="">รายการแจ้งสั่งซื้อ<span class="sr-only">(current)</span></a></li>
             <li ><a href="?action=member">จัดการสมาชิก<span class="sr-only">(current)</span></a></li>
-
+            <li ><a href="?action=logout">logout<span class="sr-only">(current)</span></a></li>
 
       </ul>
     </div><!-- /.navbar-collapse -->

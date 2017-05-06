@@ -9,11 +9,10 @@
 
 
   <?php
+
  //if () ถ้า product == NULL ให้โชว์ว่า ไม่มีสินค้า!
 
  //else {}
-
-
 
 ?>
 
@@ -38,9 +37,14 @@
      Action
    </th>
   </tr>
+  <?php
+  $sql_select_product = 'SELECT * FROM table_product ';
+  $query_select_product = $connect->query($sql_select_product);
+ while ($select_product = $query_select_product->fetch_assoc()){
+   ?>
   <tr>
     <td>
-      00001
+      <?php echo $select_product['id_product'] ?>
     </td>
     <td>
       Image
@@ -49,7 +53,7 @@
       Status
     </td>
     <td>
-      Name
+      <?php echo $select_product['name_product'] ?>
     </td>
     <td>
       Price
@@ -59,5 +63,6 @@
     </td>
 
   </tr>
+  <?php } ?>
 </table>
 </div>

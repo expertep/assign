@@ -10,6 +10,7 @@ while ($select_product = $query_select_product->fetch_assoc()){
  <script type="text/javascript">
 
  function save(id) {
+   document.getElementById("count").innerHTML =1+parseInt(document.getElementById("count").innerHTML);
    var str="cart.php";
    $.ajax({
      type: 'POST',

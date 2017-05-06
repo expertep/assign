@@ -31,9 +31,11 @@ if (isset($_GET['action'])){
   include_once 'order/order.php';
 
   }
+  else if ($_GET['action']== "logout"){
+    header('Location:..\index.php');
+    exit;
+  }
 }
-
-
 
 
 include_once 'template/footer.php';

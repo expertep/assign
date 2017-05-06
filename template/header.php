@@ -63,7 +63,7 @@
       </form>
 
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="cart.php"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"><span class="badge">
+          <li><a href="cart.php"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"><span class="badge" id='count'>
             <?php
              if (!isset($_SESSION['cart'])||$_SESSION['cart']==0){
 
