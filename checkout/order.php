@@ -98,6 +98,7 @@
 
         <button class="btn btn-default"
         <?php  if (!isset($_SESSION['username'])){echo 'disabled';}?>> Checkout </button>
+        <?php if (!isset($_SESSION['username'])){echo '<a href="\../member/login/login.php">Login</a>';} ?>
       </form>
 
 </div>
