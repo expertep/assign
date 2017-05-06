@@ -1,8 +1,4 @@
 
-
-
-
-
   <div class="jumbotron cover">
     <div class="container">
     <h1>อธิบาย บลาๆ</h1>

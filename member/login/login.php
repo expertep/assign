@@ -15,6 +15,7 @@ if (!isset($_SESSION['username'])){
   if ($member = $query_member->fetch_assoc()){
   $_SESSION['user_status'] = $member['status'];
   $_SESSION['username'] = $member['username'];
+  $_SESSION['password'] = $member['password'];
   $_SESSION['emailuser'] = $member['email'];
   header('Location:member/..');
 
