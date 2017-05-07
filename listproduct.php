@@ -1,10 +1,7 @@
 <?php
 require_once 'config/config.php';
 include_once 'template/header.php';
-if(isset($_GET['page'])){
-$page=$_GET['page'];
-}
-else $page=1;
+
  ?>
 
  <div class="jumbotron product">

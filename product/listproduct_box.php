@@ -18,6 +18,10 @@ function save(id) {
   $result= $connect->query($sql);
   $result1=$result->fetch_assoc();
   $count=$result1['NumberOfProducts'];
+  if(isset($_GET['page'])){
+  $page=$_GET['page'];
+  }
+  else $page=1;
  $sql_select_product = 'SELECT * FROM table_product LIMIT '.($page*10).',10';
  $query_select_product = $connect->query($sql_select_product);
 while ($select_product = $query_select_product->fetch_assoc()){
