@@ -94,11 +94,9 @@
           <button class="btn btn-default"> Apply Coupon </button>
         </form>
 
-        <form method="POST" action="checkout.php">
-
         <button class="btn btn-default"
         <?php  if (!isset($_SESSION['username'])){echo 'disabled';}?>> Checkout </button>
-        <?php if (!isset($_SESSION['username'])){echo '<a href="\../member/login/login.php">Login</a>';} ?>
-      </form>
+        <?php if (!isset($_SESSION['username'])){echo '<a href="member.php?action=login">Login</a>';} ?>
+
 
 </div>

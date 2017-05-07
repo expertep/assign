@@ -51,10 +51,11 @@
 <div class="container">
 
 <div>
-<b>ชื่อจริง</b> <?php echo $_SESSION['username']; ?> <b>นามสกุล </b><?php echo $_SESSION['emailuser']; ?>
+
+<b>ชื่อจริง</b> <?php echo $_SESSION['firstname']; ?> <b>นามสกุล </b><?php echo $_SESSION['lastname']; ?>
 <input class="edit check" id="editname" type="checkbox">
 <label class="edit text" for="editname">edit</label>
-<form method="post" class="edit name" action="updateprofile.php">
+<form method="post" class="edit name" action="member/updateprofile.php">
 <label>ชื่อจริง :</label><br>
 <input type="text" name="firstname" class="form-control" placeholder="Firstname" required><br>
 <label>นามสกุล : </label><br>
@@ -66,6 +67,7 @@
 </div>
 
 <div>
+<b>USERNAME</b> <?php echo $_SESSION['username']; ?><br>
 <b>PASSWORD </b><input type="password" class="tranparent" name="" value="<?php echo $_SESSION['password']; ?>" disabled>
 <input class="edit check" id="editpass" type="checkbox">
 <label class="edit text" for="editpass">edit</label>
@@ -80,10 +82,14 @@ Change Password <br><br>
 <input type="submit" name="changepassword" id="changepassword" class="form-control" value="เปลี่ยนรหัสผ่าน">
 </form>
 </div>
-<br><br>
-
-ที่อยู่จัดส่ง <br><br>
-
-<textarea class="form-control"> </textarea>
-<input type="submit" name="changeaddress" class="form-control" value="อัพเดท">
+<div>
+<b>ที่อยู่จัดส่ง :</b>
+<?php if(isset($_SESSION['address'])){echo $_SESSION['address'];} ?>
+<input class="edit check" id="editadd" type="checkbox">
+<label class="edit text" for="editadd">edit</label>
+<form method="post" class="edit name" action="member/updateprofile.php">
+ <textarea class="form-control" name="address"> </textarea>
+<input type="submit" name="changeaddress" id="changeaddress" class="form-control" value="เปลี่ยนรหัสผ่าน">
+</form>
+</div>
 </div>

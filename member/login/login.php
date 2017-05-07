@@ -16,6 +16,9 @@ if (!isset($_SESSION['username'])){
   $_SESSION['user_status'] = $member['status'];
   $_SESSION['username'] = $member['username'];
   $_SESSION['password'] = $member['password'];
+  $_SESSION['firstname'] = $member['firstname'];
+  $_SESSION['lastname'] = $member['lastname'];
+  $_SESSION['address'] = $member['address'];
   $_SESSION['emailuser'] = $member['email'];
   header('Location:member/..');
 
@@ -37,7 +40,7 @@ if (!isset($_SESSION['username'])){
          <form method="POST">
 E-mail  : <input type="email" name="email" placeholder="Username" class="form-control" required><br>
 Passwsord : <input type="password" name="password" placeholder="Password" class="form-control" required><br>
-ลืมรหัสผ่าน? <br>
+<a href="member/login/forgetpass.php">ลืมรหัสผ่าน?</a> <br>
 <input type="submit" name="checklogin" class="btn btn-default" value="ลงชื่อเข้าใช้">
         </form>
        </div>
