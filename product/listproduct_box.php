@@ -30,8 +30,8 @@ while ($select_product = $query_select_product->fetch_assoc()){
 
 
   <div class="col-xs-6 col-sm-4 col-md-3 product">
-  <div class='pic'>
-  <img src="<?php echo $select_product['picture_product'] ?>" class="img-responsive" alt="product">
+  <div class='pic' style="background-image:url('<?php echo $select_product['picture_product'] ?>')">
+  
   </div>
   <div class="show">
      <?php echo $select_product['name_product']?><br>

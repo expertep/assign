@@ -1,8 +1,8 @@
 
   <div class="jumbotron cover">
-    <div class="container">
-    <h1>อธิบาย บลาๆ</h1>
-    <p>มาม่า ปลากระป๋อง</p>
+    <div class="container cover">
+    <h1>DIV SHOP</h1>
+    <p>TOOLS are here</p>
     <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
   </div>
 </div>

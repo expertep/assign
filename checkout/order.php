@@ -59,14 +59,10 @@
               <td><?php echo $name_product_cart[$i]; ?></td>
               <td><?php echo $price_product_cart[$i]; ?></td>
                 <td>
-
                   <input type="number" class="form-control" name="select_cartqty[]" value="<?php  echo $_SESSION['cartqty'][$i]; ?>">
 
-
                 </td>
-
                 <td>
-
 
                   <a href="checkout/delete_cart.php?count=<?php echo $i; ?>">ลบ</a>
 
@@ -94,9 +90,11 @@
           <button class="btn btn-default"> Apply Coupon </button>
         </form>
 
+        <form method="POST" action="checkout.php">
+
         <button class="btn btn-default"
         <?php  if (!isset($_SESSION['username'])){echo 'disabled';}?>> Checkout </button>
         <?php if (!isset($_SESSION['username'])){echo '<a href="member.php?action=login">Login</a>';} ?>
-
+      </form>
 
 </div>

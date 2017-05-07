@@ -36,7 +36,7 @@
     }
   }
   function checkold(){
-    document.getElementById("status").innerHTML=oldpass;
+    
     if(document.getElementById("oldpass").value==oldpass){
       document.getElementById("changepassword").disabled = false;
     }
@@ -89,7 +89,7 @@ Change Password <br><br>
 <label class="edit text" for="editadd">edit</label>
 <form method="post" class="edit name" action="member/updateprofile.php">
  <textarea class="form-control" name="address"> </textarea>
-<input type="submit" name="changeaddress" id="changeaddress" class="form-control" value="เปลี่ยนรหัสผ่าน">
+<input type="submit" name="changeaddress" id="changeaddress" class="form-control" value="เปลี่ยนที่อยู่จัดส่ง">
 </form>
 </div>
 </div>
