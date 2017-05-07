@@ -94,3 +94,10 @@ width:auto;
   width:100px;
   height:auto;
 }
+.page{
+  margin:auto;
+}
+nav.page{
+  margin: auto;
+  color:black;
+}

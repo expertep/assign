@@ -1,26 +1,25 @@
+<script type="text/javascript">
+
+function save(id) {
+  document.getElementById("count").innerHTML =1+parseInt(document.getElementById("count").innerHTML);
+  var str="cart.php";
+  $.ajax({
+    type: 'POST',
+    url: str,
+    data: { id_product: id },
+    success: function(response) {}
+  });
+}
+</script>
 <div class="row">
   <div class="col-xs-12 product">
 <?php
 
- $sql_select_product = 'SELECT * FROM table_product ';
+ $sql_select_product = 'SELECT * FROM table_product LIMIT 10';
  $query_select_product = $connect->query($sql_select_product);
 while ($select_product = $query_select_product->fetch_assoc()){
 
  ?>
- <script type="text/javascript">
-
- function save(id) {
-   document.getElementById("count").innerHTML =1+parseInt(document.getElementById("count").innerHTML);
-   var str="cart.php";
-   $.ajax({
-     type: 'POST',
-     url: str,
-     data: { id_product: id },
-     success: function(response) {}
-   });
- }
-</script>
-
 
 
   <div class="col-xs-6 col-sm-4 col-md-3 product">
@@ -45,6 +44,9 @@ while ($select_product = $query_select_product->fetch_assoc()){
 
 <?php
 
-} ?>
-</div>
+}
+?>
+
+  </div>
+
 </div>

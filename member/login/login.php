@@ -43,8 +43,11 @@ Passwsord : <input type="password" name="password" placeholder="Password" class=
        </div>
        <div class="col-xs-6 .col-sm-2" style="border-left:2px solid black; ">
          <br><br>
-         <br><br><br><br>
-         <img src="image/facebook.png" style="width:150px; height:130px;">
+         <form class="" action="" method="post">
+           <img src="image/facebook.png" style="width:150px; height:130px;">
+           <a href="member/loginfacebook.html"><button type="button" name="flogin">login with facebook</button></a>
+         </form>
+
          </div>
 </div>
 </div>
@@ -52,12 +55,8 @@ Passwsord : <input type="password" name="password" placeholder="Password" class=
 <?php
 }
 else {
-
 header('Location:member/..');
-
-
 }
-
 
 
  ?>

@@ -9,15 +9,14 @@ include "\../config/config.php";
           echo "Error updating record: " . $conn->error;
       }
   }
-  if(isset($_POST['changepassword'])){
+
+    if($_POST['oldpass']==$_SESSION['password']){
     $sql = "UPDATE table_member SET password='".$_POST['newpass']."' WHERE username='".$_SESSION['username']."'";
       if ($connect->query($sql) === TRUE) {
             header('Location:..\member.php?action=profiles');
             $_SESSION['password']=$_POST['newpass'];
-      } else {
-          echo "Error updating record: " . $connect->error;
       }
-  }
+    }
 
 
  ?>

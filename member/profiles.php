@@ -22,6 +22,7 @@
       background-color: rgba(143, 171, 204, 0);
     }
 </style>
+<?php echo '<script type="text/javascript">var oldpass="'.$_SESSION['password'].'";</script>' ?>
 <script type="text/javascript">
   function checkpass(){
     if(document.getElementById("newpass").value
@@ -33,6 +34,17 @@
       document.getElementById("changepassword").disabled = false;
       document.getElementById("status").innerHTML="";
     }
+  }
+  function checkold(){
+    document.getElementById("status").innerHTML=oldpass;
+    if(document.getElementById("oldpass").value==oldpass){
+      document.getElementById("changepassword").disabled = false;
+    }
+    else{
+      document.getElementById("changepassword").disabled = true;
+      alert('Old password incorrect');
+    }
+
   }
   //oldpass
 </script>
@@ -60,7 +72,7 @@
 <form method="post" class="edit name" action="member/updateprofile.php">
 Change Password <br><br>
 <label>รหัสผ่านเก่า : </label><br>
-  <input type="text" name="oldpass" id="oldpass" class="form-control" placeholder="Old Password" required><br>
+  <input type="text"  onblur="checkold()" name="oldpass" id="oldpass" class="form-control" placeholder="Old Password" required><br>
  <label>รหัสผ่านใหม่ : </label><br>
  <input type="text" name="newpass" id="newpass" class="form-control" placeholder="New Password" required><br>
 <label> ยืนยันรหัสผ่าน : </label><span id='status'></span><br>
