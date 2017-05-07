@@ -1,7 +1,10 @@
 <?php
 require_once 'config/config.php';
 include_once 'template/header.php';
-
+if(isset($_GET['page'])){
+$page=$_GET['page'];
+}
+else $page=1;
  ?>
 
  <div class="jumbotron product">
@@ -14,12 +17,17 @@ include_once 'template/header.php';
 
 
 </div>
+<form class="" action="#" method="get">
+
 <nav aria-label="next" class="page">
   <ul class="pagination">
-    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-    <li class="disable"><a href="#">2 <span class="sr-only"></span></a></li>
+    <?php for($i=1;$i<=$count/10;$i++){?>
+    <li class="<?php if($i==$page)echo 'active'; ?>"><a href="<?php echo $_SERVER['SCRIPT_NAME']."?page=".$i;?>"><?php echo $i; ?> <span class="sr-only">(current)</span></a></li>
+
+    <?php } ?>
   </ul>
 </nav>
+</form>
 </div>
 
 <?php

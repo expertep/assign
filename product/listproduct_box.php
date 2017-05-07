@@ -14,8 +14,11 @@ function save(id) {
 <div class="row">
   <div class="col-xs-12 product">
 <?php
-
- $sql_select_product = 'SELECT * FROM table_product LIMIT 10';
+  $sql='SELECT Count(id_product) AS NumberOfProducts FROM table_product';
+  $result= $connect->query($sql);
+  $result1=$result->fetch_assoc();
+  $count=$result1['NumberOfProducts'];
+ $sql_select_product = 'SELECT * FROM table_product LIMIT '.($page*10).',10';
  $query_select_product = $connect->query($sql_select_product);
 while ($select_product = $query_select_product->fetch_assoc()){
 
