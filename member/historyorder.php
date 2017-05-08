@@ -8,20 +8,22 @@
     <th>จำนวน</th>
     <th>สถานะ</th>
   </tr>
+  <?php
+  $sql = 'SELECT * FROM table_order
+   INNER JOIN table_bill ON table_order.order_id=table_bill.order_id
+   INNER JOIN table_product ON table_product.id_product=table_bill.product_id
+  WHERE table_order.member_id = "'.$_SESSION['id'].'"';
+  $query = $connect->query($sql);
+  while($row = $query->fetch_assoc()) {
+   ?>
   <tr>
-    <td> 00001</td>
-    <td> มาโก้ </td>
-    <td> 500 </td>
-    <td> 10 </td>
-    <td> สำเร็จ </td>
+    <td> <?php echo $row['order_id']; ?></td>
+    <td> <?php echo $row['name_product']; ?> </td>
+    <td> <?php echo $row['product_id']; ?> </td>
+    <td> <?php echo $row['amount']; ?> </td>
+    <td> <?php echo $row['status']; ?> </td>
   </tr>
-  <tr>
-    <td> 00001</td>
-    <td> มาโก้ </td>
-    <td> 500 </td>
-    <td> 10 </td>
-    <td> สำเร็จ </td>
-  </tr>
+<?php } ?>
 </table>
 
 </div>
