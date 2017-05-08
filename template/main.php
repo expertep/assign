@@ -1,8 +1,8 @@
 
   <div class="jumbotron cover">
     <div class="container cover">
-    <h1>DIV SHOP</h1>
-    <p>TOOLS are here</p>
+    <h1><b>DIV</b> SHOP</h1>
+    <p>CENTRE of TOOLS</p>
     <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
   </div>
 </div>

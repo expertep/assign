@@ -29,6 +29,14 @@
            <div class="panel-heading">Cart</div>
 
         <table class="table">
+          <thead>
+            <tr>
+               <th>รหัสสินค้า</th>
+               <th>ชื่อ</th>
+               <th>ราคา</th>
+               <th>จำนวน</th>
+            </tr>
+          </thead>
         <?php
         if (isset($_POST['select_cartqty'])){
 
@@ -54,6 +62,7 @@
            $id_product_cart[$i] = $cart_select['id_product'];
          ?>
          <form method="POST">
+
             <tr>
               <td><img class="cartimg" src="<?php echo $picture_product_cart[$i]; ?>"</td>
               <td><?php echo $name_product_cart[$i]; ?></td>

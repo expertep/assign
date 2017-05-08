@@ -13,6 +13,7 @@ if (!isset($_SESSION['username'])){
 
 
   if ($member = $query_member->fetch_assoc()){
+    $_SESSION['id'] = $member['member_id'];
   $_SESSION['user_status'] = $member['status'];
   $_SESSION['username'] = $member['username'];
   $_SESSION['password'] = $member['password'];

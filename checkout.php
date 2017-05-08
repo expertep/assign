@@ -32,7 +32,7 @@ include_once 'template/header.php';
             <textarea class="form-control" name="address"> </textarea>
           </div>
         </div>
-        <button type="submit" name="pay" value="pay">ชำระเงิน</button>
+        <button type="submit" name="pay" value="pay">ตกลง</button>
       </form>
     </div>
   </div>
@@ -89,14 +89,15 @@ include_once 'template/header.php';
            </tr>
          </table>
      </div>
+     <form class="" action="checkout/pay.php" method="post">
+       <button type="submit" name="pay" value="pay">เสร็จสิ้น</button>
+     </form>
    </div>
  <?php }
   ?>
+
 </div>
 <?php
 include_once 'template/footer.php';
 
  ?>
- <style media="screen">
-   .jumbotron.footer{position: absolute;}
- </style>
