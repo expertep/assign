@@ -18,7 +18,7 @@ include_once 'template/header.php';
 
         <div class="panel panel-default">
           <div class="panel-heading">
-            <input type="radio" value="1" name='add' checked/><h3 class="panel-title">ที่อยู่ 1</h3>
+            <input type="radio" value="1" name='add' required/><h3 class="panel-title">ที่อยู่ 1</h3>
           </div>
           <div class="panel-body">
             <p><?php echo $_SESSION['address']; ?></p>
@@ -26,7 +26,7 @@ include_once 'template/header.php';
         </div>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <input type="radio" value="2" name='add'/><h3 class="panel-title">ที่อยู่ 2</h3>
+            <input type="radio" value="2" name='add' required/><h3 class="panel-title">ที่อยู่อื่นๆ</h3>
           </div>
           <div class="panel-body">
             <textarea class="form-control" name="address"> </textarea>
@@ -46,8 +46,15 @@ include_once 'template/header.php';
        <h3 class="panel-title">ใบเสร็จ</h3>
      </div>
      <div class="panel-body">
-       <h3>จัดส่งที่</h3>
-       <p><?php echo $_SESSION['address']; ?></p>
+       <?php echo date('d/m/Y'); ?>
+       <h3>ผู้รับ <?php echo $_SESSION['firstname']."  ".$_SESSION['lastname']; ?></h3>
+       <h3>ที่
+       <?php
+      if($_POST['add']==2){
+        echo $_POST['address'];
+      }
+       else echo $_SESSION['address'];
+       ?></h3>
 
        <table class="table">
          <tr>

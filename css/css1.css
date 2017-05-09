@@ -1,3 +1,9 @@
+@media screen and (min-width: 500px) {
+  .menu{
+    height: 100%;
+    width:15%;
+  }
+}
 #myChart{
 
     width:300px !important;

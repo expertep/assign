@@ -1,6 +1,11 @@
+<?php
+include_once "\../config/config.php" ?>
 <script type="text/javascript">
 
 function save(id) {
+
+    $(".price."+id).css("background-color","green");
+
   document.getElementById("count").innerHTML =1+parseInt(document.getElementById("count").innerHTML);
   var str="cart.php";
   $.ajax({
@@ -19,7 +24,7 @@ function save(id) {
   $result1=$result->fetch_assoc();
   $count=$result1['NumberOfProducts'];
   if(isset($_GET['page'])){
-  $page=$_GET['page'];
+    $page=$_GET['page'];
   }
   else $page=1;
  $sql_select_product = 'SELECT * FROM table_product LIMIT '.($page*10).',10';
@@ -28,7 +33,9 @@ while ($select_product = $query_select_product->fetch_assoc()){
 
  ?>
 
+<script type="text/javascript">
 
+</script>
   <div class="col-xs-6 col-sm-4 col-md-3 product">
   <div class='pic' style="background-image:url('<?php echo $select_product['picture_product'] ?>')">
 <style media="screen">
@@ -38,7 +45,16 @@ while ($select_product = $query_select_product->fetch_assoc()){
   </div>
   <div class="show">
      <div class="name"><?php echo $select_product['name_product']?></div>
-     <div class="price"><?php echo $select_product['price_product'] ?></div>
+     <?php
+     $str='';
+     if(isset($_SESSION['cart'])){
+       $key = array_search($select_product['id_product'],$_SESSION['cart']);
+       if ((string)$key != ""){
+         $str='background-color:green;';
+       }
+      }
+     ?>
+     <div class="price <?php echo $select_product['id_product'] ?>" style="<?php echo $str; ?>"><?php echo $select_product['price_product'] ?></div>
      <button class="form-control buy" onclick="save('<?php echo $select_product['id_product'] ?>')">สั่งซื้อ</button>
    </div>
 

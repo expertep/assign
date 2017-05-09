@@ -81,7 +81,9 @@
 
             <?php }
               if(count($_SESSION['cart'])==0){
+                unset($_SESSION['cart']);
                 header('Location: index.php');
+
               }
              ?>
             <tr>

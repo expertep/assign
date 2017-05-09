@@ -14,11 +14,12 @@
         } else {
             echo "Error: " . $sql . "<br>" . $connect->error;
         }
-
     }
-    
 unset($_SESSION['cart']);
 unset($_SESSION['cartqty']);
   }
 
  ?>
+<script type="text/javascript">
+  window.location.href = '../index.php';
+</script>
