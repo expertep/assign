@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>ก่อสร้าง</title>
+    <title>DIV SHOP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="css/css.css">
 <link href="https://fonts.googleapis.com/css?family=Pavanam" rel="stylesheet">
@@ -122,3 +122,6 @@
 
   </div><!-- /.container-fluid -->
 </nav>
+<div class="searchpage">
+
+</div>
