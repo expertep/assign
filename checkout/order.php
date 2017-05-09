@@ -105,8 +105,15 @@
         <form method="POST" action="checkout.php">
 
         <button class="btn btn-default"
-        <?php  if (!isset($_SESSION['username'])){echo 'disabled';}?>> Checkout </button>
-        <?php if (!isset($_SESSION['username'])){echo '<a href="member.php?action=login">Login</a>';} ?>
+        <?php  if (!isset($_SESSION['username'])){echo 'disabled';?>> กรุณาล็อคอินก่อน <?php }
+             else {
+                ?>
+                > Checkout
+               <?php
+             }
+        ?>
+
+        </button>
       </form>
     </div>
 
