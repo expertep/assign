@@ -31,11 +31,14 @@ while ($select_product = $query_select_product->fetch_assoc()){
 
   <div class="col-xs-6 col-sm-4 col-md-3 product">
   <div class='pic' style="background-image:url('<?php echo $select_product['picture_product'] ?>')">
-  
+<style media="screen">
+  .name{width:70%;display: inline-block;}
+  .price{width:20%;display: inline-block;}
+</style>
   </div>
   <div class="show">
-     <?php echo $select_product['name_product']?><br>
-     <?php echo $select_product['price_product'] ?><br>
+     <div class="name"><?php echo $select_product['name_product']?></div>
+     <div class="price"><?php echo $select_product['price_product'] ?></div>
      <button class="form-control buy" onclick="save('<?php echo $select_product['id_product'] ?>')">สั่งซื้อ</button>
    </div>
 

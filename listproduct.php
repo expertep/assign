@@ -6,8 +6,8 @@ include_once 'template/header.php';
 
  <div class="jumbotron product">
    <div class="heading">
-   <h3>PRODUCT</h3>
- </div>
+     <h3>PRODUCT</h3>
+   </div>
  <div class="container">
 
 <?php include 'product/listproduct_box.php'; ?>
