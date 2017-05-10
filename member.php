@@ -28,6 +28,10 @@ else if ($_GET['action']== "historyorder"){
 
 include_once 'member/historyorder.php';
 
+}
+else if ($_GET['action']== "paied"){
+
+include_once 'checkout/paied.php';
 
 }
 

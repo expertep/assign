@@ -1,6 +1,6 @@
-<div class="container">
+<div class="jumbotron his">
 
-<table class="table">
+<table class="table his">
   <tr>
     <th>หมายเลขสั่งซื้อ </th>
   <th>ชื่อสินค้า</th>

@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Athiti:500,700&subset=thai');
 @media screen and (max-width: 340px) {
-    .body {
-        background-color: lightgreen;
-    }
     .col-xs-6.col-sm-4.product{
       width:100%;
     }
+}
+body{
+  font-family: 'Athiti', sans-serif;
 }
 .body{
   background-color:rgb(240, 240, 240);
   margin-top: 50px;
   padding-top:10px;
-  font-family: 'Athiti', sans-serif;
+
 }
 
 h1 {
@@ -112,7 +112,20 @@ nav.page{
   margin: auto;
   color:black;
 }
-
+.jumbotron.cart{
+  width:95%;
+  margin: auto;
+}
+.table.cart{
+  /*height: 300px;
+  overflow: scroll;*/
+}
+.jumbotron.his{
+  height:500px;
+  overflow: scroll;
+  width: 95%;
+  margin: auto;
+}
 .searchpage{
   display:none;
   top:0;

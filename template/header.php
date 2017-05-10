@@ -19,18 +19,18 @@
 <script type="text/javascript">
   /*  $(document).ready(function(){
           if(200<$(".body").scrollTop()){
-            $("nav").css({"opacity":"1"});
+            $("nav").css({"background-Color":"rgba(171, 32, 32,0)"});
           }
           else{
-            $("nav").css({"opacity":"0"});
+            $("nav").css({"background-Color":"rgba(171, 32, 32,1)"});
           }
     });
     $(document).scroll(function(){
           if(200<$(".body").scrollTop()){
-            $("nav").css({"opacity":"1"});
+            $("nav").css({"background-color":"rgba(171, 32, 32,0)"});
           }
           else{
-            $("nav").css({"opacity":"1"});
+            $("nav").css({"background-color":"rgba(171, 32, 32,1)"});
           }
 
     });*/
@@ -106,6 +106,7 @@
             <ul class="dropdown-menu">
               <li><a href="member.php?action=profiles">ข้อมูลส่วนตัว</a></li>
               <li><a href="member.php?action=historyorder">ประวัติสั่งซื้อ</a></li>
+              <li><a href="member.php?action=paied">แจ้งการชำระ</a></li>
               <li><a href="#">โปรโมชั่น</a></li>
               <li role="separator" class="divider"></li>
               <?php if ($_SESSION['user_status'] == "1") { ?>
@@ -122,6 +123,3 @@
 
   </div><!-- /.container-fluid -->
 </nav>
-<div class="searchpage">
-
-</div>

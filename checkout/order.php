@@ -1,4 +1,4 @@
-<div class="container">
+<div class="jumbotron cart">
 
   <?php
   if (isset($_POST['id_product'])){
@@ -25,7 +25,7 @@
 
 
 
-        <div class="panel panel-default">
+        <div class="panel panel-default cart">
            <div class="panel-heading">Cart</div>
 
         <table class="table">
@@ -96,6 +96,7 @@
           </form>
           </table>
         </div>
+        <div>
           <form method="POST">
           โค๊ดส่วนลด <input type="text" name="discoutCode" class="form-control" placeholder="โค๊ดส่วนลด">
           <button class="btn btn-default"> Apply Coupon </button>
@@ -107,5 +108,6 @@
         <?php  if (!isset($_SESSION['username'])){echo 'disabled';}?>> Checkout </button>
         <?php if (!isset($_SESSION['username'])){echo '<a href="member.php?action=login">Login</a>';} ?>
       </form>
+    </div>
 
 </div>

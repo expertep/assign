@@ -3,7 +3,9 @@ require_once '../config/config.php';
 include_once 'template/header.php';
 
 
-
+?>
+<div class="body">
+<?php
 if(!isset($_GET['action'])){
   include_once 'template/dashboard.php';
 }
@@ -36,8 +38,9 @@ if (isset($_GET['action'])){
     exit;
   }
 }
-
-
+?>
+</div>
+<?php
 include_once 'template/footer.php';
 
 
