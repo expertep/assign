@@ -1,4 +1,4 @@
-<div class="container">
+
   Product <br>
   <div class="form-group">
   <span>  <input type="text" class="form-control" placeholder="Search">
@@ -6,7 +6,6 @@
   </div>
 
   <br>
-
 
   <?php
 
@@ -53,16 +52,45 @@
       Status
     </td>
     <td>
-      <?php echo $select_product['name_product'] ?>
+      <input class="name edit <?php echo $select_product['id_product'] ?>" type="text" name="" value="<?php echo $select_product['name_product'] ?>" readonly>
+
     </td>
     <td>
-      Price
+      <?php echo $select_product['price_product'] ?>
     </td>
     <td>
-      Edit / Delete
+      <script type="text/javascript">
+        function edit(row){
+          if($("#"+row+" span").attr('class')=='glyphicon glyphicon-pencil'){
+            $("#"+row+" span").attr('class','glyphicon glyphicon-floppy-disk');
+            $(".edit."+row).removeAttr("readonly");
+          }
+          else{
+            $("#"+row+" span").attr('class','glyphicon glyphicon-pencil');
+            $(".edit."+row).attr("readonly","");
+            var str="save.php";
+            $.ajax({
+              type: 'POST',
+              url: str,
+              data: {
+                name_product:$(".name.edit."+row).val()
+             },
+              success: function(response) {}
+            });
+            //alert($(".name.edit."+row).val());
+          }
+
+        }
+
+      </script>
+      <button type="button" id="<?php echo $select_product['id_product'] ?>" class="btn btn-default btn-sm" aria-label="Left Align" onclick="edit(<?php echo $select_product['id_product'] ?>)">
+        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="btn btn-default btn-sm" aria-label="Left Align">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+      </button>
     </td>
 
   </tr>
   <?php } ?>
 </table>
-</div>

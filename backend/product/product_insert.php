@@ -36,9 +36,6 @@ if(copy($_FILES['fileupload']['tmp_name'], $target_file)){
 
  ?>
 
-
-
-<div class="container">
 <form method="POST" enctype="multipart/form-data">
   <div class="row">
 
@@ -76,4 +73,3 @@ if(copy($_FILES['fileupload']['tmp_name'], $target_file)){
             <div class="col-xs-4 col-md-4"> </div>
   </div>
 </form>
-</div>

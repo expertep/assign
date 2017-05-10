@@ -11,10 +11,13 @@ width:90%;
     width:100% !important;
     height:300px !important;
 }
-
 .body{
   margin-left: 20%;
   padding: 10px;
+
+}
+a{
+  color: #e1ffff;
 }
 .nav-side-menu {
   overflow: auto;
@@ -29,6 +32,7 @@ width:90%;
   height: 100%;
   color: #e1ffff;
   z-index: 99;
+
 }
 .nav-side-menu .brand {
   background-color: #23282e;
@@ -177,4 +181,10 @@ width:90%;
 body {
   margin: 0px;
   padding: 0px;
+}
+.edit{
+  width:4em;
+  /*background:transparent;*/
+  border:none;
+  
 }

@@ -1,4 +1,4 @@
-<div class="container">
+
 
 
 <table class="table">
@@ -48,5 +48,3 @@ while ($member = $query_member->fetch_assoc()){
 }
    ?>
 </table>
-
-</div>
