@@ -21,18 +21,22 @@
     </div>
   </div>
 
-
+<?php
+  $date=$connect->query("SELECT DATE_FORMAT(date,'%m-%Y') as dateF FROM posts WHERE 1 LIMIT 5;");
+  $view=$connect->query("SELECT views FROM posts WHERE 1 LIMIT 5");
+ ?>
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"></script>
   <script type="text/javascript">
+  //กราฟวิว
   var ctx = document.getElementById("myChart");
   var myChart = new Chart(ctx, {
       type: 'line',
       data: {
-          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          labels: [<?php while ($resultD = $date->fetch_assoc()){ echo "'".$resultD['dateF']."',";}  ?> "Orange"],
           datasets: [{
               label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
+              data: [<?php while ($resultV = $view->fetch_assoc()){ echo $resultV['views'].","; } ?> 0],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2017 at 07:40 PM
+-- Generation Time: May 11, 2017 at 10:52 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -27,15 +27,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `posts` (
-  `views` int(7) NOT NULL DEFAULT '1'
+  `views` int(7) DEFAULT '1',
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`views`) VALUES
-(5);
+INSERT INTO `posts` (`views`, `date`) VALUES
+(2, '2017-05-11'),
+(500, '2017-04-12'),
+(200, '2017-03-15'),
+(150, '2017-02-14');
 
 -- --------------------------------------------------------
 
@@ -154,9 +158,8 @@ CREATE TABLE `table_product` (
 --
 
 INSERT INTO `table_product` (`id_product`, `name_product`, `price_product`, `category_product`, `type_product`, `picture_product`, `unit_product`, `number_product`) VALUES
-(6, 'ตะปู', 30, 'หมวดหมู่1', 'หมวดหมู่1', 'product/image/1.jpg', '', 0),
-(7, 'ตะไป', 65, 'หมวดหมู่2', 'หมวดหมู่2', 'product/image/2.jpg', '', 0),
-(8, 'ตะกร้อม', 95, 'หมวดหมู่3', 'หมวดหมู่3', 'product/image/3.jpg', '', 0),
+(6, '30', 30, 'หมวดหมู่1', 'หมวดหมู่1', 'product/image/1.jpg', '', 0),
+(7, 'หลอดไฟ', 65, 'หมวดหมู่2', 'หมวดหมู่2', 'product/image/2.jpg', '', 0),
 (9, 'ตะปู', 30, 'หมวดหมู่4', 'หมวดหมู่4', 'product/image/4.jpg', '', 0),
 (10, 'ตะไป', 65, 'หมวดหมู่5', 'หมวดหมู่5', 'product/image/5.jpg', '', 0),
 (11, 'ตะกร้อม', 95, 'หมวดหมู่1', 'หมวดหมู่1', 'product/image/6.jpg', '', 0),
@@ -174,12 +177,9 @@ INSERT INTO `table_product` (`id_product`, `name_product`, `price_product`, `cat
 (23, 'ตะกร้อม', 95, 'หมวดหมู่3', 'หมวดหมู่3', 'product/image/6.jpg', '', 0),
 (24, 'ตะปู', 30, 'หมวดหมู่4', 'หมวดหมู่4', 'product/image/1.jpg', '', 0),
 (25, 'ตะไป', 65, 'หมวดหมู่5', 'หมวดหมู่5', 'product/image/2.jpg', '', 0),
-(26, 'ตะกร้อม', 95, 'หมวดหมู่1', 'หมวดหมู่1', 'product/image/3.jpg', '', 0),
 (27, 'ตะปู', 30, 'หมวดหมู่2', 'หมวดหมู่2', 'product/image/4.jpg', '', 0),
-(28, 'ตะไป', 65, 'หมวดหมู่3', 'หมวดหมู่3', 'product/image/5.jpg', '', 0),
-(29, 'ตะกร้อม', 95, 'หมวดหมู่4', 'หมวดหมู่4', 'product/image/6.jpg', '', 0),
-(30, 'ตะปู', 30, 'หมวดหมู่5', 'หมวดหมู่5', 'product/image/1.jpg', '', 0),
-(31, 'ตะไป', 65, 'หมวดหมู่1', 'หมวดหมู่1', 'product/image/2.jpg', '', 0);
+(28, 'สว่าน', 65, 'หมวดหมู่3', 'หมวดหมู่3', 'product/image/5.jpg', '', 0),
+(29, 'สายไฟ', 95, 'หมวดหมู่4', 'หมวดหมู่4', 'product/image/6.jpg', '', 0);
 
 --
 -- Indexes for dumped tables

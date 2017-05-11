@@ -1,96 +1,123 @@
-
+<script type="text/javascript">
+  var bool;//บอกว่ากดedit หรือ delete
+</script>
   Product <br>
-  <div class="form-group">
-  <span>  <input type="text" class="form-control" placeholder="Search">
-    <button type="submit" class="btn btn-default">ค้นหา</button> </span>
-  </div>
+  <form class="" action="#" method="POSt">
+
+    <div class="form-group">
+    <span>
+      <input type="text" name='search' class="form-control" placeholder="Search">
+      <button type="submit" name='searchb' class="btn btn-default">ค้นหา</button>
+    </span>
+    </div>
+  </form>
 
   <br>
 
   <?php
-
- //if () ถ้า product == NULL ให้โชว์ว่า ไม่มีสินค้า!
-
- //else {}
+  if(isset($_POST['searchb'])){
+    $sql_select_product = 'SELECT * FROM table_product WHERE id_product LIKE "%'.$_POST['search'].'%"OR name_product LIKE "%'.$_POST['search'].'%"';
+  }
+  else{
+    $sql_select_product = 'SELECT * FROM table_product ';
+  }
 
 ?>
 
 <table class="table" style="border:1px solid black;">
   <tr>
     <th>
-      รหัสสินค้า
+      รหัส
     </th>
     <th>
-      รูปสินค้า
-    </th>
-    <th>
-      สถานะสินค้า
-    </th>
-    <th>
-      ชื่อสินค้า
+      ชื่อ
     </th>
     <th>
       ราคา
+    </th>
+    <th>
+      ประเภท
+    </th>
+    <th>
+      รูป
+    </th>
+    <th>
+      หน่วย
+    </th>
+    <th>
+      จำนวน
     </th>
     <th>
      Action
    </th>
   </tr>
   <?php
-  $sql_select_product = 'SELECT * FROM table_product ';
+  include 'save.php';
+
   $query_select_product = $connect->query($sql_select_product);
+  //if ($query_select_product->num_rows > 0) {
  while ($select_product = $query_select_product->fetch_assoc()){
    ?>
-  <tr>
-    <td>
-      <?php echo $select_product['id_product'] ?>
-    </td>
-    <td>
-      Image
-    </td>
-    <td>
-      Status
-    </td>
-    <td>
-      <input class="name edit <?php echo $select_product['id_product'] ?>" type="text" name="" value="<?php echo $select_product['name_product'] ?>" readonly>
+   <form class="" action="#" method="post" onsubmit="return check(<?php echo $select_product['id_product']; ?>);">
+      <tr>
+        <td>
+          <?php echo $select_product['id_product']; ?>
+        </td>
+        <td>
+          <input class="edit <?php echo $select_product['id_product']; ?>" type="text" name="name_product" value="<?php echo $select_product['name_product'] ?>" readonly>
+        </td>
+        <td>
+          <input class="edit <?php echo $select_product['id_product']; ?>" type="text" name="price_product" value="<?php echo $select_product['price_product'] ?>" readonly>
+        </td>
+        <td>
+          <input class="edit <?php echo $select_product['id_product']; ?>" type="text" name="category_product" value="<?php echo $select_product['category_product'] ?>" readonly>
+        </td>
+        <td>
+          Image
+        </td>
+        <td>
+          <input class="edit <?php echo $select_product['id_product']; ?>" type="text" name="unit_product" value="<?php echo $select_product['unit_product'] ?>" readonly>
+        </td>
+        <td>
+          <input class="edit <?php echo $select_product['id_product']; ?>" type="text" name="number_product" value="<?php echo $select_product['number_product'] ?>" readonly>
+        </td>
+        <td>
+          <button type="submit" name="edit" id="<?php echo $select_product['id_product']; ?>" class="btn btn-default btn-sm" aria-label="Left Align" onclick="bool='e';">
+            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+          </button>
+          <button type="submit" name="delete" class="btn btn-default btn-sm" aria-label="Left Align" onclick="bool='d';">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+          </button>
+        </td>
 
-    </td>
-    <td>
-      <?php echo $select_product['price_product'] ?>
-    </td>
-    <td>
-      <script type="text/javascript">
-        function edit(row){
-          if($("#"+row+" span").attr('class')=='glyphicon glyphicon-pencil'){
-            $("#"+row+" span").attr('class','glyphicon glyphicon-floppy-disk');
-            $(".edit."+row).removeAttr("readonly");
-          }
-          else{
-            $("#"+row+" span").attr('class','glyphicon glyphicon-pencil');
-            $(".edit."+row).attr("readonly","");
-            var str="save.php";
-            $.ajax({
-              type: 'POST',
-              url: str,
-              data: {
-                name_product:$(".name.edit."+row).val()
-             },
-              success: function(response) {}
-            });
-            //alert($(".name.edit."+row).val());
-          }
-
-        }
-
-      </script>
-      <button type="button" id="<?php echo $select_product['id_product'] ?>" class="btn btn-default btn-sm" aria-label="Left Align" onclick="edit(<?php echo $select_product['id_product'] ?>)">
-        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-      </button>
-      <button type="button" class="btn btn-default btn-sm" aria-label="Left Align">
-        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-      </button>
-    </td>
-
-  </tr>
-  <?php } ?>
+      </tr>
+      <input type="hidden" name="id_product" value="<?php echo $select_product['id_product']; ?>">
+     </form>
+  <?php }
+//}
+?>
 </table>
+
+
+
+
+
+<script type="text/javascript">// เปลี่ยนรูปปุ่มedit
+  function check(row){
+    if(bool=='e'){
+      if($("#"+row+" span").attr('class')=='glyphicon glyphicon-pencil'){
+        $("#"+row+" span").attr('class','glyphicon glyphicon-floppy-disk');
+        $(".edit."+row).removeAttr("readonly");
+        return false;
+      }
+      else{
+        $("#"+row+" span").attr('class','glyphicon glyphicon-pencil');
+        $(".edit."+row).attr("readonly","");
+        return true;
+      }
+      return false;
+    }
+    else return true;
+  }
+
+</script>

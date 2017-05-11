@@ -14,7 +14,7 @@ width:90%;
 .body{
   margin-left: 20%;
   padding: 10px;
-
+  margin-top: 0px !important;
 }
 a{
   color: #e1ffff;
@@ -186,5 +186,5 @@ body {
   width:4em;
   /*background:transparent;*/
   border:none;
-  
+
 }
