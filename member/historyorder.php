@@ -21,7 +21,7 @@
     <td> <?php echo $row['name_product']; ?> </td>
     <td> <?php echo $row['product_id']; ?> </td>
     <td> <?php echo $row['amount']; ?> </td>
-    <td> <?php echo $row['status']; ?> </td>
+    <td> <?php echo $row['pay']; ?> </td>
   </tr>
 <?php } ?>
 </table>
