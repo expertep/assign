@@ -1,7 +1,7 @@
 <script type="text/javascript">
   var bool;//บอกว่ากดedit หรือ delete
 </script>
-  Product <br>
+  <h1>Product</h1>
   <form class="" action="#" method="POSt">
 
     <div class="form-group">

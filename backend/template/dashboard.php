@@ -1,8 +1,3 @@
-<?php
-
-
-
- ?>
 
   <div class="panel panel-default view">
     <div class="panel-heading">
@@ -22,8 +17,16 @@
   </div>
 
 <?php
-  $date=$connect->query("SELECT DATE_FORMAT(date,'%m-%Y') as dateF FROM posts WHERE 1 LIMIT 5;");
-  $view=$connect->query("SELECT views FROM posts WHERE 1 LIMIT 5");
+  $result=$connect->query("SELECT views,DATE_FORMAT(date,'%m') as dateF FROM posts WHERE date like '".date('Y')."%' ORDER BY date ASC");
+  $strD="";
+  $strV="";
+  while ($resultFet = $result->fetch_assoc()){
+    $strD.=$resultFet['dateF'].",";
+    $strV.=$resultFet['views'].",";
+  }
+  $strD=rtrim($strD,',');
+  $strV=rtrim($strV,',');
+
  ?>
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"></script>
@@ -33,10 +36,10 @@
   var myChart = new Chart(ctx, {
       type: 'line',
       data: {
-          labels: [<?php while ($resultD = $date->fetch_assoc()){ echo "'".$resultD['dateF']."',";}  ?> "Orange"],
+          labels: [<?php echo $strD;  ?> ],
           datasets: [{
-              label: '# of Votes',
-              data: [<?php while ($resultV = $view->fetch_assoc()){ echo $resultV['views'].","; } ?> 0],
+              label: 'View of month',
+              data: [<?php echo $strV;  ?>],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
