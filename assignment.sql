@@ -1,21 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
---
--- Host: 127.0.0.1
--- Generation Time: May 11, 2017 at 10:52 PM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 5.6.24
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Database: `assignment`
 --
@@ -36,10 +18,12 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`views`, `date`) VALUES
-(2, '2017-05-11'),
-(500, '2017-04-12'),
-(200, '2017-03-15'),
-(150, '2017-02-14');
+(15, '2017-05-12'),
+(100, '2017-04-12'),
+(75, '2017-03-12'),
+(34, '2017-02-12'),
+(2, '2016-12-12'),
+(23, '2017-01-12');
 
 -- --------------------------------------------------------
 
@@ -112,23 +96,23 @@ CREATE TABLE `table_order` (
   `order_id` int(10) UNSIGNED NOT NULL,
   `member_id` int(10) NOT NULL,
   `date` date NOT NULL,
-  `status` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'w'
+  `pay` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'w'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `table_order`
 --
 
-INSERT INTO `table_order` (`order_id`, `member_id`, `date`, `status`) VALUES
-(3, 7, '2017-05-08', 'w'),
+INSERT INTO `table_order` (`order_id`, `member_id`, `date`, `pay`) VALUES
+(3, 7, '2017-05-08', 's'),
 (4, 7, '2017-05-08', 'w'),
-(5, 7, '2017-05-08', 'w'),
+(5, 7, '2017-05-08', 's'),
 (6, 7, '2017-05-08', 'w'),
-(7, 7, '2017-05-08', 'w'),
-(8, 7, '2017-05-09', 'w'),
+(7, 7, '2017-05-08', 's'),
+(8, 7, '2017-05-09', 's'),
 (9, 7, '2017-05-09', 'w'),
 (10, 7, '2017-05-09', 'w'),
-(11, 7, '2017-05-09', 'w'),
+(11, 7, '2017-05-09', 's'),
 (12, 7, '2017-05-09', 'w'),
 (13, 7, '2017-05-09', 'w'),
 (14, 7, '2017-05-09', 'w'),
@@ -232,7 +216,7 @@ ALTER TABLE `table_order`
 -- AUTO_INCREMENT for table `table_product`
 --
 ALTER TABLE `table_product`
-  MODIFY `id_product` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_product` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
