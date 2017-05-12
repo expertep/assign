@@ -60,54 +60,59 @@ INNER JOIN table_member tmem ON torder.member_id=tmem.member_id';
   <?php
   include 'save.php';
 
-  $query_select_product = $connect->query($sql_select_product);
+  $result = $connect->query($sql_select_product);
+  $result2 = $connect->query($sql_select_product);
+  //เก็บค่าrowspanแต่ละชุด
+   while ($row = $result->fetch_assoc()){
+     if(!isset($rowspan[$row['order_id']])){
+       $rowspan[$row['order_id']]=0;
+     }
+     $rowspan[$row['order_id']]+=1;
+   }
 
-  $tmp="";//สำหรับจัดตารางให้เป็นgroup
- while ($select_product = $query_select_product->fetch_assoc()){
-
+ while ($row = $result2->fetch_assoc()){
    ?>
    <form class="" action="#" method="post" >
-     <?php  ?>
       <tr>
-        <td>
-          <?php if($select_product['order_id']!=$tmp){echo $select_product['order_id'];} ?>
+      <?php if($rowspan[$row['order_id']]!=0){ ?>
+        <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
+          <?php echo $row['order_id']; ?>
+        </td>
+        <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
+          <?php echo $row['member_id']; ?>
+        </td>
+        <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
+          <?php echo $row['date'];} ?>
         </td>
         <td>
-          <?php if($select_product['order_id']!=$tmp){echo $select_product['member_id'];} ?>
+          <?php echo $row['product_id']; ?>
         </td>
         <td>
-          <?php if($select_product['order_id']!=$tmp){echo $select_product['date'];} ?>
+          <?php echo $row['name_product']; ?>
         </td>
         <td>
-          <?php echo $select_product['product_id']; ?>
+          <?php echo $row['amount']; ?>
         </td>
-        <td>
-          <?php echo $select_product['name_product']; ?>
+        <?php if($rowspan[$row['order_id']]!=0){ ?>
+        <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
+          <?php echo $row['pay']; ?>
         </td>
-        <td>
-          <?php echo $select_product['amount']; ?>
-        </td>
-        <td>
-          <?php if($select_product['order_id']!=$tmp){echo $select_product['pay'];} ?>
-        </td>
-        <td>
-          <?php if($select_product['order_id']!=$tmp){?>
-          <button type="submit" name="sent" id="<?php echo $select_product['order_id']; ?>" class="btn btn-default btn-sm" aria-label="Left Align" onclick="bool='e';">
+        <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
+
+          <button type="submit" name="sent" id="<?php echo $row['order_id']; ?>" class="btn btn-default btn-sm" aria-label="Left Align" onclick="bool='e';">
             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
           </button>
           <button type="submit" name="cancel" class="btn btn-default btn-sm" aria-label="Left Align" onclick="bool='d';">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
           </button>
-          <?php } ?>
+          <?php $rowspan[$row['order_id']]=0; }?>
         </td>
 
       </tr>
-      <input type="hidden" name="order_id" value="<?php echo $select_product['order_id']; ?>">
+      <input type="hidden" name="order_id" value="<?php echo $row['order_id']; ?>">
      </form>
   <?php
-    $tmp=$select_product['order_id'];
     }
-//}
 ?>
 </table>
 w=wait s=sent f=fail

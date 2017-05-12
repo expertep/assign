@@ -1,6 +1,7 @@
 <?php
 
 //include_once "../config/config.php";
+if(isset($_POST)){
     unset($sql);
     if(isset($_POST['edit'])){
       $sql = "UPDATE table_product SET
@@ -25,5 +26,5 @@
           echo "Error updating record: " . $connent->error;
       }
     }
-
+}
  ?>
