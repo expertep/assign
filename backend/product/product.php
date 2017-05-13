@@ -73,10 +73,10 @@
           <input class="edit <?php echo $select_product['id_product']; ?>" type="text" name="category_product" value="<?php echo $select_product['category_product'] ?>" readonly>
         </td>
         <td>
-          Image
+          <img class="edit img" src="../<?php echo $select_product['picture_product']; ?>" alt="">
         </td>
         <td>
-          <input class="edit <?php echo $select_product['id_product']; ?>" type="text" name="unit_product" value="<?php echo $select_product['unit_product'] ?>" readonly>
+          <input class="edit <?php echo $select_product['id_product']; ?>" type="text" name="unit_product" value="<?php echo $select_product['picture_product'] ?>" readonly>
         </td>
         <td>
           <input class="edit <?php echo $select_product['id_product']; ?>" type="text" name="number_product" value="<?php echo $select_product['number_product'] ?>" readonly>

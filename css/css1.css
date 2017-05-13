@@ -188,3 +188,7 @@ body {
   border:none;
 
 }
+.edit.img{
+  width:30px;
+  height:auto;
+}
