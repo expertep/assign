@@ -1,3 +1,21 @@
+-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 15, 2017 at 01:32 PM
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 5.6.24
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
 -- Database: `assignment`
 --
@@ -18,7 +36,7 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`views`, `date`) VALUES
-(15, '2017-05-12'),
+(52, '2017-05-12'),
 (100, '2017-04-12'),
 (75, '2017-03-12'),
 (34, '2017-02-12'),
@@ -55,7 +73,9 @@ INSERT INTO `table_bill` (`bill_id`, `order_id`, `product_id`, `amount`) VALUES
 (10, 13, 24, 1),
 (11, 15, 24, 1),
 (12, 17, 23, 1),
-(13, 17, 24, 1);
+(13, 17, 24, 1),
+(14, 18, 19, 1),
+(15, 18, 20, 1);
 
 -- --------------------------------------------------------
 
@@ -96,29 +116,31 @@ CREATE TABLE `table_order` (
   `order_id` int(10) UNSIGNED NOT NULL,
   `member_id` int(10) NOT NULL,
   `date` date NOT NULL,
-  `pay` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'w'
+  `pay` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'w',
+  `payslip` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `table_order`
 --
 
-INSERT INTO `table_order` (`order_id`, `member_id`, `date`, `pay`) VALUES
-(3, 7, '2017-05-08', 's'),
-(4, 7, '2017-05-08', 'w'),
-(5, 7, '2017-05-08', 's'),
-(6, 7, '2017-05-08', 'w'),
-(7, 7, '2017-05-08', 's'),
-(8, 7, '2017-05-09', 's'),
-(9, 7, '2017-05-09', 'w'),
-(10, 7, '2017-05-09', 'w'),
-(11, 7, '2017-05-09', 's'),
-(12, 7, '2017-05-09', 'w'),
-(13, 7, '2017-05-09', 'w'),
-(14, 7, '2017-05-09', 'w'),
-(15, 7, '2017-05-09', 'w'),
-(16, 7, '2017-05-09', 'w'),
-(17, 7, '2017-05-09', 'w');
+INSERT INTO `table_order` (`order_id`, `member_id`, `date`, `pay`, `payslip`) VALUES
+(3, 7, '2017-05-08', 's', 'order/slip/772102.PNG'),
+(4, 7, '2017-05-08', 'w', ''),
+(5, 7, '2017-05-08', 's', ''),
+(6, 7, '2017-05-08', 'w', ''),
+(7, 7, '2017-05-08', 's', ''),
+(8, 7, '2017-05-09', 'f', ''),
+(9, 7, '2017-05-09', 'w', ''),
+(10, 7, '2017-05-09', 's', ''),
+(11, 7, '2017-05-09', 's', ''),
+(12, 7, '2017-05-09', 'w', ''),
+(13, 7, '2017-05-09', 'w', ''),
+(14, 7, '2017-05-09', 'w', ''),
+(15, 7, '2017-05-09', 'w', ''),
+(16, 7, '2017-05-09', 'w', ''),
+(17, 7, '2017-05-09', 'w', ''),
+(18, 4, '2017-05-15', 'w', 'order/slip/8922424.PNG');
 
 -- --------------------------------------------------------
 
@@ -143,7 +165,7 @@ CREATE TABLE `table_product` (
 
 INSERT INTO `table_product` (`id_product`, `name_product`, `price_product`, `category_product`, `type_product`, `picture_product`, `unit_product`, `number_product`) VALUES
 (6, '30', 30, 'หมวดหมู่1', 'หมวดหมู่1', 'product/image/1.jpg', '', 0),
-(7, 'หลอดไฟ', 65, 'หมวดหมู่2', 'หมวดหมู่2', 'product/image/2.jpg', '', 0),
+(7, 'หลอดไฟ', 65, 'หมวดหมู่2', 'หมวดหมู่2', 'product/image/2.jpg', '', 20),
 (9, 'ตะปู', 30, 'หมวดหมู่4', 'หมวดหมู่4', 'product/image/4.jpg', '', 0),
 (10, 'ตะไป', 65, 'หมวดหมู่5', 'หมวดหมู่5', 'product/image/5.jpg', '', 0),
 (11, 'ตะกร้อม', 95, 'หมวดหมู่1', 'หมวดหมู่1', 'product/image/6.jpg', '', 0),
@@ -201,7 +223,7 @@ ALTER TABLE `table_product`
 -- AUTO_INCREMENT for table `table_bill`
 --
 ALTER TABLE `table_bill`
-  MODIFY `bill_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `bill_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `table_member`
 --
@@ -211,7 +233,7 @@ ALTER TABLE `table_member`
 -- AUTO_INCREMENT for table `table_order`
 --
 ALTER TABLE `table_order`
-  MODIFY `order_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `order_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `table_product`
 --

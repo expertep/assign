@@ -54,6 +54,9 @@ INNER JOIN table_member tmem ON torder.member_id=tmem.member_id';
       สถานะ
     </th>
     <th>
+      slip
+    </th>
+    <th>
      Action
    </th>
   </tr>
@@ -98,6 +101,11 @@ INNER JOIN table_member tmem ON torder.member_id=tmem.member_id';
           <?php echo $row['pay']; ?>
         </td>
         <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
+          <?php if($row['payslip']!=""){ ?>
+          <img style="width:40px;height:auto;" class="slip" src="<?php echo $row['payslip']; ?>" alt="">
+          <?php } ?>
+        </td>
+        <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
 
           <button type="submit" name="sent" id="<?php echo $row['order_id']; ?>" class="btn btn-default btn-sm" aria-label="Left Align" onclick="bool='e';">
             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
@@ -116,9 +124,6 @@ INNER JOIN table_member tmem ON torder.member_id=tmem.member_id';
 ?>
 </table>
 w=wait s=sent f=fail
-
-
-
 
 <script type="text/javascript">// เปลี่ยนรูปปุ่มedit
   function check(row){

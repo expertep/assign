@@ -14,8 +14,19 @@ include_once 'template/header.php';
       <h3 class="panel-title">เลือกที่อยู่จัดส่ง</h3>
     </div>
     <div class="panel-body">
-      <form class="" action="" method="post">
-
+      <script type="text/javascript">
+      function check(){
+        if(($('#address').val())!=' '){
+          return true;
+        }
+        else{
+          alert("Please enter address");
+          return false;
+        }
+      }
+      </script>
+      <form class="" action="" method="post" onsubmit="return check();">
+<?php if($_SESSION['address']!=''){ ?>
         <div class="panel panel-default">
           <div class="panel-heading">
             <input type="radio" value="1" name='add' required/><h3 class="panel-title">ที่อยู่ 1</h3>
@@ -24,12 +35,13 @@ include_once 'template/header.php';
             <p><?php echo $_SESSION['address']; ?></p>
           </div>
         </div>
+        <?php } ?>
         <div class="panel panel-default">
           <div class="panel-heading">
             <input type="radio" value="2" name='add' required/><h3 class="panel-title">ที่อยู่อื่นๆ</h3>
           </div>
           <div class="panel-body">
-            <textarea class="form-control" name="address"> </textarea>
+            <textarea class="form-control" name="address" id="address"> </textarea>
           </div>
         </div>
         <button type="submit" name="pay" value="pay">ตกลง</button>
