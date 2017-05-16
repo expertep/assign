@@ -38,10 +38,10 @@ include_once 'template/header.php';
         <?php } ?>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <input type="radio" value="2" name='add' required/><h3 class="panel-title">ที่อยู่อื่นๆ</h3>
+            <input type="radio" value="2" name='add' required <?php if($_SESSION['address']==''){echo "checked";} ?>/><h3 class="panel-title">ที่อยู่อื่นๆ</h3>
           </div>
           <div class="panel-body">
-            <textarea class="form-control" name="address" id="address"> </textarea>
+            <textarea class="form-control" name="address" id="address"></textarea>
           </div>
         </div>
         <button type="submit" name="pay" value="pay">ตกลง</button>
