@@ -5,26 +5,52 @@ include_once 'template/header.php';
 
 
 ?>
+<script type="text/javascript">
+function check(){
+  if(($('#address').val())!=''){
+    return true;
+  }
+  else{
+    alert("Please enter address");
+    return false;
+  }
+}
+</script>
 <style media="screen">
   .panel-title{display: inline;}
 </style>
 <div class="container">
+  <?php if($_SESSION['firstname']==''){ ?>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">กรอกชื่อ</h3>
+    </div>
+    <div class="panel-body">
+
+      <form class="" action="" method="post" onsubmit="">
+        <input type="text" name='firstname' placeholder="ชื่ิอจริง" required/>
+        <input type="text" name='lastname' placeholder="นามสกุล" required/>
+
+        <button type="submit" name="name" value="name">ตกลง</button>
+      </form>
+    </div>
+  </div>
+  <?php }
+    if(isset($_POST['name'])){
+      $sql = "UPDATE table_member SET firstname='".$_POST['firstname']."',lastname='".$_POST['lastname']."' WHERE member_id='".$_SESSION['id']."'";
+      $connect->query($sql);
+      $_SESSION['firstname']=$_POST['firstname'];
+      $_SESSION['lastname']=$_POST['lastname'];
+
+    }
+   ?>
+
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">เลือกที่อยู่จัดส่ง</h3>
     </div>
     <div class="panel-body">
-      <script type="text/javascript">
-      function check(){
-        if(($('#address').val())!=' '){
-          return true;
-        }
-        else{
-          alert("Please enter address");
-          return false;
-        }
-      }
-      </script>
+
       <form class="" action="" method="post" onsubmit="return check();">
 <?php if($_SESSION['address']!=''){ ?>
         <div class="panel panel-default">
@@ -38,10 +64,11 @@ include_once 'template/header.php';
         <?php } ?>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <input type="radio" value="2" name='add' required/><h3 class="panel-title">ที่อยู่อื่นๆ</h3>
+            <input type="radio" value="2" name='add' required <?php if($_SESSION['address']==''){echo "checked";} ?>/><h3 class="panel-title">ที่อยู่อื่นๆ</h3>
+
           </div>
           <div class="panel-body">
-            <textarea class="form-control" name="address" id="address"> </textarea>
+            <textarea class="form-control" name="address" id="address"></textarea>
           </div>
         </div>
         <button type="submit" name="pay" value="pay">ตกลง</button>
@@ -50,8 +77,11 @@ include_once 'template/header.php';
   </div>
   <?php
     if(isset($_POST['pay'])){
-
-
+      if($_SESSION['address']==''){
+        $sql = "UPDATE table_member SET address='".$_POST['address']." WHERE member_id='".$_SESSION['id']."'";
+        $connect->query($sql);
+        $_SESSION['address']=$_POST['address'];
+      }
    ?>
    <div class="panel panel-default">
      <div class="panel-heading">
@@ -65,7 +95,7 @@ include_once 'template/header.php';
       if($_POST['add']==2){
         echo $_POST['address'];
       }
-       else echo $_SESSION['address'];
+      else echo $_SESSION['address'];
        ?></h3>
 
        <table class="table">
@@ -81,22 +111,22 @@ include_once 'template/header.php';
        <?php
          $total_price = 0;
         for ($i =0 ; $i<count($_SESSION['cart']);$i++){
-          $sql_cart_select = 'SELECT * FROM table_product WHERE id_product = "'.$_SESSION['cart'][$i].'"';
+          $sql_cart_select = 'SELECT * FROM table_product WHERE product_id = "'.$_SESSION['cart'][$i].'"';
           $query_cart_select = $connect->query($sql_cart_select);
           $cart_select = $query_cart_select->fetch_assoc();
-          $price_qty = $cart_select['price_product'] * $_SESSION['cartqty'][$i];
+          $price_qty = $cart_select['product_price'] * $_SESSION['cartqty'][$i];
           $total_price = $total_price + $price_qty; //total price ของ Cart
 
-          $name_product_cart[$i] = $cart_select['name_product']; //สำหรับส่งไป Checkout
-          $price_product_cart[$i] = $cart_select['price_product'];
-          $picture_product_cart[$i] = $cart_select['picture_product'];
-          $id_product_cart[$i] = $cart_select['id_product'];
+          $product_name_cart[$i] = $cart_select['product_name']; //สำหรับส่งไป Checkout
+          $product_price_cart[$i] = $cart_select['product_price'];
+          $product_picture_cart[$i] = $cart_select['product_picture'];
+          $product_id_cart[$i] = $cart_select['product_id'];
         ?>
 
 
-             <td><?php echo $id_product_cart[$i]; ?></td>
-             <td><?php echo $name_product_cart[$i]; ?></td>
-             <td><?php echo $price_product_cart[$i]; ?></td>
+             <td><?php echo $product_id_cart[$i]; ?></td>
+             <td><?php echo $product_name_cart[$i]; ?></td>
+             <td><?php echo $product_price_cart[$i]; ?></td>
                <td>
                  <input type="number" class="form-control" name="select_cartqty[]" value="<?php  echo $_SESSION['cartqty'][$i]; ?>" readonly>
                </td>

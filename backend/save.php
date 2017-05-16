@@ -5,20 +5,26 @@ if(isset($_POST)){
     unset($sql);
     if(isset($_POST['edit'])){
       $sql = "UPDATE table_product SET
-      name_product='".$_POST['name_product']."',
-      price_product='".$_POST['price_product']."',
+      product_name='".$_POST['product_name']."',
+      product_price='".$_POST['product_price']."',
       category_product='".$_POST['category_product']."',
-      number_product='".$_POST['number_product']."'
-       WHERE id_product='".$_POST['id_product']."'";
+      product_number='".$_POST['product_number']."'
+       WHERE product_id='".$_POST['product_id']."'";
     }
     else if(isset($_POST['delete'])) {
-      $sql = "DELETE FROM table_product WHERE id_product='".$_POST['id_product']."'";
+      $sql = "DELETE FROM table_product WHERE product_id='".$_POST['product_id']."'";
     }
     else if(isset($_POST['sent'])) {
       $sql = "UPDATE table_order SET pay='s' WHERE order_id='".$_POST['order_id']."'";
     }
     else if(isset($_POST['cancel'])) {
       $sql = "UPDATE table_order SET pay='f' WHERE order_id='".$_POST['order_id']."'";
+    }
+    else if(isset($_POST['editmember'])) {
+      $sql = "UPDATE table_member SET address='".$_POST['address']."' WHERE member_id='".$_POST['member_id']."'";
+    }
+    else if(isset($_POST['deletemember'])) {
+      $sql = "DELETE FROM table_member WHERE member_id='".$_POST['member_id']."'";
     }
     if(isset($sql)){
       if ($connect->query($sql) === TRUE) {unset($_POST);}

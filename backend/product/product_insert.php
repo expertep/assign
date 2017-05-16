@@ -1,12 +1,10 @@
 <?php
-if (isset($_POST['price_product'])){
+if (isset($_POST['product_price'])){
 
-$name_product = $_POST['name_product'];
- $price_product = $_POST['price_product'];
- $category_product = $_POST['category'];
- $type_product = $_POST['type_product'];
- $unit = $_POST['unit'];
- $number_product = $_POST['number_product'];
+$product_name = $_POST['product_name'];
+ $product_price = $_POST['product_price'];
+ $product_category = $_POST['category'];
+ $product_number = $_POST['product_number'];
  $sale_product = $_POST['sale_product'];
 
 $target_dir = "../product/image/";
@@ -24,8 +22,8 @@ if(copy($_FILES['fileupload']['tmp_name'], $target_file)){
 
   echo "อัพเดทสำเร็จ";
 
-   $sql_insert_product = 'INSERT INTO table_product (name_product,price_product,category_product,type_product,picture_product,unit_product,number_product) VALUES
-   ("'.$name_product.'","'.$price_product.'","'.$category_product.'","'.$type_product.'","'.$insert_picture.'","'.$unit.'","'.$number_product.'") ';
+   $sql_insert_product = 'INSERT INTO table_product (product_name,product_price,product_category,product_picture,product_number) VALUES
+   ("'.$product_name.'","'.$product_price.'","'.$product_category.'","'.$insert_picture.'","'.$product_number.'") ';
 
    $query_insert_product = $connect->query($sql_insert_product);
    if ($query_insert_product){
@@ -39,8 +37,8 @@ if(copy($_FILES['fileupload']['tmp_name'], $target_file)){
 <form method="POST" enctype="multipart/form-data">
   <div class="row">
 
-    <div class="col-xs-6 col-md-6">ชื่อสินค้า <input type="text" name="name_product" class="form-control" placeholder="ชื่อสินค้า" required></div>
-    <div class="col-xs-6 col-md-6">ราคา <input type="text" name="price_product" class="form-control" placeholder="100.00" required></div>
+    <div class="col-xs-6 col-md-6">ชื่อสินค้า <input type="text" name="product_name" class="form-control" placeholder="ชื่อสินค้า" required></div>
+    <div class="col-xs-6 col-md-6">ราคา <input type="text" name="product_price" class="form-control" placeholder="100.00" required></div>
       <div class="col-xs-6 col-md-6">หมวดหมู่
     <select class="form-control" name="category">
       <option>หมวดหมู่1</option>
@@ -48,23 +46,8 @@ if(copy($_FILES['fileupload']['tmp_name'], $target_file)){
       <option>หมวดหมู่3</option>
     </select>
       </div>
-        <div class="col-xs-6 col-md-6">ประเภท
-          <select  class="form-control" name="type_product">
-            <option>หมวดหมู่1</option>
-            <option>หมวดหมู่2</option>
-            <option>หมวดหมู่3</option>
-          </select>
-        </div>
           <div class="col-xs-6 col-md-6">รูปสินค้า <input type="file" name="fileupload" class="form-control" ></div>
-          <div class="col-xs-6 col-md-6">หน่วย
-            <select  class="form-control" name="unit">
-              <option>หมวดหมู่1</option>
-              <option>หมวดหมู่2</option>
-              <option>หมวดหมู่3</option>
-            </select>
-
-          </div>
-            <div class="col-xs-6 col-md-6">จำนวนสินค้า <input type="text" name="number_product" class="form-control"  required></div>
+            <div class="col-xs-6 col-md-6">จำนวนสินค้า <input type="text" name="product_number" class="form-control"  required></div>
               <div class="col-xs-6 col-md-6">สินค้าลดราคา <input type="text" name="sale_product" class="form-control"  required></div>
 
                 <div class="col-xs-12 col-md-12">คำอธิบาย <textarea class="form-control"> </textarea></div><br>

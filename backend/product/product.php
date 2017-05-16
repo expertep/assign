@@ -16,7 +16,7 @@
 
   <?php
   if(isset($_POST['searchb'])){
-    $sql_select_product = 'SELECT * FROM table_product WHERE id_product LIKE "%'.$_POST['search'].'%"OR name_product LIKE "%'.$_POST['search'].'%"';
+    $sql_select_product = 'SELECT * FROM table_product WHERE product_id LIKE "%'.$_POST['search'].'%"OR product_name LIKE "%'.$_POST['search'].'%"';
   }
   else{
     $sql_select_product = 'SELECT * FROM table_product ';
@@ -58,31 +58,31 @@
   //if ($query_select_product->num_rows > 0) {
  while ($select_product = $query_select_product->fetch_assoc()){
    ?>
-   <form class="" action="#" method="post" onsubmit="return check(<?php echo $select_product['id_product']; ?>);">
+   <form class="" action="#" method="post" onsubmit="return check(<?php echo $select_product['product_id']; ?>);">
       <tr>
         <td>
-          <?php echo $select_product['id_product']; ?>
+          <?php echo $select_product['product_id']; ?>
         </td>
         <td>
-          <input class="edit <?php echo $select_product['id_product']; ?>" type="text" name="name_product" value="<?php echo $select_product['name_product'] ?>" readonly>
+          <input class="edit <?php echo $select_product['product_id']; ?>" type="text" name="product_name" value="<?php echo $select_product['product_name'] ?>" readonly>
         </td>
         <td>
-          <input class="edit <?php echo $select_product['id_product']; ?>" type="text" name="price_product" value="<?php echo $select_product['price_product'] ?>" readonly>
+          <input class="edit <?php echo $select_product['product_id']; ?>" type="text" name="product_price" value="<?php echo $select_product['product_price'] ?>" readonly>
         </td>
         <td>
-          <input class="edit <?php echo $select_product['id_product']; ?>" type="text" name="category_product" value="<?php echo $select_product['category_product'] ?>" readonly>
+          <input class="edit <?php echo $select_product['product_id']; ?>" type="text" name="product_category" value="<?php echo $select_product['product_category'] ?>" readonly>
         </td>
         <td>
-          <img class="edit img" src="../<?php echo $select_product['picture_product']; ?>" alt="">
+          <img class="edit img" src="../<?php echo $select_product['product_picture']; ?>" alt="">
         </td>
         <td>
-          <input class="edit <?php echo $select_product['id_product']; ?>" type="text" name="unit_product" value="<?php echo $select_product['picture_product'] ?>" readonly>
+          <input class="edit <?php echo $select_product['product_id']; ?>" type="text" name="unit_product" value="<?php echo $select_product['product_picture'] ?>" readonly>
         </td>
         <td>
-          <input class="edit <?php echo $select_product['id_product']; ?>" type="text" name="number_product" value="<?php echo $select_product['number_product'] ?>" readonly>
+          <input class="edit <?php echo $select_product['product_id']; ?>" type="text" name="product_number" value="<?php echo $select_product['product_number'] ?>" readonly>
         </td>
         <td>
-          <button type="submit" name="edit" id="<?php echo $select_product['id_product']; ?>" class="btn btn-default btn-sm" aria-label="Left Align" onclick="bool='e';">
+          <button type="submit" name="edit" id="<?php echo $select_product['product_id']; ?>" class="btn btn-default btn-sm" aria-label="Left Align" onclick="bool='e';">
             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
           </button>
           <button type="submit" name="delete" class="btn btn-default btn-sm" aria-label="Left Align" onclick="bool='d';">
@@ -91,7 +91,7 @@
         </td>
 
       </tr>
-      <input type="hidden" name="id_product" value="<?php echo $select_product['id_product']; ?>">
+      <input type="hidden" name="product_id" value="<?php echo $select_product['product_id']; ?>">
      </form>
   <?php }
 //}
