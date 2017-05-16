@@ -39,7 +39,7 @@
           labels: [<?php echo $strD; ?>],
           datasets: [
               {
-                  label: "count views",
+                  label: "My First dataset",
                   fill: false,
                   lineTension: 0.1,
                   backgroundColor: "rgba(75,192,192,0.4)",
