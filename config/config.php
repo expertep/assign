@@ -2,10 +2,10 @@
 ob_start();
 session_start();
 
-$db_host = "localhost";
-$db_username = "root";
-$db_password = "";
-$db_name = "assignment";
+$db_host = "198.46.144.201";
+$db_username = "khaopodc_kong";
+$db_password = "kong1234";
+$db_name = "khaopodc_kong";
 
 $connect = new mysqli($db_host,$db_username,$db_password,$db_name);
 $connect->query('SET names utf8');
