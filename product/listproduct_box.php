@@ -15,8 +15,29 @@ function save(id) {
   });
 }
 </script>
+<?php
+  $sql="SELECT count(product_category) AS count,product_category FROM table_product GROUP BY product_category";
+  $result = $connect->query($sql);
+ ?>
+
+<div class="jumbotron product">
+  <div class="heading">
+    <h3>PRODUCT</h3>
+    <?php      while ($row = $result->fetch_assoc()){ ?>
+
+    <a href="?cat=<?php echo $row['product_category']; ?>">
+      <button class="btn category" type="button">
+        <?php echo $row['product_category']; ?> <span class="badge"><?php echo $row['count']; ?></span>
+      </button>
+    </a>
+    <?php } ?>
+  </div>
+  <div class="container">
+
+
 <div class="row">
   <div class="col-xs-12 product">
+
 <?php
   if(isset($_GET['cat'])){
       $sql='SELECT Count(product_id) AS NumberOfProducts FROM table_product WHERE product_category="'.$_GET['cat'].'"';
@@ -51,7 +72,7 @@ while ($select_product = $query_select_product->fetch_assoc()){
   </div>
   <div class="show">
      <div class="name"><?php echo $select_product['product_name']?></div>
-     <div class="price"><h3><?php echo $select_product['product_price'] ?></h3></div>
+     <div class="price"><h2><?php echo $select_product['product_price'] ?></h2></div>
    </div>
 
 </div>
