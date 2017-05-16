@@ -6,7 +6,7 @@ $db_host = "198.46.144.201";
 $db_username = "khaopodc_kong";
 $db_password = "kong1234";
 $db_name = "khaopodc_kong";
-
+date_default_timezone_set("Asia/Bangkok");
 $connect = new mysqli($db_host,$db_username,$db_password,$db_name);
 $connect->query('SET names utf8');
 if($connect->connect_errno){
