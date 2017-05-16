@@ -8,6 +8,7 @@
     <title>Bootstrap 101 Template</title>
 
     <link rel="stylesheet" type="text/css" href="css/css.css">
+    <link rel="stylesheet" type="text/css" href="css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Pavanam" rel="stylesheet">
 
     <!-- Latest compiled and minified CSS -->
@@ -89,7 +90,7 @@
         </p>
       </div>
               <p><a href="#" class="btn btn-primary" role="button">อะไรดี</a> <a href="#" class="btn btn-default" role="button">อิอิซ่า55+</a></p>
-            
+
       </div>
     </div>
   </div>

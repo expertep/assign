@@ -4,21 +4,6 @@
       width:100%;
     }
 }
-
-.body{
-  font-family: 'Athiti', sans-serif;
-  background-color:rgb(240, 240, 240);
-  margin-top: 50px;
-  padding-top:10px;
-
-}
-
-h1 {
-  font-size: 5.9vw;
-}
-h2 {
-
-}
 .heading{
   padding:5px;
   margin-bottom: 10px;

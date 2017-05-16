@@ -17,7 +17,7 @@
   </div>
 
 <?php
-  $result=$connect->query("SELECT views,DATE_FORMAT(date,'%b-%y') as dateF FROM posts WHERE date like '".date('Y')."%' ORDER BY date ASC");
+  $result=$connect->query("SELECT views,DATE_FORMAT(date,'%b-%y') as dateF FROM posts ORDER BY date ASC LIMIT 0,8");
   $strD="";
   $strV="";
   while ($resultFet = $result->fetch_assoc()){
@@ -27,6 +27,15 @@
   $strD=rtrim($strD,',');
   $strV=rtrim($strV,',');
 
+  $result=$connect->query("SELECT count(order_id) as count,DATE_FORMAT(date,'%d-%b-%y') as dateF FROM table_order WHERE pay='s' ORDER BY DATE_FORMAT(date,'%d-%b-%y') ASC LIMIT 0,8");
+  $strD1="";
+  $strV1="";
+  while ($resultFet = $result->fetch_assoc()){
+    $strD1.="'".$resultFet['dateF']."',";
+    $strV1.=$resultFet['count'].",";
+  }
+  $strD1=rtrim($strD1,',');
+  $strV1=rtrim($strV1,',');
  ?>
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"></script>
@@ -39,7 +48,7 @@
           labels: [<?php echo $strD; ?>],
           datasets: [
               {
-                  label: "My First dataset",
+                  label: "view month",
                   fill: false,
                   lineTension: 0.1,
                   backgroundColor: "rgba(75,192,192,0.4)",
@@ -76,21 +85,34 @@
   });
 
   var ctx = document.getElementById("myChart1");
-  var myChart = new Chart(ctx, {
+  var myChart1 = new Chart(ctx, {
       type: 'line',
-      data: {
-          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-          datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
-              backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)'
-              ],
-              borderColor: [
-                  'rgba(255,99,132,1)'
-              ],
-              borderWidth: 1
-          }]
+      data :{
+          labels: [<?php echo $strD1; ?>],
+          datasets: [
+              {
+                  label: "sell month",
+                  fill: false,
+                  lineTension: 0.1,
+                  backgroundColor: "rgba(75,192,192,0.4)",
+                  borderColor: "rgba(75,192,192,1)",
+                  borderCapStyle: 'butt',
+                  borderDash: [],
+                  borderDashOffset: 0.0,
+                  borderJoinStyle: 'miter',
+                  pointBorderColor: "rgba(75,192,192,1)",
+                  pointBackgroundColor: "#fff",
+                  pointBorderWidth: 1,
+                  pointHoverRadius: 5,
+                  pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                  pointHoverBorderColor: "rgba(220,220,220,1)",
+                  pointHoverBorderWidth: 2,
+                  pointRadius: 1,
+                  pointHitRadius: 10,
+                  data: [<?php echo $strV1; ?>],
+                  spanGaps: false,
+              }
+          ]
       },
       options: {
              responsive: true,

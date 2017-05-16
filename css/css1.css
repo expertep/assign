@@ -12,6 +12,7 @@ width:90%;
     height:300px !important;
 }
 .body{
+
   margin-left: 20%;
   padding: 10px;
   margin-top: 0px !important;
@@ -19,10 +20,13 @@ width:90%;
 a{
   color: #e1ffff;
 }
+.table{
+  border:none !important;
+}
 .nav-side-menu {
   overflow: auto;
   font-family: verdana;
-  font-size: 12px;
+  font-size: 1.5vh;
   font-weight: 200;
   background-color: #2e353d;
   position: fixed;
@@ -32,7 +36,6 @@ a{
   height: 100%;
   color: #e1ffff;
   z-index: 99;
-
 }
 .nav-side-menu .brand {
   background-color: #23282e;
@@ -110,7 +113,7 @@ a{
   vertical-align: middle;
 }
 .nav-side-menu li {
-  padding-left: 0px;
+  padding-left: 15px;
   border-left: 3px solid #2e353d;
   border-bottom: 1px solid #23282e;
 }
@@ -136,7 +139,6 @@ a{
   .nav-side-menu {
     position: relative;
     width: 100%;
-    margin-bottom: 10px;
     max-width:none;
   }
   .nav-side-menu .toggle-btn {
@@ -169,6 +171,7 @@ a{
     line-height: 50px !important;
   }
   .body{
+    margin-top: 0px;
     margin-left: 0%;
     padding: 10px;
   }
@@ -183,8 +186,9 @@ body {
   padding: 0px;
 }
 .edit{
-  width:4em;
-  /*background:transparent;*/
+  width:7vw;
+  background:transparent;
+  background-color:rgb(238, 231, 231);
   border:none;
 
 }

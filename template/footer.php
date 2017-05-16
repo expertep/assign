@@ -9,6 +9,7 @@
       <h2>วิธีการชำระเงิน</h2>
       <img src="image/logo.png" alt="">
       067-2-92193-7
+      <br>กวิน เรืองรักษ์ลิขิต<br>สาขาโพธิ์สามต้น
 
   </div>
   <div class="col-xs-12 col-sm-4 footinfo">
