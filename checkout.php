@@ -81,22 +81,22 @@ include_once 'template/header.php';
        <?php
          $total_price = 0;
         for ($i =0 ; $i<count($_SESSION['cart']);$i++){
-          $sql_cart_select = 'SELECT * FROM table_product WHERE id_product = "'.$_SESSION['cart'][$i].'"';
+          $sql_cart_select = 'SELECT * FROM table_product WHERE product_id = "'.$_SESSION['cart'][$i].'"';
           $query_cart_select = $connect->query($sql_cart_select);
           $cart_select = $query_cart_select->fetch_assoc();
-          $price_qty = $cart_select['price_product'] * $_SESSION['cartqty'][$i];
+          $price_qty = $cart_select['product_price'] * $_SESSION['cartqty'][$i];
           $total_price = $total_price + $price_qty; //total price ของ Cart
 
-          $name_product_cart[$i] = $cart_select['name_product']; //สำหรับส่งไป Checkout
-          $price_product_cart[$i] = $cart_select['price_product'];
-          $picture_product_cart[$i] = $cart_select['picture_product'];
-          $id_product_cart[$i] = $cart_select['id_product'];
+          $product_name_cart[$i] = $cart_select['product_name']; //สำหรับส่งไป Checkout
+          $product_price_cart[$i] = $cart_select['product_price'];
+          $product_picture_cart[$i] = $cart_select['product_picture'];
+          $product_id_cart[$i] = $cart_select['product_id'];
         ?>
 
 
-             <td><?php echo $id_product_cart[$i]; ?></td>
-             <td><?php echo $name_product_cart[$i]; ?></td>
-             <td><?php echo $price_product_cart[$i]; ?></td>
+             <td><?php echo $product_id_cart[$i]; ?></td>
+             <td><?php echo $product_name_cart[$i]; ?></td>
+             <td><?php echo $product_price_cart[$i]; ?></td>
                <td>
                  <input type="number" class="form-control" name="select_cartqty[]" value="<?php  echo $_SESSION['cartqty'][$i]; ?>" readonly>
                </td>

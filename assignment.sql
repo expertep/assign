@@ -149,21 +149,21 @@ INSERT INTO `table_order` (`order_id`, `member_id`, `date`, `pay`, `payslip`) VA
 --
 
 CREATE TABLE `table_product` (
-  `id_product` int(10) UNSIGNED NOT NULL,
-  `name_product` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
-  `price_product` int(50) NOT NULL,
-  `category_product` varchar(20) CHARACTER SET utf8mb4 NOT NULL,
-  `type_product` varchar(20) CHARACTER SET utf8mb4 NOT NULL,
-  `picture_product` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `product_id` int(10) UNSIGNED NOT NULL,
+  `product_name` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
+  `product_price` int(50) NOT NULL,
+  `product_category` varchar(20) CHARACTER SET utf8mb4 NOT NULL,
+  `product_type` varchar(20) CHARACTER SET utf8mb4 NOT NULL,
+  `product_picture` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
   `unit_product` varchar(50) CHARACTER SET utf8mb4 NOT NULL,
-  `number_product` int(50) NOT NULL
+  `product_number` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `table_product`
 --
 
-INSERT INTO `table_product` (`id_product`, `name_product`, `price_product`, `category_product`, `type_product`, `picture_product`, `unit_product`, `number_product`) VALUES
+INSERT INTO `table_product` (`product_id`, `product_name`, `product_price`, `product_category`, `product_type`, `product_picture`, `unit_product`, `product_number`) VALUES
 (6, '30', 30, 'หมวดหมู่1', 'หมวดหมู่1', 'product/image/1.jpg', '', 0),
 (7, 'หลอดไฟ', 65, 'หมวดหมู่2', 'หมวดหมู่2', 'product/image/2.jpg', '', 20),
 (9, 'ตะปู', 30, 'หมวดหมู่4', 'หมวดหมู่4', 'product/image/4.jpg', '', 0),
@@ -213,7 +213,7 @@ ALTER TABLE `table_order`
 -- Indexes for table `table_product`
 --
 ALTER TABLE `table_product`
-  ADD PRIMARY KEY (`id_product`);
+  ADD PRIMARY KEY (`product_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -238,7 +238,7 @@ ALTER TABLE `table_order`
 -- AUTO_INCREMENT for table `table_product`
 --
 ALTER TABLE `table_product`
-  MODIFY `id_product` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `product_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

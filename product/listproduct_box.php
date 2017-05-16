@@ -11,7 +11,7 @@ function save(id) {
   $.ajax({
     type: 'POST',
     url: str,
-    data: { id_product: id },
+    data: { product_id: id },
     success: function(response) {}
   });
 }
@@ -19,7 +19,7 @@ function save(id) {
 <div class="row">
   <div class="col-xs-12 product">
 <?php
-  $sql='SELECT Count(id_product) AS NumberOfProducts FROM table_product';
+  $sql='SELECT Count(product_id) AS NumberOfProducts FROM table_product';
   $result= $connect->query($sql);
   $result1=$result->fetch_assoc();
   $count=$result1['NumberOfProducts'];
@@ -37,32 +37,32 @@ while ($select_product = $query_select_product->fetch_assoc()){
 
 </script>
   <div class="col-xs-6 col-sm-4 col-md-3 product">
-  <div class='pic' style="background-image:url('<?php echo $select_product['picture_product'] ?>')">
+  <div class='pic' style="background-image:url('<?php echo $select_product['product_picture'] ?>')">
 <style media="screen">
   .name{width:70%;display: inline-block;}
   .price{width:20%;display: inline-block;}
 </style>
   </div>
   <div class="show">
-     <div class="name"><?php echo $select_product['name_product']?></div>
+     <div class="name"><?php echo $select_product['product_name']?></div>
      <?php
      $str='';
      if(isset($_SESSION['cart'])){
-       $key = array_search($select_product['id_product'],$_SESSION['cart']);
+       $key = array_search($select_product['product_id'],$_SESSION['cart']);
        if ((string)$key != ""){
          $str='background-color:green;';
        }
       }
      ?>
-     <div class="price <?php echo $select_product['id_product'] ?>" style="<?php echo $str; ?>"><?php echo $select_product['price_product'] ?></div>
-     <button class="form-control buy" onclick="save('<?php echo $select_product['id_product'] ?>')">สั่งซื้อ</button>
+     <div class="price <?php echo $select_product['product_id'] ?>" style="<?php echo $str; ?>"><?php echo $select_product['product_price'] ?></div>
+     <button class="form-control buy" onclick="save('<?php echo $select_product['product_id'] ?>')">สั่งซื้อ</button>
    </div>
 
 </div>
-<input type="hidden" name="id_product" value="<?php echo $select_product['id_product'] ?>">
-<input type="hidden" name="picture_product" value="<?php echo $select_product['pictur_product']; ?>">
-<input type="hidden" name="name_product" value="<?php echo $select_product['name_product']; ?>">
-<input type="hidden" name="price_product" value="<?php echo $select_product['price_product']; ?>">
+<input type="hidden" name="product_id" value="<?php echo $select_product['product_id'] ?>">
+<input type="hidden" name="product_picture" value="<?php echo $select_product['pictur_product']; ?>">
+<input type="hidden" name="product_name" value="<?php echo $select_product['product_name']; ?>">
+<input type="hidden" name="product_price" value="<?php echo $select_product['product_price']; ?>">
 
 
 
