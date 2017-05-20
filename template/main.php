@@ -20,9 +20,10 @@
     </div>
   </div>
 
+<div class="jumbotron product">
+      <div  id="list">
        <?php include 'product/listproduct_box.php'; ?>
-
+     </div>
       <a class="btn btn-primary btn-md" href="listproduct.php" role="button">see more</a>
-    </div>
   </div>
 </center>

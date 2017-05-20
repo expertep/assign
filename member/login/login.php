@@ -35,6 +35,7 @@ if (!isset($_SESSION['username'])){
 
   }
 ?>
+
   <div class="row">
      <div class="col-xs-12 .col-sm-6 .col-md-8">
        <div class="col-xs-6 .col-sm-2">

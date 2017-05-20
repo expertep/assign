@@ -1,7 +1,9 @@
 <?php
 require_once 'config/config.php';
 include_once 'template/header.php';
-
+?>
+<div class="main">
+<?php
 if ($_GET['action'] == "login"){
 
   include_once 'member/login/login.php';
@@ -39,8 +41,9 @@ else {
 
   header('Location:member/..');
 
-}
-
+}?>
+</div>
+<?php
 
 include_once 'template/footer.php';
 

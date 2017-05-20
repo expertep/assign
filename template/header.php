@@ -35,12 +35,27 @@
           }
 
     });*/
+
+    function show(str) {
+
+           $.ajax({
+             type: "GET",
+             url: '\product/listproduct_box.php',
+             data: "cat=" + str, // appears as $_GET['id'] @ your backend side
+             success: function(data) {
+                   // data is ur summary
+                  $('#list').html(data);
+             }
+           });
+
+    }
+
 </script>
   </head>
   <body class="body">
     <!-- Latest compiled and minified JavaScript -->
 
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-inverse">
       <div class="container-fluid">
 
         <!-- Brand and toggle get grouped for better mobile display -->
