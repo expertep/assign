@@ -4,6 +4,16 @@
       width:100%;
     }
 }
+@media screen and (max-width: 500px) {
+    .footinfo{
+      height:130px;
+    }
+}
+@media screen and (min-width: 500px) {
+    .footinfo{
+      height:150px;
+    }
+}
 .heading{
   padding:5px;
   margin-bottom: 10px;
@@ -36,7 +46,7 @@
   display: block;
 }
 .navbar.navbar-inverse{
-  background-color:rgb(171, 32, 32) !important;
+
   border-radius: 0px;
   z-index: 99;
   width:100%;
@@ -81,7 +91,7 @@ width:100%;
 }
 .jumbotron.cover{
   color:white;
-  padding-top: 20%;
+  height: 50vh;
   background-color: rgb(171, 32, 32);
   background-image: url('../cover.jpg');
   background-size:cover;
@@ -119,10 +129,10 @@ width:100%;
   text-align: center;
   margin: auto;
   background-color: rgb(33, 36, 46);
-  font-size: 1.5em;
+  font-size: 2vh;
   padding: 5px 20px;
   vertical-align: middle;
-  height: 150px;
+
 }
 .footinfo h2{
   color:rgb(171, 32, 32);

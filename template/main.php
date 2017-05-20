@@ -1,10 +1,192 @@
+<script type="text/javascript">
+$(document).ready(function(){//แถบหาย
+        $("nav").css({"opacity":"0"});
+});
+$(document).scroll(function(){
+  var opacity=($(".body").scrollTop()-200)/100;
+        $("nav").css({"opacity":opacity});
+});
 
+</script>
+<style media="screen">
+.site-wrapper {
+display: table;
+width: 100%;
+height: 100%; /* For at least Firefox */
+min-height: 100%;
+-webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+        box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+}
+.site-wrapper-inner {
+display: table-cell;
+vertical-align: top;
+}
+.cover-container {
+margin-right: auto;
+margin-left: auto;
+}
+
+/* Padding for spacing */
+.inner {
+padding: 30px;
+}
+
+
+/*
+* Header
+*/
+.masthead-brand {
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+.masthead-nav > li {
+display: inline-block;
+}
+.masthead-nav > li + li {
+margin-left: 20px;
+}
+.masthead-nav > li > a {
+padding-right: 0;
+padding-left: 0;
+font-size: 16px;
+font-weight: bold;
+color: #fff; /* IE8 proofing */
+color: rgba(255,255,255,.95);
+border-bottom: 2px solid transparent;
+}
+.masthead-nav > li > a:hover,
+.masthead-nav > li > a:focus {
+background-color: transparent;
+border-bottom-color: #a9a9a9;
+border-bottom-color: rgba(255,255,255,.25);
+}
+.masthead-nav > .active > a,
+.masthead-nav > .active > a:hover,
+.masthead-nav > .active > a:focus {
+color: #fff;
+border-bottom-color: #fff;
+}
+
+@media (min-width: 768px) {
+.masthead-brand {
+  float: left;
+}
+.masthead-nav {
+  float: right;
+}
+}
+
+/*
+* Affix and center
+*/
+
+@media (min-width: 768px) {
+/* Pull out the header and footer */
+.masthead {
+  position: fixed;
+  top: 0;
+}
+
+/* Start the vertical centering */
+.site-wrapper-inner {
+  vertical-align: middle;
+}
+/* Handle the widths */
+.masthead,
+.cover-container {
+  width: 100%; /* Must be percentage or pixels for horizontal alignment */
+}
+}
+
+@media (min-width: 992px) {
+.masthead,
+.cover-container {
+  width: 700px;
+}
+}
+
+.row.search{
+  margin:100px auto;
+  width:50vw;
+}
+#custom-search-input {
+        margin:0;
+        margin-top: 10px;
+        padding: 0;
+        height: 50px;
+    }
+
+    #custom-search-input .search-query {
+        padding-right: 3px;
+        padding-right: 4px \9;
+        padding-left: 3px;
+        padding-left: 4px \9;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        background-color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        font-size: 100%;
+        height: 100%;
+    }
+
+    #custom-search-input button {
+        border: 0;
+        background: none;
+        /** belows styles are working good */
+        padding: 2px 5px;
+        margin-top: 2px;
+        position: relative;
+        left: -28px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        color:#D9230F;
+    }
+
+    .search-query:focus + button {
+        z-index: 3;
+    }
+
+</style>
   <div class="jumbotron cover">
-    <div class="container cover">
-      <h1><b>DIV</b> SHOP</h1>
-      <p>CENTRE of TOOLS</p>
-      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+    <div class="cover-container">
+  <div class="masthead clearfix">
+    <div class="inner">
+      <h3 class="masthead-brand">LOGO</h3>
+
+      <ul class="nav masthead-nav">
+        <li class="active">
+          <a href="#" target="_blank">
+            HOME</a>
+        </li>
+        <li>
+          <a href="#">product</a>
+        </li>
+        <li>
+          <a href="#">Contact</a>
+        </li>
+      </ul>
     </div>
+  </div>
+</div>
+<form class="row search" action="listproduct.php" method="get" >
+         <div id="custom-search-input">
+              <div class="input-group">
+                  <input type="text" name="serachtext" class="search-query form-control" placeholder="Search">
+                  <span class="input-group-btn">
+                  <button class="btn btn-danger" name="serach" type="submit">
+                    <span class=" glyphicon glyphicon-search"></span>
+                  </button>
+                  </span>
+              </div>
+        </div>
+</form>
+
   </div>
 <center>
   <div class="jumbotron product">
@@ -24,6 +206,5 @@
       <div  id="list">
        <?php include 'product/listproduct_box.php'; ?>
      </div>
-      <a class="btn btn-primary btn-md" href="listproduct.php" role="button">see more</a>
   </div>
 </center>

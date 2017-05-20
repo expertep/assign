@@ -1,5 +1,7 @@
 <?php
-include_once "\../config/config.php" ?>
+include_once "\../config/config.php";
+$item=10;
+?>
 <script type="text/javascript">
 
 function save(id) {
@@ -47,21 +49,34 @@ function save(id) {
       <div class="col-xs-12 product">
 
     <?php
+
+    if(isset($_GET['cat'])&&$_GET['cat']!='all'){
+        $sqlcount='SELECT Count(product_id) AS NumberOfProducts FROM table_product WHERE product_category="'.$_GET['cat'].'"';
+    }
+    else if(isset($_GET['serach'])){
+      $sqlcount='SELECT Count(product_id) AS NumberOfProducts FROM table_product WHERE product_name LIKE "%'.$_GET['serachtext'].'%" OR product_desc LIKE "%'.$_GET['serachtext'].'%"';
+    }
+    else {
+      $sqlcount='SELECT Count(product_id) AS NumberOfProducts FROM table_product';
+    }
+    $result= $connect->query($sqlcount);
+    $result1=$result->fetch_assoc();
+    $count=$result1['NumberOfProducts'];
+    if(isset($_GET['page'])){
+      $page=$_GET['page'];
+    }
+    else $page=0;
+
       if(isset($_GET['cat'])&&$_GET['cat']!='all'){
-          $sql='SELECT Count(product_id) AS NumberOfProducts FROM table_product WHERE product_category="'.$_GET['cat'].'"';
+          $sql='SELECT * FROM table_product WHERE product_category="'.$_GET['cat'].'" LIMIT '.($page*$item).','.$item;
       }
-      else {$sql='SELECT Count(product_id) AS NumberOfProducts FROM table_product';}
-      $result= $connect->query($sql);
-      $result1=$result->fetch_assoc();
-      $count=$result1['NumberOfProducts'];
-      if(isset($_GET['page'])){
-        $page=$_GET['page'];
+      else if(isset($_GET['serach'])){
+        $sql='SELECT * FROM table_product WHERE product_name LIKE "%'.$_GET['serachtext'].'%" OR product_desc LIKE "%'.$_GET['serachtext'].'%" LIMIT '.($page*$item).','.$item;
       }
-      else $page=0;
-      if(isset($_GET['cat'])&&$_GET['cat']!='all'){
-          $sql='SELECT * FROM table_product WHERE product_category="'.$_GET['cat'].'" LIMIT '.($page*10).',10';
+      else {
+        $sql='SELECT * FROM table_product LIMIT '.($page*$item).','.$item;
       }
-      else {$sql='SELECT * FROM table_product LIMIT '.($page*10).',10';}
+
      $query_select_product = $connect->query($sql);
     while ($select_product = $query_select_product->fetch_assoc()){
       $str='';
@@ -96,3 +111,17 @@ function save(id) {
 
     </div>
   </div>
+  <form class="" action="#" method="get">
+
+    <nav aria-label="next" class="page">
+      <ul class="pagination">
+        <?php
+        if(isset($_GET['cat'])){$str="cat=".$_GET['cat']."&";}
+        else{$str="";}
+        for($i=0;$i<=$count/($item-1);$i++){?>
+        <li class="<?php if($i==$page)echo 'active'; ?>"><a href="<?php echo "listproduct.php?".$str."page=".$i;?>"><?php echo $i+1; ?> <span class="sr-only">(current)</span></a></li>
+
+        <?php } ?>
+      </ul>
+    </nav>
+  </form>

@@ -36,7 +36,7 @@
     }
   }
   function checkold(){
-    
+
     if(document.getElementById("oldpass").value==oldpass){
       document.getElementById("changepassword").disabled = false;
     }
@@ -55,7 +55,8 @@
 <b>ชื่อจริง</b> <?php echo $_SESSION['firstname']; ?> <b>นามสกุล </b><?php echo $_SESSION['lastname']; ?>
 <input class="edit check" id="editname" type="checkbox">
 <label class="edit text" for="editname">edit</label>
-<form method="post" class="edit name" action="member/updateprofile.php">
+<br>
+<form method="post" class="edit" action="member/updateprofile.php">
 <label>ชื่อจริง :</label><br>
 <input type="text" name="firstname" class="form-control" placeholder="Firstname" required><br>
 <label>นามสกุล : </label><br>
@@ -71,14 +72,14 @@
 <b>PASSWORD </b><input type="password" class="tranparent" name="" value="<?php echo $_SESSION['password']; ?>" disabled>
 <input class="edit check" id="editpass" type="checkbox">
 <label class="edit text" for="editpass">edit</label>
-<form method="post" class="edit name" action="member/updateprofile.php">
+<form method="post" class="edit" action="member/updateprofile.php">
 Change Password <br><br>
 <label>รหัสผ่านเก่า : </label><br>
-  <input type="text"  onblur="checkold()" name="oldpass" id="oldpass" class="form-control" placeholder="Old Password" required><br>
+  <input type="password"  onblur="checkold()" name="oldpass" id="oldpass" class="form-control" placeholder="Old Password" required><br>
  <label>รหัสผ่านใหม่ : </label><br>
- <input type="text" name="newpass" id="newpass" class="form-control" placeholder="New Password" required><br>
+ <input type="password" name="newpass" id="newpass" class="form-control" placeholder="New Password" required><br>
 <label> ยืนยันรหัสผ่าน : </label><span id='status'></span><br>
-<input type="text" name="cnewpass" id="cnewpass" class="form-control" placeholder="Confirm Password" required onchange="checkpass()"><br>
+<input type="password" name="cnewpass" id="cnewpass" class="form-control" placeholder="Confirm Password" required onchange="checkpass()"><br>
 <input type="submit" name="changepassword" id="changepassword" class="form-control" value="เปลี่ยนรหัสผ่าน">
 </form>
 </div>
@@ -87,7 +88,7 @@ Change Password <br><br>
 <?php if(isset($_SESSION['address'])){echo $_SESSION['address'];} ?>
 <input class="edit check" id="editadd" type="checkbox">
 <label class="edit text" for="editadd">edit</label>
-<form method="post" class="edit name" action="member/updateprofile.php">
+<form method="post" class="edit" action="member/updateprofile.php">
  <textarea class="form-control" name="address"> </textarea>
 <input type="submit" name="changeaddress" id="changeaddress" class="form-control" value="เปลี่ยนที่อยู่จัดส่ง">
 </form>
