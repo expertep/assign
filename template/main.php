@@ -1,26 +1,16 @@
 <script type="text/javascript">
 $(document).ready(function(){//แถบหาย
         $("nav").css({"opacity":"0"});
+        $(".menucover").css({"opacity":"1"});
 });
 $(document).scroll(function(){
-  var opacity=($(".body").scrollTop()-200)/100;
+  var opacity=($(".body").scrollTop()-300)/200;
         $("nav").css({"opacity":opacity});
+        $(".menucover").css({"opacity":1-opacity});
 });
 
 </script>
 <style media="screen">
-.site-wrapper {
-display: table;
-width: 100%;
-height: 100%; /* For at least Firefox */
-min-height: 100%;
--webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
-        box-shadow: inset 0 0 100px rgba(0,0,0,.5);
-}
-.site-wrapper-inner {
-display: table-cell;
-vertical-align: top;
-}
 .cover-container {
 margin-right: auto;
 margin-left: auto;
@@ -36,8 +26,11 @@ padding: 30px;
 * Header
 */
 .masthead-brand {
-margin-top: 10px;
+margin-top: -20px;
 margin-bottom: 10px;
+width:100px;
+height: auto;
+vertical-align: middle;
 }
 
 .masthead-nav > li {
@@ -52,7 +45,7 @@ padding-left: 0;
 font-size: 16px;
 font-weight: bold;
 color: #fff; /* IE8 proofing */
-color: rgba(255,255,255,.95);
+color: rgba(255,255,255,1);
 border-bottom: 2px solid transparent;
 }
 .masthead-nav > li > a:hover,
@@ -76,7 +69,6 @@ border-bottom-color: #fff;
   float: right;
 }
 }
-
 /*
 * Affix and center
 */
@@ -102,7 +94,7 @@ border-bottom-color: #fff;
 @media (min-width: 992px) {
 .masthead,
 .cover-container {
-  width: 700px;
+  width: 70vw;
 }
 }
 
@@ -123,11 +115,11 @@ border-bottom-color: #fff;
         padding-left: 3px;
         padding-left: 4px \9;
         /* IE7-8 doesn't have border-radius, so don't indent the padding */
-        background-color: rgba(255, 255, 255, 0.7);
+        background-color: rgba(255, 255, 255, 1);
         margin-bottom: 0;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        border-radius: 3px;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        border-radius: 0px;
         font-size: 100%;
         height: 100%;
     }
@@ -146,6 +138,7 @@ border-bottom-color: #fff;
         -moz-border-radius: 3px;
         border-radius: 3px;
         color:#D9230F;
+
     }
 
     .search-query:focus + button {
@@ -154,10 +147,10 @@ border-bottom-color: #fff;
 
 </style>
   <div class="jumbotron cover">
-    <div class="cover-container">
+    <div class="cover-container menucover">
   <div class="masthead clearfix">
     <div class="inner">
-      <h3 class="masthead-brand">LOGO</h3>
+      <img src="logo.png" class="masthead-brand">
 
       <ul class="nav masthead-nav">
         <li class="active">
@@ -174,6 +167,7 @@ border-bottom-color: #fff;
     </div>
   </div>
 </div>
+
 <form class="row search" action="listproduct.php" method="get" >
          <div id="custom-search-input">
               <div class="input-group">
