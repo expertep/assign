@@ -18,24 +18,23 @@
     <!-- Latest compiled and minified JavaScript -->
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="..\/javascript/js/bootstrap.min.js" ></script>
-
+    <script src="js/editjs.js" ></script>
 <div class="nav-side-menu">
-    <div class="brand">Brand Logo</div>
+    <div class="brand"><img src="..\logo.png" class="brand logo"></div>
     <i class="fa fa-bars fa-2x toggle-btn l1" data-toggle="collapse" data-target="#menu-content"></i>
     <i class="fa fa-bars fa-2x toggle-btn l2" data-toggle="collapse" data-target="#menu-content"></i>
     <i class="fa fa-bars fa-2x toggle-btn l3" data-toggle="collapse" data-target="#menu-content"></i>
 
 
-        <div class="menu-list">
-
-            <ul id="menu-content" class="menu-content collapse out">
+    <div class="menu-list">
+        <ul id="menu-content" class="menu-content collapse out">
                 <a href="member/.."><li><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Dashboard<span class="sr-only">(current)</span></li></a>
                 <a href="?action=product"><li>สินค้า<span class="sr-only">(current)</span></li></a>
                 <a href="?action=insertproduct"><li>เพิ่มสินค้า<span class="sr-only">(current)</span></li></a>
-                <a href="?action=order"><li>รายการสั่งซื้อ<span class="sr-only">(current)</span></li></a>
-                <a href=""><li>รายการแจ้งสั่งซื้อ<span class="sr-only">(current)</span></li></a>
+                <a href="?action=orderhistory"><li>รายการสั่งซื้อ<span class="sr-only">(current)</span></li></a>
+                <a href="?action=order"><li>รายการแจ้งสั่งซื้อ<span class="sr-only">(current)</span></li></a>
                 <a href="?action=member"><li>จัดการสมาชิก<span class="sr-only">(current)</span></li></a>
-                <a href="?action=logout"><li>logout<span class="sr-only">(current)</span></li></a>
-            </ul>
+                <a href="?action=logout"><li>homepage<span class="sr-only">(current)</span></li></a>
+        </ul>
      </div>
 </div>

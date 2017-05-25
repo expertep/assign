@@ -45,28 +45,30 @@ function save(id) {
   <div class="container">
 
 
+    <?php
+      if(isset($_GET['cat'])&&$_GET['cat']!='all'){
+          $sqlcount='SELECT Count(product_id) AS NumberOfProducts FROM table_product WHERE product_category="'.$_GET['cat'].'"';
+      }
+      else if(isset($_GET['serach'])){
+        $sqlcount='SELECT Count(product_id) AS NumberOfProducts FROM table_product WHERE product_name LIKE "%'.$_GET['serachtext'].'%" OR product_desc LIKE "%'.$_GET['serachtext'].'%"';
+      }
+      else {
+        $sqlcount='SELECT Count(product_id) AS NumberOfProducts FROM table_product';
+      }
+      $result= $connect->query($sqlcount);
+      $result1=$result->fetch_assoc();
+      $count=$result1['NumberOfProducts'];
+      if(isset($_GET['page'])){
+        $page=$_GET['page'];
+      }
+      else $page=0;
+    ?>
+    <?php if($count==0){?>
+    <h2>cannot found</h2>
+  <?php  } ?>
     <div class="row">
       <div class="col-xs-12 product">
-
     <?php
-
-    if(isset($_GET['cat'])&&$_GET['cat']!='all'){
-        $sqlcount='SELECT Count(product_id) AS NumberOfProducts FROM table_product WHERE product_category="'.$_GET['cat'].'"';
-    }
-    else if(isset($_GET['serach'])){
-      $sqlcount='SELECT Count(product_id) AS NumberOfProducts FROM table_product WHERE product_name LIKE "%'.$_GET['serachtext'].'%" OR product_desc LIKE "%'.$_GET['serachtext'].'%"';
-    }
-    else {
-      $sqlcount='SELECT Count(product_id) AS NumberOfProducts FROM table_product';
-    }
-    $result= $connect->query($sqlcount);
-    $result1=$result->fetch_assoc();
-    $count=$result1['NumberOfProducts'];
-    if(isset($_GET['page'])){
-      $page=$_GET['page'];
-    }
-    else $page=0;
-
       if(isset($_GET['cat'])&&$_GET['cat']!='all'){
           $sql='SELECT * FROM table_product WHERE product_category="'.$_GET['cat'].'" LIMIT '.($page*$item).','.$item;
       }
@@ -88,6 +90,8 @@ function save(id) {
        }
 
      ?>
+
+
       <div class="col-xs-6 col-sm-4 col-md-3 product">
       <div class='pic' style="background-image:url('<?php echo $select_product['product_picture'] ?>')">
           <button class="form-control buy <?php echo $select_product['product_id']; ?>" onclick="save('<?php echo $select_product['product_id'] ?>')" style="<?php echo $str; ?>">Add Cart</button>

@@ -41,7 +41,9 @@
       </td>
       <?php if($rowspan[$row['order_id']]!=0){ ?>
       <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
-        <?php echo $row['pay']; ?>
+        <?php switch(echo $row['pay']){
+          
+        } ?>
       </td>
       <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
       <?php if($row['pay']!='s'){ ?>

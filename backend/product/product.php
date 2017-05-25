@@ -42,7 +42,7 @@
       รูป
     </th>
     <th>
-      หน่วย
+      รายละเอียด
     </th>
     <th>
       จำนวน
@@ -64,7 +64,7 @@
           <?php echo $select_product['product_id']; ?>
         </td>
         <td>
-          <input class="edit <?php echo $select_product['product_id']; ?>" type="text" name="product_name" value="<?php echo $select_product['product_name'] ?>" readonly>
+          <textarea rows="4" class="edit <?php echo $select_product['product_id']; ?>" name="product_name" readonly><?php echo $select_product['product_name'] ?></textarea>
         </td>
         <td>
           <input class="edit <?php echo $select_product['product_id']; ?>" type="text" name="product_price" value="<?php echo $select_product['product_price'] ?>" readonly>
@@ -73,10 +73,12 @@
           <input class="edit <?php echo $select_product['product_id']; ?>" type="text" name="product_category" value="<?php echo $select_product['product_category'] ?>" readonly>
         </td>
         <td>
-          <img class="edit img" src="../<?php echo $select_product['product_picture']; ?>" alt="">
+          <a href="../<?php echo $select_product['product_picture']; ?>" target="_blank">
+            <img class="edit img" src="../<?php echo $select_product['product_picture']; ?>" alt="">
+          </a>
         </td>
         <td>
-          <input class="edit <?php echo $select_product['product_id']; ?>" type="text" name="unit_product" value="<?php echo $select_product['product_picture'] ?>" readonly>
+          <textarea rows="4" class="edit <?php echo $select_product['product_id']; ?>" name="product_desc" readonly><?php echo $select_product['product_desc'] ?></textarea>
         </td>
         <td>
           <input class="edit <?php echo $select_product['product_id']; ?>" type="text" name="product_number" value="<?php echo $select_product['product_number'] ?>" readonly>
@@ -97,27 +99,3 @@
 //}
 ?>
 </table>
-
-
-
-
-
-<script type="text/javascript">// เปลี่ยนรูปปุ่มedit
-  function check(row){
-    if(bool=='e'){
-      if($("#"+row+" span").attr('class')=='glyphicon glyphicon-pencil'){
-        $("#"+row+" span").attr('class','glyphicon glyphicon-floppy-disk');
-        $(".edit."+row).removeAttr("readonly");
-        return false;
-      }
-      else{
-        $("#"+row+" span").attr('class','glyphicon glyphicon-pencil');
-        $(".edit."+row).attr("readonly","");
-        return true;
-      }
-      return false;
-    }
-    else return true;
-  }
-
-</script>

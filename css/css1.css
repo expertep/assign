@@ -37,6 +37,11 @@ a{
   color: #e1ffff;
   z-index: 99;
 }
+.brand.logo{
+  height:10vh;
+   width:auto;
+   margin: auto;
+}
 .nav-side-menu .brand {
   background-color: #23282e;
   line-height: 50px;
@@ -136,6 +141,7 @@ a{
   transition: all 1s ease;
 }
 @media (max-width: 767px) {
+
   .nav-side-menu {
     position: relative;
     width: 100%;
@@ -163,7 +169,10 @@ a{
   .nav-side-menu .toggle-btn.l3{
     top: 30px;
   }
-
+  .brand.logo{
+    height:6vh;
+     width:auto;
+  }
   .brand {
     text-align: left !important;
     font-size: 22px;
@@ -188,7 +197,7 @@ body {
 .edit{
   width:7vw;
   background:transparent;
-  background-color:rgb(238, 231, 231);
+
   border:none;
 
 }

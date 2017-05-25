@@ -88,27 +88,3 @@
   //}
   ?>
   </table>
-
-
-
-
-
-  <script type="text/javascript">// เปลี่ยนรูปปุ่มedit
-    function check(row){
-      if(bool=='e'){
-        if($("#"+row+" span").attr('class')=='glyphicon glyphicon-pencil'){
-          $("#"+row+" span").attr('class','glyphicon glyphicon-floppy-disk');
-          $(".edit."+row).removeAttr("readonly");
-          return false;
-        }
-        else{
-          $("#"+row+" span").attr('class','glyphicon glyphicon-pencil');
-          $(".edit."+row).attr("readonly","");
-          return true;
-        }
-        return false;
-      }
-      else return true;
-    }
-
-  </script>

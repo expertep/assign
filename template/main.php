@@ -1,11 +1,14 @@
 <script type="text/javascript">
 $(document).ready(function(){//แถบหาย
-        $("nav").css({"opacity":"0"});
-        $(".menucover").css({"opacity":"1"});
+        $("nav").css({"opacity":"0","display":"none"});
+        $(".menucover").css({"opacity":"1","display":"block"});
+
 });
 $(document).scroll(function(){
   var opacity=($(".body").scrollTop()-300)/200;
-        $("nav").css({"opacity":opacity});
+  var str="none";
+        if(opacity>0){str="block";}
+        $("nav").css({"opacity":opacity,"display":str});
         $(".menucover").css({"opacity":1-opacity});
 });
 
@@ -117,9 +120,9 @@ border-bottom-color: #fff;
         /* IE7-8 doesn't have border-radius, so don't indent the padding */
         background-color: rgba(255, 255, 255, 1);
         margin-bottom: 0;
-        -webkit-border-radius: 0px;
-        -moz-border-radius: 0px;
-        border-radius: 0px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
         font-size: 100%;
         height: 100%;
     }
@@ -154,15 +157,18 @@ border-bottom-color: #fff;
 
       <ul class="nav masthead-nav">
         <li class="active">
-          <a href="#" target="_blank">
-            HOME</a>
+          <a href="#">HOME</a>
         </li>
-        <li>
-          <a href="#">product</a>
-        </li>
-        <li>
-          <a href="#">Contact</a>
-        </li>
+        <?php if (isset($_SESSION['user_status'])&&$_SESSION['user_status'] == "1") { ?>
+        <li><a href="backend/">Controller</a></li>
+        <?php }else{ ?>
+          <li>
+            <a href="#list">product</a>
+          </li>
+          <li>
+            <a href="#foot">Contact</a>
+          </li>
+          <?php } ?>
       </ul>
     </div>
   </div>
@@ -196,7 +202,7 @@ border-bottom-color: #fff;
     </div>
   </div>
 
-<div class="jumbotron product">
+<div class="jumbotron product" >
       <div  id="list">
        <?php include 'product/listproduct_box.php'; ?>
      </div>

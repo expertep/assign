@@ -25,7 +25,7 @@ INNER JOIN table_member tmem ON torder.member_id=tmem.member_id WHERE torder.ord
     $sql_select_product = 'SELECT * FROM table_order torder
 INNER JOIN table_bill tbill ON torder.order_id=tbill.order_id
 INNER JOIN table_product tpro ON tbill.product_id=tpro.product_id
-INNER JOIN table_member tmem ON torder.member_id=tmem.member_id';
+INNER JOIN table_member tmem ON torder.member_id=tmem.member_id WHERE pay="w"';
   }
 
 ?>
@@ -102,16 +102,18 @@ INNER JOIN table_member tmem ON torder.member_id=tmem.member_id';
         </td>
         <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
           <?php if($row['payslip']!=""){ ?>
-          <img style="width:40px;height:auto;" class="slip" src="<?php echo $row['payslip']; ?>" alt="">
+          <a href="<?php echo $row['payslip']; ?>" target="_blank">
+            <img style="width:40px;height:auto;" class="slip" src="<?php echo $row['payslip']; ?>" alt="">
+          </a>
           <?php } ?>
         </td>
         <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
 
           <button type="submit" name="sent" id="<?php echo $row['order_id']; ?>" class="btn btn-default btn-sm" aria-label="Left Align" onclick="bool='e';">
-            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Comfirm
           </button>
           <button type="submit" name="cancel" class="btn btn-default btn-sm" aria-label="Left Align" onclick="bool='d';">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
           </button>
           <?php $rowspan[$row['order_id']]=0; }?>
         </td>
@@ -124,23 +126,3 @@ INNER JOIN table_member tmem ON torder.member_id=tmem.member_id';
 ?>
 </table>
 w=wait s=sent f=fail
-
-<script type="text/javascript">// เปลี่ยนรูปปุ่มedit
-  function check(row){
-    if(bool=='e'){
-      if($("#"+row+" span").attr('class')=='glyphicon glyphicon-pencil'){
-        $("#"+row+" span").attr('class','glyphicon glyphicon-floppy-disk');
-        $(".edit."+row).removeAttr("readonly");
-        return false;
-      }
-      else{
-        $("#"+row+" span").attr('class','glyphicon glyphicon-pencil');
-        $(".edit."+row).attr("readonly","");
-        return true;
-      }
-      return false;
-    }
-    else return true;
-  }
-
-</script>

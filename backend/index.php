@@ -1,11 +1,13 @@
 <?php
 require_once '../config/config.php';
+
 include_once 'template/header.php';
 
 
 ?>
 <div class="body">
   <?php
+
   if(!isset($_GET['action'])){
     include_once 'template/dashboard.php';
   }
@@ -27,7 +29,11 @@ include_once 'template/header.php';
 
 
     }
+    else if ($_GET['action']== "orderhistory"){
 
+    include_once 'order/orderhistory.php';
+
+    }
     else if ($_GET['action']== "order"){
 
     include_once 'order/order.php';
@@ -42,8 +48,5 @@ include_once 'template/header.php';
 </div>
   <?php
   include_once 'template/footer.php';
-
-
-
 
  ?>
