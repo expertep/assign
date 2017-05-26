@@ -41,8 +41,10 @@
       </td>
       <?php if($rowspan[$row['order_id']]!=0){ ?>
       <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
-        <?php switch(echo $row['pay']){
-          
+        <?php switch($row['pay']){
+          case 'w':echo 'รอ';break;
+          case 's':echo 'ส่งแล้ว';break;
+          case 'f':echo 'ล้มเหลว';break;
         } ?>
       </td>
       <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>

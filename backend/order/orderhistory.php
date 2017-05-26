@@ -19,13 +19,13 @@
     $sql_select_product = 'SELECT * FROM table_order torder
 INNER JOIN table_bill tbill ON torder.order_id=tbill.order_id
 INNER JOIN table_product tpro ON tbill.product_id=tpro.product_id
-INNER JOIN table_member tmem ON torder.member_id=tmem.member_id WHERE pay="s"AND (torder.order_id LIKE "%'.$_POST['search'].'%"OR torder.date LIKE "%'.$_POST['search'].'%")';
+INNER JOIN table_member tmem ON torder.member_id=tmem.member_id WHERE pay="s"OR pay="f" AND (torder.order_id LIKE "%'.$_POST['search'].'%"OR torder.date LIKE "%'.$_POST['search'].'%")';
   }
   else{
     $sql_select_product = 'SELECT * FROM table_order torder
 INNER JOIN table_bill tbill ON torder.order_id=tbill.order_id
 INNER JOIN table_product tpro ON tbill.product_id=tpro.product_id
-INNER JOIN table_member tmem ON torder.member_id=tmem.member_id WHERE pay="s"';
+INNER JOIN table_member tmem ON torder.member_id=tmem.member_id WHERE pay="s"OR pay="f"';
   }
 
 ?>

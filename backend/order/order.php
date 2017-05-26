@@ -57,6 +57,9 @@ INNER JOIN table_member tmem ON torder.member_id=tmem.member_id WHERE pay="w"';
       slip
     </th>
     <th>
+      address
+    </th>
+    <th>
      Action
    </th>
   </tr>
@@ -94,7 +97,9 @@ INNER JOIN table_member tmem ON torder.member_id=tmem.member_id WHERE pay="w"';
           <?php echo $row['product_name']; ?>
         </td>
         <td>
-          <?php echo $row['amount']; ?>
+
+          <?php $color='';if($row['amount']>$row['product_number']){$color='red';}?>
+          <span style="color:<?php echo $color; ?>;"><?php echo $row['amount']; ?></span>
         </td>
         <?php if($rowspan[$row['order_id']]!=0){ ?>
         <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
@@ -108,8 +113,12 @@ INNER JOIN table_member tmem ON torder.member_id=tmem.member_id WHERE pay="w"';
           <?php } ?>
         </td>
         <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
+            <?php echo $row['address']; ?>
+        </td>
 
-          <button type="submit" name="sent" id="<?php echo $row['order_id']; ?>" class="btn btn-default btn-sm" aria-label="Left Align" onclick="bool='e';">
+        <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
+          <?php //$read='';if($row['amount']>$row['product_number']){$read='readonly';}?>
+          <button type="submit" name="sent" id="<?php echo $row['order_id']; ?>" class="btn btn-default btn-sm" aria-label="Left Align" onclick="bool='e';" <?php //echo $read; ?>>
             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Comfirm
           </button>
           <button type="submit" name="cancel" class="btn btn-default btn-sm" aria-label="Left Align" onclick="bool='d';">

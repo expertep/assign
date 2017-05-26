@@ -92,7 +92,7 @@
             <ul class="dropdown-menu">
               <li><a href="member.php?action=profiles">ข้อมูลส่วนตัว</a></li>
               <li><a href="member.php?action=historyorder">ประวัติสั่งซื้อ</a></li>
-              <li><a href="member.php?action=paied">แจ้งการชำระ</a></li>
+              <li><a href="member.php?action=historyorder">แจ้งการชำระ</a></li>
               <li><a href="#">โปรโมชั่น</a></li>
               <li role="separator" class="divider"></li>
               <?php if ($_SESSION['user_status'] == "1") { ?>

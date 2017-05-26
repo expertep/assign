@@ -17,6 +17,8 @@ if(isset($_POST)){
     }
     else if(isset($_POST['sent'])) {
       $sql = "UPDATE table_order SET pay='s' WHERE order_id='".$_POST['order_id']."'";
+      $sql1="UPDATE table_order o INNER JOIN table_bill b ON o.order_id=b.order_id INNER JOIN table_product p ON b.product_id=p.product_id SET p.product_number=p.product_number-b.amount WHERE o.order_id='".$_POST['order_id']."'";
+      $connect->query($sql1);
     }
     else if(isset($_POST['cancel'])) {
       $sql = "UPDATE table_order SET pay='f' WHERE order_id='".$_POST['order_id']."'";

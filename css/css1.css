@@ -189,6 +189,9 @@ a{
   .nav-side-menu .menu-list .menu-content {
     display: block;
   }
+  .body{
+    /*margin-left: 10%;*/
+  }
 }
 body {
   margin: 0px;

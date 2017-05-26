@@ -126,4 +126,21 @@
               }
           }
   });
+
+  /*var ctx = document.getElementById("myDoughnutChart");
+  var myDoughnutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: data,
+    options:       options: {
+                 responsive: true,
+                 maintainAspectRatio: false,
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero:true
+                          }
+                      }]
+                  }
+              }
+});*/
   </script>

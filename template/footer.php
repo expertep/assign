@@ -3,6 +3,7 @@
 <div class="col-xs-12 col-sm-4 footinfo" id="foot">
     <h2>About us</h2>
     <p>ร้านขายอุปกรณ์</p>
+    &copy2014
   </div>
   <div class="col-xs-12 col-sm-4 footinfo">
 

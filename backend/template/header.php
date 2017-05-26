@@ -25,16 +25,22 @@
     <i class="fa fa-bars fa-2x toggle-btn l2" data-toggle="collapse" data-target="#menu-content"></i>
     <i class="fa fa-bars fa-2x toggle-btn l3" data-toggle="collapse" data-target="#menu-content"></i>
 
+<?php
+  $sql="SELECT COUNT(order_id) as noti FROM table_order WHERE pay='w'";
+  $select = $connect->query($sql);
+  $count=0;
+  while ($row = $select->fetch_assoc()) {$count=$row['noti'];}
 
+ ?>
     <div class="menu-list">
         <ul id="menu-content" class="menu-content collapse out">
                 <a href="member/.."><li><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Dashboard<span class="sr-only">(current)</span></li></a>
                 <a href="?action=product"><li>สินค้า<span class="sr-only">(current)</span></li></a>
                 <a href="?action=insertproduct"><li>เพิ่มสินค้า<span class="sr-only">(current)</span></li></a>
                 <a href="?action=orderhistory"><li>รายการสั่งซื้อ<span class="sr-only">(current)</span></li></a>
-                <a href="?action=order"><li>รายการแจ้งสั่งซื้อ<span class="sr-only">(current)</span></li></a>
+                <a href="?action=order"><li>รายการแจ้งสั่งซื้อ<span class="sr-only">(current)</span> <?php if($count!=0){ ?><span class="badge"><?php echo $count; ?></span><?php } ?></li></a>
                 <a href="?action=member"><li>จัดการสมาชิก<span class="sr-only">(current)</span></li></a>
-                <a href="?action=logout"><li>homepage<span class="sr-only">(current)</span></li></a>
+                <a href="?action=logout"><li>HOMEPAGE<span class="sr-only">(current)</span></li></a>
         </ul>
      </div>
 </div>
