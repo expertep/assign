@@ -37,6 +37,7 @@
                 <a href="member/.."><li><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Dashboard<span class="sr-only">(current)</span></li></a>
                 <a href="?action=product"><li>สินค้า<span class="sr-only">(current)</span></li></a>
                 <a href="?action=insertproduct"><li>เพิ่มสินค้า<span class="sr-only">(current)</span></li></a>
+                <a href="?action=insertdiscount"><li>เพิ่มโค๊ดส่วนลด<span class="sr-only">(current)</span></li></a>
                 <a href="?action=orderhistory"><li>รายการสั่งซื้อ<span class="sr-only">(current)</span></li></a>
                 <a href="?action=order"><li>รายการแจ้งสั่งซื้อ<span class="sr-only">(current)</span> <?php if($count!=0){ ?><span class="badge"><?php echo $count; ?></span><?php } ?></li></a>
                 <a href="?action=member"><li>จัดการสมาชิก<span class="sr-only">(current)</span></li></a>

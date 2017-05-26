@@ -22,6 +22,10 @@ include_once 'template/header.php';
     include_once 'product/product_insert.php';
 
     }
+    else if ($_GET['action'] == "insertdiscount"){
+    include_once 'discount/insertdiscount.php';
+
+    }
 
     else if ($_GET['action']== "member"){
 
