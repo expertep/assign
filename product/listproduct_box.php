@@ -2,21 +2,6 @@
 include_once "\../config/config.php";
 $item=10;
 ?>
-<script type="text/javascript">
-
-function save(id) {
-    $(".buy."+id).css({"background-color":"rgb(171, 32, 32)","color":"#FFFFFF"});
-
-  document.getElementById("count").innerHTML =1+parseInt(document.getElementById("count").innerHTML);
-  var str="cart.php";
-  $.ajax({
-    type: 'POST',
-    url: str,
-    data: { product_id: id },
-    success: function(response) {}
-  });
-}
-</script>
 <?php
   $sql="SELECT count(product_category) AS count,product_category FROM table_product GROUP BY product_category";
   $result = $connect->query($sql);
@@ -92,16 +77,19 @@ function save(id) {
      ?>
 
 
-      <div class="col-xs-6 col-sm-4 col-md-3 product">
-      <div class='pic' style="background-image:url('<?php echo $select_product['product_picture'] ?>')">
-          <button class="form-control buy <?php echo $select_product['product_id']; ?>" onclick="save('<?php echo $select_product['product_id'] ?>')" style="<?php echo $str; ?>">Add Cart</button>
-      </div>
-      <div class="show">
-         <div class="name"><?php echo $select_product['product_name']?></div>
-         <div class="price"><h2><?php echo $select_product['product_price'] ?></h2></div>
-       </div>
 
-    </div>
+        <div class="col-xs-6 col-sm-4 col-md-3 product">
+        <div class='pic' style="background-image:url('<?php echo $select_product['product_picture'] ?>')">
+            <br><button class="form-control buy <?php echo $select_product['product_id']; ?>" onclick="save('<?php echo $select_product['product_id'] ?>')" style="<?php echo $str; ?>">Add Cart</button>
+        </div>
+          <a href="product.php?id=<?php echo $select_product['product_id']; ?>">
+        <div class="show">
+           <div class="name"><?php echo $select_product['product_name']?></div>
+           <div class="price"><h2><?php echo $select_product['product_price'] ?></h2></div>
+         </div>
+       </a>
+      </div>
+
     <input type="hidden" name="product_id" value="<?php echo $select_product['product_id'] ?>">
     <input type="hidden" name="product_picture" value="<?php echo $select_product['pictur_product']; ?>">
     <input type="hidden" name="product_name" value="<?php echo $select_product['product_name']; ?>">

@@ -104,6 +104,7 @@ border-bottom-color: #fff;
 .row.search{
   margin:100px auto;
   width:50vw;
+
 }
 #custom-search-input {
         margin:0;
@@ -168,7 +169,15 @@ border-bottom-color: #fff;
           <li>
             <a href="#foot">Contact</a>
           </li>
-          <?php } ?>
+          <?php }if(!isset($_SESSION['username'])){ ?>
+          <li>
+            <a href="member.php?action=login">Login</a>
+          </li>
+          <?php }else{ ?>
+            <li>
+              <a href="member.php?action=logout">Logout</a>
+            </li>
+            <?php } ?>
       </ul>
     </div>
   </div>

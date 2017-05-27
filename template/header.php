@@ -29,7 +29,18 @@
              }
            });
     }
-
+    function save(id) {
+        $(".buy."+id).css({"background-color":"rgb(171, 32, 32)","color":"#FFFFFF"});
+        $(".buy1."+id).css({"background-color":"rgb(171, 32, 32)","color":"#FFFFFF"});
+      document.getElementById("count").innerHTML =1+parseInt(document.getElementById("count").innerHTML);
+      var str="cart.php";
+      $.ajax({
+        type: 'POST',
+        url: str,
+        data: { product_id: id },
+        success: function(response) {}
+      });
+    }
 </script>
     <style media="screen">
 
