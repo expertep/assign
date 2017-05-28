@@ -2,20 +2,24 @@
   var bool;//บอกว่ากดedit หรือ delete
 </script>
   <h1>Member</h1>
-  <form class="" action="#" method="POSt">
-
-    <div class="form-group">
-    <span>
-      <input type="text" name='search' class="form-control" placeholder="Search">
-      <button type="submit" name='searchb' class="btn btn-default">ค้นหา</button>
-    </span>
+  <form class="" action="" method="GET">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="input-group">
+          <input type="text" name='search' class="form-control" placeholder="Search for...">
+          <span class="input-group-btn">
+            <button class="btn btn-secondary" type="submit">ค้นหา</button>
+          </span>
+          <input type="hidden" name="action" value="member">
+        </div>
+      </div>
     </div>
   </form>
 
   <br>
   <?php
-   if(isset($_POST['searchb'])){
-     $sql_select_product = 'SELECT * FROM table_member WHERE member_id LIKE "%'.$_POST['search'].'%"OR username LIKE "%'.$_POST['search'].'%"';
+   if(isset($_GET['search'])){
+     $sql_select_product = 'SELECT * FROM table_member WHERE member_id LIKE "%'.$_GET['search'].'%"OR username LIKE "%'.$_GET['search'].'%"';
    }
    else{
      $sql_select_product = 'SELECT * FROM table_member ';
@@ -70,7 +74,7 @@
             <?php echo $select_product['lastname']; ?>
           </td>
           <td>
-            <input class="edit <?php echo $select_product['member_id']; ?>" type="text" name="address" value="<?php echo $select_product['address'] ?>" readonly>
+            <textarea rows="2" class="edit textmember <?php echo $select_product['member_id']; ?>" name="address" readonly><?php echo $select_product['address'] ?></textarea>
           </td>
           <td>
             <button type="submit" name="editmember" id="<?php echo $select_product['member_id']; ?>" class="btn btn-default btn-sm" aria-label="Left Align" onclick="bool='e';">

@@ -2,24 +2,28 @@
   var bool;//บอกว่ากดedit หรือ delete
 </script>
   <h1>Order</h1>
-  <form class="" action="#" method="POSt">
-
-    <div class="form-group">
-    <span>
-      <input type="text" name='search' class="form-control" placeholder="Search">
-      <button type="submit" name='searchb' class="btn btn-default">ค้นหา</button>
-    </span>
+  <form class="" action="" method="GET">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="input-group">
+          <input type="text" name='search' class="form-control" placeholder="Search for...">
+          <span class="input-group-btn">
+            <button class="btn btn-secondary" type="submit">ค้นหา</button>
+          </span>
+          <input type="hidden" name="action" value="member">
+        </div>
+      </div>
     </div>
   </form>
 
   <br>
 
   <?php
-  if(isset($_POST['searchb'])){
+  if(isset($_GET['search'])){
     $sql_select_product = 'SELECT * FROM table_order torder
 INNER JOIN table_bill tbill ON torder.order_id=tbill.order_id
 INNER JOIN table_product tpro ON tbill.product_id=tpro.product_id
-INNER JOIN table_member tmem ON torder.member_id=tmem.member_id WHERE pay="s"OR pay="f" AND (torder.order_id LIKE "%'.$_POST['search'].'%"OR torder.date LIKE "%'.$_POST['search'].'%")';
+INNER JOIN table_member tmem ON torder.member_id=tmem.member_id WHERE pay="s"OR pay="f" AND (torder.order_id LIKE "%'.$_GET['search'].'%"OR torder.date LIKE "%'.$_GET['search'].'%")';
   }
   else{
     $sql_select_product = 'SELECT * FROM table_order torder
@@ -82,13 +86,13 @@ INNER JOIN table_member tmem ON torder.member_id=tmem.member_id WHERE pay="s"OR 
           <?php echo $row['order_id']; ?>
         </td>
         <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
-          <?php echo $row['member_id']; ?>
+          <a href="?action=member&search=<?php echo $row['member_id']; ?>"><?php echo $row['member_id']; ?></a>
         </td>
         <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
           <?php echo $row['date'];} ?>
         </td>
         <td>
-          <?php echo $row['product_id']; ?>
+          <a href="?action=product&search=<?php echo $row['product_name']; ?>"><?php echo $row['product_id']; ?></a>
         </td>
         <td>
           <?php echo $row['product_name']; ?>

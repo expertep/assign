@@ -2,21 +2,25 @@
   var bool;//บอกว่ากดedit หรือ delete
 </script>
   <h1>Product</h1>
-  <form class="" action="#" method="POSt">
-
-    <div class="form-group">
-    <span>
-      <input type="text" name='search' class="form-control" placeholder="Search">
-      <button type="submit" name='searchb' class="btn btn-default">ค้นหา</button>
-    </span>
+  <form class="" action="" method="GET">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="input-group">
+          <input type="text" name='search' class="form-control" placeholder="Search for...">
+          <span class="input-group-btn">
+            <button class="btn btn-secondary" type="submit">ค้นหา</button>
+          </span>
+          <input type="hidden" name="action" value="product">
+        </div>
+      </div>
     </div>
   </form>
 
   <br>
 
   <?php
-  if(isset($_POST['searchb'])){
-    $sql_select_product = 'SELECT * FROM table_product WHERE product_id LIKE "%'.$_POST['search'].'%"OR product_name LIKE "%'.$_POST['search'].'%"';
+  if(isset($_GET['search'])){
+    $sql_select_product = 'SELECT * FROM table_product WHERE product_id LIKE "%'.$_GET['search'].'%"OR product_name LIKE "%'.$_GET['search'].'%"';
   }
   else{
     $sql_select_product = 'SELECT * FROM table_product ';
@@ -64,7 +68,7 @@
           <?php echo $select_product['product_id']; ?>
         </td>
         <td>
-          <textarea rows="4" class="edit <?php echo $select_product['product_id']; ?>" name="product_name" readonly><?php echo $select_product['product_name'] ?></textarea>
+          <textarea rows="4" class="edit text <?php echo $select_product['product_id']; ?>" name="product_name" readonly><?php echo $select_product['product_name'] ?></textarea>
         </td>
         <td>
           <input class="edit <?php echo $select_product['product_id']; ?>" type="text" name="product_price" value="<?php echo $select_product['product_price'] ?>" readonly>
@@ -78,7 +82,7 @@
           </a>
         </td>
         <td>
-          <textarea rows="4" class="edit <?php echo $select_product['product_id']; ?>" name="product_desc" readonly><?php echo $select_product['product_desc'] ?></textarea>
+          <textarea rows="4" class="edit text <?php echo $select_product['product_id']; ?>" name="product_desc" readonly><?php echo $select_product['product_desc'] ?></textarea>
         </td>
         <td>
           <input class="edit <?php echo $select_product['product_id']; ?>" type="text" name="product_number" value="<?php echo $select_product['product_number'] ?>" readonly>

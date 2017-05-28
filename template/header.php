@@ -32,6 +32,7 @@
         $(".buy."+id).css({"background-color":"rgb(171, 32, 32)","color":"#FFFFFF"});
         $(".buy1."+id).css({"background-color":"rgb(171, 32, 32)","color":"#FFFFFF"});
       document.getElementById("count").innerHTML =1+parseInt(document.getElementById("count").innerHTML);
+      document.getElementById("count1").innerHTML =1+parseInt(document.getElementById("count1").innerHTML);
       var str="cart.php";
       $.ajax({
         type: 'POST',
@@ -81,20 +82,20 @@
           <li><a href="cart.php"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"><span class="badge" id='count'>
             <?php
              if (!isset($_SESSION['cart'])||$_SESSION['cart']==0){
-
              echo "0";
              }
              else {
                echo count($_SESSION['cart']);
              }
             ?>
+            </span></span></a></li>
           <?php  if (!isset($_SESSION['username'])){ ?>
           <li><a href="member.php?action=login">Login</a></li>
           <li><a href="member.php?action=register">Register</a></li>
 
         <?php } else { ?>
 
-      </span></span></a></li>
+
 
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>

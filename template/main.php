@@ -161,6 +161,7 @@ border-bottom-color: #fff;
         <li class="active">
           <a href="#">HOME</a>
         </li>
+
         <?php if (isset($_SESSION['user_status'])&&$_SESSION['user_status'] == "1") { ?>
         <li><a href="backend/">Controller</a></li>
         <?php }else{ ?>
@@ -170,7 +171,20 @@ border-bottom-color: #fff;
           <li>
             <a href="#foot">Contact</a>
           </li>
+          <li><a href="cart.php">
+            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
+              <span class="badge" id='count1'>
+            <?php
+             if (!isset($_SESSION['cart'])||$_SESSION['cart']==0){
+             echo "0";
+             }
+             else {
+               echo count($_SESSION['cart']);
+             }
+            ?>
+            </span></span></a></li>
           <?php }if(!isset($_SESSION['username'])){ ?>
+
           <li>
             <a href="member.php?action=login">Login</a>
           </li>

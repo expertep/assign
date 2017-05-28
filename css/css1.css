@@ -4,13 +4,19 @@
     width:15%;
   }
 }
-.panel.panel-default.view{
-width:90%;
+.panel.panel-default{
+  margin: 10px auto;
 }
-#myChart{
-    width:100% !important;
+/*#myChart{
     height:300px !important;
 }
+#myChart1{
+    height:300px !important;
+}
+#myChart2{
+    height:300px !important;
+}*/
+
 .body{
 
   margin-left: 20%;
@@ -19,6 +25,9 @@ width:90%;
 }
 a{
   color: #e1ffff;
+}
+.table a{
+  color:rgb(31, 113, 189);
 }
 .table{
   border:none !important;
@@ -198,10 +207,16 @@ body {
   padding: 0px;
 }
 .edit{
-  width:7vw;
+  width:5vw;
   background:transparent;
-
   border:none;
+}
+.text{
+  width:13vw;
+
+}
+.textmember{
+  width:10vw;
 
 }
 .edit.img{
