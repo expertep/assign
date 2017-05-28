@@ -13,7 +13,7 @@
   $sql = 'SELECT * FROM table_order
    INNER JOIN table_bill ON table_order.order_id=table_bill.order_id
    INNER JOIN table_product ON table_product.product_id=table_bill.product_id
-  WHERE table_order.member_id = "'.$_SESSION['id'].'"';
+  WHERE table_order.member_id = "'.$_SESSION['id'].'" ORDER BY table_order.date DESC';
   $query = $connect->query($sql);
   $result = $connect->query($sql);
   while ($row = $result->fetch_assoc()){
@@ -31,7 +31,7 @@
         <?php echo $row['order_id']; }?>
       </td>
       <td>
-        <?php echo $row['product_name']; ?>
+        <a href="product.php?id=<?php echo $row['product_id']; ?>"><?php echo $row['product_name']; ?></a>
       </td>
       <td>
         <?php echo $row['product_price']; ?>
@@ -50,11 +50,15 @@
       <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
       <?php if($row['pay']!='s'){ ?>
       <form class="" action="checkout/paied.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="fileupload" class="form-control">
+        <label class="custom-file">
+          <input type="file" id="file" name="fileupload" class="custom-file-input">
+          <span class="custom-file-control"></span>
+        </label>
         <button type="submit" class="btn btn-default btn-sm">
           <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
           Upload
         </button>
+
         <input type="hidden" name="order_id" value="<?php echo $row['order_id']; ?>">
       </form>
       <?php }?>

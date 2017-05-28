@@ -102,9 +102,9 @@ border-bottom-color: #fff;
 }
 
 .row.search{
-  margin:100px auto;
-  width:50vw;
-
+  margin:15vh auto;
+  width:40vw;
+  max-width: 600px;
 }
 #custom-search-input {
         margin:0;
@@ -116,16 +116,17 @@ border-bottom-color: #fff;
     #custom-search-input .search-query {
         padding-right: 3px;
         padding-right: 4px \9;
-        padding-left: 3px;
-        padding-left: 4px \9;
+        padding-left: 10px;
+        padding-left: 10px \9;
         /* IE7-8 doesn't have border-radius, so don't indent the padding */
         background-color: rgba(255, 255, 255, 1);
         margin-bottom: 0;
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
         border-radius: 5px;
-        font-size: 100%;
+        font-size: 150%;
         height: 100%;
+        box-shadow: 0px 0px 5px black;
     }
 
     #custom-search-input button {
@@ -146,7 +147,7 @@ border-bottom-color: #fff;
     }
 
     .search-query:focus + button {
-        z-index: 3;
+        /*z-index: 3;*/
     }
 
 </style>
@@ -186,7 +187,7 @@ border-bottom-color: #fff;
 <form class="row search" action="listproduct.php" method="get" >
          <div id="custom-search-input">
               <div class="input-group">
-                  <input type="text" name="serachtext" class="search-query form-control" placeholder="Search">
+                  <input type="text" name="serachtext" class="search-query form-control" placeholder="ค้นหาสินค้าสิ">
                   <span class="input-group-btn">
                   <button class="btn btn-danger" name="serach" type="submit">
                     <span class=" glyphicon glyphicon-search"></span>

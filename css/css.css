@@ -28,9 +28,11 @@
   width: 70%;
   margin-left: auto;
   margin-right: auto;
+  transition: all 0.5s;
   /*position: absolute;
   top:130px;*/
 }
+
 .form-control.buy:hover{
   background-color:rgb(171, 32, 32);
   color:white;
@@ -41,6 +43,7 @@
 .col-xs-6.col-sm-4.col-md-3.product{
   height:300px;
   margin-bottom: 20px;
+
 }
 .col-xs-6.col-sm-4.col-md-3.product:hover .form-control.buy{
   display: block;
@@ -108,6 +111,15 @@ width:100%;
   background-color: rgb(33, 36, 46);
   margin-bottom: 0px;
   padding:0px;
+}
+.jumbotron.detailproduct{
+  margin:30px 20px;
+  max-width:1000px;
+  background: white;
+  padding:20px;
+}
+#detail{
+  text-align: left;
 }
 .promotion{
   float:left;

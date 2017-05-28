@@ -1,14 +1,70 @@
 <?php
-
 require_once 'config/config.php';
 include_once 'template/header.php';
-
-
+$state=1;
 ?>
 <style media="screen">
   .panel-title{display: inline;}
 </style>
-<div class="container">
+<script type="text/javascript">
+function checkname(){
+  if(($('#firstname').val())!=' '||($('#lastname').val())!=' '){
+    return true;
+  }
+  else{
+    alert("Please enter name");
+    return false;
+  }
+}
+</script>
+
+<div class="main">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">ผู้รับ</h3>
+    </div>
+    <div class="panel-body">
+      <?php if(isset($_POST['next'])){
+          if($_POST['next']=='nextsave'){
+            $_SESSION['firstname']=$_POST['firstname'];
+            $_SESSION['lastname']=$_POST['lastname'];
+            $sql='UPDATE table_member SET lastname="'.$_SESSION['lastname'].'",firstname="'.$_SESSION['firstname'].'" WHERE member_id='.$_SESSION['id'];
+            $connect->query($sql);
+            echo $sql;
+          }
+        $state=2;
+      }?>
+      <form class="" action="" method="post" onsubmit="return checkname();">
+        <?php if($_SESSION['firstname']==''){ ?>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">เพิ่มชื่อผู้รับ</h3>
+          </div>
+          <div class="panel-body">
+              <label for="firstname" class="col-2 col-form-label">ชื่อ</label>
+              <div class="col-5">
+                <input class="form-control" name="firstname" type="text" value="" id="firstname" required>
+              </div>
+              <label for="lastname" class="col-2 col-form-label">นามสกุล</label>
+              <div class="col-5">
+                <input class="form-control" name="lastname" type="text" value="" id="lastname" required>
+              </div>
+          </div>
+        </div>
+          <button type="submit" name="next" value="nextsave" class="btn btn-primary">next & save</button>
+        <?php }
+        else{?>
+          ชื่อจริง <?php echo $_SESSION['firstname'] ?><br>
+          นามสกุล <?php echo $_SESSION['lastname'] ?><br>
+          <button type="submit" name="next" value="next" class="btn btn-primary">next</button>
+        <?php } ?>
+
+      </form>
+    </div>
+  </div>
+
+
+    <?php if($state>=2){ ?>
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">เลือกที่อยู่จัดส่ง</h3>
@@ -25,11 +81,12 @@ include_once 'template/header.php';
         }
       }
       </script>
+
       <form class="" action="" method="post" onsubmit="return check();">
-<?php if($_SESSION['address']!=''){ ?>
+        <?php if($_SESSION['address']!=''){ ?>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <input type="radio" value="1" name='add' required/><h3 class="panel-title">ที่อยู่ 1</h3>
+            <input type="radio" value="1" name='add' required/><h3 class="panel-title"> ที่อยู่ 1</h3>
           </div>
           <div class="panel-body">
             <p><?php echo $_SESSION['address']; ?></p>
@@ -38,20 +95,26 @@ include_once 'template/header.php';
         <?php } ?>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <input type="radio" value="2" name='add' required <?php if($_SESSION['address']==''){echo "checked";} ?>/><h3 class="panel-title">ที่อยู่อื่นๆ</h3>
+            <input type="radio" value="2" name='add' required <?php if($_SESSION['address']==''){echo "checked";} ?>/><h3 class="panel-title"> ที่อยู่อื่นๆ</h3>
           </div>
           <div class="panel-body">
             <textarea class="form-control" name="address" id="address"></textarea>
           </div>
         </div>
-        <button type="submit" name="pay" value="pay">ตกลง</button>
+        <?php $str=($_SESSION['address']!='')?'Confirm':'Confirm & save'; ?>
+        <button type="submit" name="pay" value="<?php echo $str ?>" class="btn btn-primary"><?php echo $str ?></button>
       </form>
     </div>
   </div>
+  <?php } ?>
+
   <?php
     if(isset($_POST['pay'])){
-
-
+      if($_POST['pay']=='Confirm & save'){
+        $sql='UPDATE table_member SET address="'.$_POST['address'].'" WHERE member_id='.$_SESSION['id'];
+        $connect->query($sql);
+        $_SESSION['address']==$_POST['address'];
+      }
    ?>
    <div class="panel panel-default">
      <div class="panel-heading">
@@ -63,9 +126,12 @@ include_once 'template/header.php';
        <h3>ที่
        <?php
       if($_POST['add']==2){
+        $_SESSION['destination']=$_POST['address'];
         echo $_POST['address'];
       }
-       else echo $_SESSION['address'];
+       else {echo $_SESSION['address'];
+         $_SESSION['destination']=$_SESSION['address'];
+       }
        ?></h3>
 
        <table class="table">
@@ -97,9 +163,7 @@ include_once 'template/header.php';
              <td><?php echo $product_id_cart[$i]; ?></td>
              <td><?php echo $product_name_cart[$i]; ?></td>
              <td><?php echo $product_price_cart[$i]; ?></td>
-               <td>
-                 <input type="number" class="form-control" name="select_cartqty[]" value="<?php  echo $_SESSION['cartqty'][$i]; ?>" readonly>
-               </td>
+             <td><?php  echo $_SESSION['cartqty'][$i]; ?></td>
            </tr>
            <?php } ?>
            <tr>
@@ -109,11 +173,11 @@ include_once 'template/header.php';
          </table>
      </div>
      <form class="" action="checkout/pay.php" method="post">
-       <button type="submit" name="pay" value="pay">เสร็จสิ้น</button>
+       <button type="submit" class="btn btn-primary" name="pay" value="pay">เสร็จสิ้น</button>
+       <a href="cart.php"><button class="btn btn-primary" name="pay" value="pay">ยกเลิก</button></a>
      </form>
    </div>
- <?php }
-  ?>
+ <?php } ?>
 
 </div>
 <?php

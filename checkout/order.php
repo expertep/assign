@@ -66,7 +66,7 @@
                 <tr>
                   <td><?php echo $product_id_cart[$i]; ?></td>
                   <td><img class="cartimg" src="<?php echo $product_picture_cart[$i]; ?>"</td>
-                  <td><?php echo $product_name_cart[$i]; ?></td>
+                  <td><a href="product.php?id=<?php echo $product_id_cart[$i]; ?>"> <?php echo $product_name_cart[$i]; ?></a></td>
                   <td><?php echo $product_price_cart[$i]; ?></td>
                     <td>
                       <input type="number" class="form-control" name="select_cartqty[]" value="<?php  echo $_SESSION['cartqty'][$i]; ?>">

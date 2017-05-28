@@ -1,6 +1,3 @@
-<script type="text/javascript">
-  var bool;//บอกว่ากดedit หรือ delete
-</script>
   <h1>Order</h1>
   <form class="" action="#" method="POSt">
 
@@ -117,11 +114,19 @@ INNER JOIN table_member tmem ON torder.member_id=tmem.member_id WHERE pay="w"';
         </td>
 
         <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
-          <?php //$read='';if($row['amount']>$row['product_number']){$read='readonly';}?>
-          <button type="submit" name="sent" id="<?php echo $row['order_id']; ?>" class="btn btn-default btn-sm" aria-label="Left Align" onclick="bool='e';" <?php //echo $read; ?>>
+          <?php $read='';
+          if($row['amount']<$row['product_number']){//ล็อคconfirm
+            $read='$("#confirm'.$row['order_id'].'").removeAttr("disabled");';
+          }else $read='$("#confirm'.$row['order_id'].'").attr("disabled");';
+          ?>
+
+          <button type="submit" name="sent" id="confirm<?php echo $row['order_id']; ?>" class="btn btn-default btn-sm" aria-label="Left Align" disabled="disabled">
             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Comfirm
           </button>
-          <button type="submit" name="cancel" class="btn btn-default btn-sm" aria-label="Left Align" onclick="bool='d';">
+          <script type="text/javascript">
+            <?php echo $read; ?>
+          </script>
+          <button type="submit" name="cancel" class="btn btn-default btn-sm" aria-label="Left Align">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
           </button>
           <?php $rowspan[$row['order_id']]=0; }?>
