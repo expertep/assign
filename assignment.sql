@@ -18,7 +18,7 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`views`, `date`) VALUES
-(952, '2017-05-12'),
+(1157, '2017-05-12'),
 (100, '2017-04-12'),
 (75, '2017-03-12'),
 (34, '2017-02-12'),
@@ -71,7 +71,14 @@ INSERT INTO `table_bill` (`bill_id`, `order_id`, `product_id`, `amount`) VALUES
 (24, 26, 6, 1),
 (25, 26, 5, 1),
 (26, 27, 3, 1),
-(27, 28, 1, 300);
+(27, 28, 1, 300),
+(28, 29, 5, 1),
+(29, 0, 3, 2),
+(30, 0, 2, 1),
+(31, 0, 6, 1),
+(32, 0, 21, 1),
+(33, 0, 6, 1),
+(34, 31, 18, 1);
 
 -- --------------------------------------------------------
 
@@ -97,7 +104,7 @@ CREATE TABLE `table_member` (
 --
 
 INSERT INTO `table_member` (`member_id`, `username`, `password`, `email`, `firstname`, `lastname`, `date_register`, `status`, `picture`, `address`) VALUES
-(4, 'admin', '12345', 'admin@hotmail.com', 'ทดสอบ', 'ลอง', '2017-04-09 19:48:36', 1, '', 'มจพ.'),
+(4, 'admin', '12345', 'admin@hotmail.com', 'หมู', 'หมา', '2017-04-09 19:48:36', 1, '', 'มจพ.'),
 (5, 'test', '1234', 'ccgs1513@hotmail.com', NULL, NULL, '2017-04-09 20:48:09', 0, '', NULL),
 (6, 'ccgs', '1234', 'ccgs@gmail.com', NULL, NULL, '2017-04-23 16:21:27', 0, '', NULL),
 (7, 'expertep', '1234', 'esred@hotmail.com', 'กวิน', 'เรืองรักษ์ลิขิต', '2017-05-06 00:18:18', 0, '', 'มหาลัยเทคโนโลยี พระจอมเกล้าพระนครเหนือ');
@@ -113,31 +120,34 @@ CREATE TABLE `table_order` (
   `member_id` int(10) NOT NULL,
   `date` date NOT NULL,
   `pay` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'w',
-  `payslip` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL
+  `payslip` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `destination` varchar(100) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `table_order`
 --
 
-INSERT INTO `table_order` (`order_id`, `member_id`, `date`, `pay`, `payslip`) VALUES
-(3, 7, '2017-05-08', 's', 'order/slip/772102.PNG'),
-(5, 7, '2017-05-08', 's', ''),
-(7, 7, '2017-05-08', 'f', ''),
-(8, 7, '2017-05-09', 'f', ''),
-(10, 7, '2017-05-09', 'f', ''),
-(11, 7, '2017-05-09', 's', ''),
-(18, 4, '2017-05-15', 's', 'order/slip/8922424.PNG'),
-(19, 4, '2017-05-16', 's', NULL),
-(20, 4, '2017-04-19', 's', NULL),
-(21, 4, '2017-04-13', 's', NULL),
-(22, 4, '2017-03-15', 's', NULL),
-(23, 4, '2017-02-10', 's', NULL),
-(24, 4, '2017-01-19', 's', NULL),
-(25, 4, '2017-01-15', 's', NULL),
-(26, 4, '2017-05-26', 'f', NULL),
-(27, 4, '2017-05-26', 'w', NULL),
-(28, 4, '2017-05-26', 'w', NULL);
+INSERT INTO `table_order` (`order_id`, `member_id`, `date`, `pay`, `payslip`, `destination`) VALUES
+(3, 7, '2017-05-08', 's', 'order/slip/772102.PNG', ''),
+(5, 7, '2017-05-08', 's', '', ''),
+(7, 7, '2017-05-08', 'f', '', ''),
+(8, 7, '2017-05-09', 'f', '', ''),
+(10, 7, '2017-05-09', 'f', '', ''),
+(11, 7, '2017-05-09', 's', '', ''),
+(18, 4, '2017-05-15', 's', 'order/slip/8922424.PNG', ''),
+(19, 4, '2017-05-16', 's', NULL, ''),
+(20, 4, '2017-04-19', 's', NULL, ''),
+(21, 4, '2017-04-13', 's', NULL, ''),
+(22, 4, '2017-03-15', 's', NULL, ''),
+(23, 4, '2017-02-10', 's', NULL, ''),
+(24, 4, '2017-01-19', 's', NULL, ''),
+(25, 4, '2017-01-15', 's', NULL, ''),
+(26, 4, '2017-05-26', 'f', NULL, ''),
+(27, 4, '2017-05-26', 'w', NULL, ''),
+(28, 4, '2017-05-26', 'w', NULL, ''),
+(29, 4, '2017-05-29', 'w', NULL, ''),
+(31, 4, '2017-05-29', 's', NULL, 'บ้าน');
 
 -- --------------------------------------------------------
 
@@ -161,7 +171,7 @@ CREATE TABLE `table_product` (
 --
 
 INSERT INTO `table_product` (`product_id`, `product_name`, `product_price`, `product_category`, `product_type`, `product_picture`, `product_number`, `product_desc`) VALUES
-(1, 'LED Bulb 7-60W WW E27 PHILIPS', 119, 'ไฟฟ้า', 'หลอดไฟ', 'product/image/1.jpg', 21, 'หลอดแอลอีดี รุ่น Bulb\r\nขั้วเกลียวมาตรฐาน E27\r\nประหยัดไฟ 88% เมื่อเทียบกับหลอดไส้\r\nอายุการใช้งานยาวนาน 15000 ชั่วโมง\r\nเลือกใช้วัสดุที่ให้ความปลอดภัยต่อการใช้งาน และระบายความร้อนได้ดี\r\nให้แสงที่มีความนุ่มนวลสบายตา\r\nไม่กระพริบในระหว่างการใช้งาน\r\nไม่มีสารปรอท และรังสียูวี\r\nรูปทรงสวยงาม ทันสมัย\r\nได้รับมาตรฐาน มอก.1955-2551\r\nคำแนะนำ : ตรวจสอบขั้ว และระบบไฟก่อนติดตั้ง\r\nคำเตือน : ห้ามติดตั้งกับระบบไฟผิดขนาด'),
+(1, 'LED Bulb 60W WW E27 PHILIPS', 119, 'ไฟฟ้า', 'หลอดไฟ', 'product/image/1.jpg', 21, 'หลอดแอลอีดี รุ่น Bulb\r\nขั้วเกลียวมาตรฐาน E27\r\nประหยัดไฟ 88% เมื่อเทียบกับหลอดไส้\r\nอายุการใช้งานยาวนาน 15000 ชั่วโมง\r\nเลือกใช้วัสดุที่ให้ความปลอดภัยต่อการใช้งาน และระบายความร้อนได้ดี\r\nให้แสงที่มีความนุ่มนวลสบายตา\r\nไม่กระพริบในระหว่างการใช้งาน\r\nไม่มีสารปรอท และรังสียูวี\r\nรูปทรงสวยงาม ทันสมัย\r\nได้รับมาตรฐาน มอก.1955-2551\r\nคำแนะนำ : ตรวจสอบขั้ว และระบบไฟก่อนติดตั้ง\r\nคำเตือน : ห้ามติดตั้งกับระบบไฟผิดขนาด'),
 (2, 'SYLVANIA หลอดไฟ รุ่น Minilynx Mini Spiral 11W/865 E27', 129, 'ไฟฟ้า', 'หลอดไฟ', 'product/image/2.jpg', 19, 'มอบแสงสว่างอย่างมีประสิทธิภาพด้วย หลอดไฟ Sylvania รุ่น Minilynx Mini Spiral 11W/865 E27 - Daylight\r\nอีกหนึ่งสินค้าคุณภาพจาก Sylvania การันตีจากประเทศสหรัฐอเมริกา ด้วยวัสดุที่ได้มาตรฐานอุตสาหกรรม พร้อมอายุการใช้งานที่ยาวนาน 8000 ชั่วโมง\r\n- กำลังไฟ 11 วัตต์\r\n- วัสดุคุณภาพ ได้มาตรฐานการผลิต\r\n- ให้แสงสว่างชัดเจน โทนสีขาว\r\n- ปลอดภัย ใช้งานได้นาน 8000 ชั่วโมง\r\n- การันตีคุณภาพจาก Sylvania ประเทศสหรัฐอเมริกา'),
 (3, 'E27 LED Filament Light Bulb Lamp 4W Vintage Retro Edison Style Warm White 2700K', 215, 'ไฟฟ้า', 'หลอดไฟ', 'product/image/3.jpg', 30, 'E27 ST64 AC 110-120V\nEdison LED v\nintage antique Light Bulb'),
 (4, 'CATEC หลอดแบล็คไลท์ หลอดBlack Light หลอดไฟดักแมลง', 229, 'ไฟฟ้า', 'หลอดไฟ', 'product/image/4.jpg', 20, 'หลอด Black Light UVA\r\nใช้ในเครื่องดักยุง สำหรับล่อแมลง \r\nให้คลื่นแสงที่มีความยาวคลื่น380-400 นาโนเมตร \r\nประหยัดไฟ สามารถเปิดได้ตลอด 24 ชม.\r\nสามารถใช้ได้กับเครื่องดักยุงหลายยี่ห้อ\r\nขนาด 4W'),
@@ -178,7 +188,7 @@ INSERT INTO `table_product` (`product_id`, `product_name`, `product_price`, `pro
 (15, 'Rhino Brand คีมอเนกประสงค์ ปากแหลมปลายงอ แบบไม่มีฟัน 5 นิ้ว รุ่น 311', 109, 'เครื่องมือ', 'คีมอเนกประสงค์', 'product/image/15.jpg', 5, 'คีมปากปากแหลมปลายงอ แบบไม่มีฟัน 5  นิ้ว จาก Rhino Brand รุ่น 311  ผลิตจากเหล็กคาร์บอน (Carbon Steel)  เหมาะสำหรับใช้หนีบ จับชิ้นงานขนาดเล็ก หรือชิ้นงานที่ไม่สามารถจับด้วยมือเปล่า\r\nสามารถใช้จับ บิด หมุนชิ้นงาน  จับยึดชิ้นงานได้แน่น\r\nมีสปริง\r\nขนาด 5 นิ้ว\r\nจำนวน 1 อัน'),
 (16, 'สี่ทางฉาก สี่ทางตั้ง pvc ขนาด 1/2 นิ้ว', 10, 'ประปา', 'ข้อต่อ', 'product/image/16.jpg', 46, 'สี่ทางฉาก pvc ขนาด 1/2 นิ้ว (4 หุน) หนา 8.5 มิล ทำจากวัสดุเกรดดีมีคุณภาพ\r\nเหมาะสำหรับการต่อท่อประปาแยก การประกอบโรงเรือนผักสลัด ผักไฮโดรโปนิกส์ การประกอบคอกกั้นเด็ก'),
 (17, 'Stanley # 84-027 คีมตัดปากเฉียง คอสั้น ขนาด 6 นิ้ว  ', 279, 'เครื่องมือ', 'คีมตัด', 'product/image/17.jpg', 7, 'ปากคีมชุบแข็ง\r\nด้ามจับผลิตจากวัสดุผสมระหว่างพลาสติคและยาง\r\nจับกระชับมือ'),
-(18, 'กาวยาง PATTEX 650G', 220, 'ยึดติด-เทป-กาว', 'กาว', 'product/image/18.jpg', 5, '- กาวสารพัดประโยชน์ สำหรับปะติด\r\n- ติดแน่น ไม่หลุดล่อน\r\n- ซ่อมแซมไม้ หนัง โลหะ\r\n- เนื้อกาวมีความเหนียว\r\n- ให้แรงยึดสูง\r\n- วัสดุ : ยางพารา\r\n- น้ำหนัก 650 กรัม'),
+(18, 'กาวยาง PATTEX 650G', 220, 'ยึดติด-เทป-กาว', 'กาว', 'product/image/18.jpg', 4, '- กาวสารพัดประโยชน์ สำหรับปะติด\r\n- ติดแน่น ไม่หลุดล่อน\r\n- ซ่อมแซมไม้ หนัง โลหะ\r\n- เนื้อกาวมีความเหนียว\r\n- ให้แรงยึดสูง\r\n- วัสดุ : ยางพารา\r\n- น้ำหนัก 650 กรัม'),
 (19, 'INTER TAPE เทปกาวย่น ขนาด3/4นิ้ว ยาว10หลา', 30, 'ยึดติด-เทป-กาว', 'เทปกาว', 'product/image/19.jpg', 19, 'เทปย่น ตรา อินเตอร์เทป\r\nขนาด 3/4นิ้วx10หลา\r\nบรรจุ 5 ม้วนต่อ 1 แถว\r\n่1 แพ็ค มี 10 แถว(รวม 50 ม้วน)\r\nใช้สำหรับ\r\nอุปกรณ์การเรียน\r\nอุปกรณ์สำนักงาน\r\nมีความเหนียว แน่น ติดทนทาน\r\nเหมาะสำหรับ พ่นสีรถยนต์'),
 (20, 'SCG กาวตราช้างทาท่อ PVC ขนิดเข้มข้น ปริมาณ 125 กรัม', 120, 'ประปา', 'กาว', 'product/image/20.jpg', 12, 'SCG กาวตราช้างทาท่อ PVC ขนิดเข้มข้น ปริมาณ 125 กรัมสำหรับท่อพีวีซี และข้อต่อพีวีซี ชนิดเข็มข้นใช้กับท่อพีวีซีและข้อต่อนาดใหญ่ ได้ดีมาก\r\nรับแรงดันน้ำได้สูง มากกว่า น้ำยาประสานท่อพีวีซีแบบกระป๋อง\r\nแห้งเร็ว ซ่อมไว\r\n\r\nสินค้าคุณภาพ ยอดนิยม\r\nProfessional Products\r\n\r\nSCG Apply PVC pipe glue tubes concentration of 2 \r\n125 g tube .\r\n\r\nFor PVC pipe And PVC Type needle with thick PVC pipe and fittings\r\n the large very well.Water pressure has been higher than PVC bonding agents Cans .\r\nFast drying repair deviceTop quality productsProfessional Products'),
 (21, 'ข้องอฉาก pvc 4หุน 1/2', 4, 'ประปา', 'ข้อต่อ', 'product/image/21.jpg', 120, 'อุปกรณ์PVCชนิดไม่รับแรงดัน ( ท่อสำหรับใช้เป็นท่อน้ำทิ้ง)\r\n- ผลิตตามมาตรฐานนผลิตภัณฑ์อุตสาหกรรม เลขที่ มอก.17-2532 มีสีฟ้า\r\n- อุปกรณ์ท่อPVC ตราช้าง\r\n- สำหรับใช้เป็นท่อน้ำเสีย  ท่อระบายน้ำทิ้งและสิ่งปฎิกูล'),
@@ -220,7 +230,7 @@ ALTER TABLE `table_product`
 -- AUTO_INCREMENT for table `table_bill`
 --
 ALTER TABLE `table_bill`
-  MODIFY `bill_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `bill_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `table_member`
 --
@@ -230,7 +240,7 @@ ALTER TABLE `table_member`
 -- AUTO_INCREMENT for table `table_order`
 --
 ALTER TABLE `table_order`
-  MODIFY `order_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `order_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT for table `table_product`
 --
