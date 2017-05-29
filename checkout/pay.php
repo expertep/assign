@@ -4,12 +4,12 @@
   if(isset($_POST['pay'])){
 
 
-
-    $select=$connect->query('INSERT INTO table_order (member_id,date,destination)
-    VALUES ('.$_SESSION['id'].',CURRENT_TIMESTAMP,"'.$_SESSION['destination'].'")');
-    $select=$connect->query('select last_insert_id() as last_id from table_order');
-    $result=$select->fetch_assoc();
-    for ($i =0 ; $i<count($_SESSION['cart']);$i++){
+    $total = $_POST['total_price'];
+    $select = $connect->query('INSERT INTO table_order (member_id,date,destination,total)
+    VALUES ('.$_SESSION['id'].',CURRENT_TIMESTAMP,"'.$_SESSION['destination'].'","'.$total.'") ');
+    $select = $connect->query('select last_insert_id() as last_id from table_order');
+    $result = $select->fetch_assoc();
+    for ($i = 0 ; $i<count($_SESSION['cart']);$i++){
         $sql = "INSERT INTO table_bill (order_id,product_id,amount)
         VALUES (".$result['last_id'].",".$_SESSION['cart'][$i].",".$_SESSION['cartqty'][$i].")";
         if ($connect->query($sql) === TRUE) {

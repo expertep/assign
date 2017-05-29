@@ -183,6 +183,11 @@ if ($_POST){
 
        <button type="submit" class="btn btn-primary" name="pay" value="pay">เสร็จสิ้น</button>
        <a href="cart.php"><button class="btn btn-primary" name="pay" value="pay">ยกเลิก</button></a>
+       <?php
+       /*if (!empty($_SESSION['discount_percent'])){
+         $total_price = $total_price-($total_price*($_SESSION['discount_percent']/100));
+       }*/
+        ?>
        <input type="hidden" name="total_price" value="<?php echo $total_price; ?>">
      </form>
    </div>
