@@ -2,6 +2,44 @@
   <div class="jumbotron cart">
 
     <?php
+    if (isset($_POST['discoutCode'])){
+      $discount_code = $_POST['discoutCode'];
+
+
+        $sql_select_discount = 'SELECT * FROM table_discount WHERE Code_Discount = "'.$discount_code.'" ';
+        $query_select_discount = $connect->query($sql_select_discount);
+
+        if ($select_discount = $query_select_discount->fetch_assoc()){
+
+
+            $sql_select_member = 'SELECT * FROM table_detail_discount WHERE member_id = "'.$_SESSION['id'].'" AND ID_Discount = "'.$select_discount['ID_Discount'].'"  ';
+            $query_select_member = $connect->query($sql_select_member);
+            if ($select_member = $query_select_member->fetch_assoc()){
+              ?>
+              <div class="alert alert-danger" role="alert">ล้มเหลว! Account นี้เคยใช้งานโค๊ดนี้มาแล้ว!</div>
+            <?php
+            }
+            else {
+            /*  $using_discount = $discount_code;
+              $discount_percent = $select_discount['Percent_Discount'];
+              $discount_id = $select_discount['ID_Discount'];*/
+
+              $_SESSION['discount_percent'] = $select_discount['Percent_Discount'];
+              $_SESSION['discount_id'] = $select_discount['ID_Discount'];
+              $_SESSION['discount_code'] = $discount_code;
+              ?>
+              <div class="alert alert-success" role="alert">สำเร็จ! โค๊ดถูกต้องได้รับส่วนลด <?php echo $select_discount['Percent_Discount']."%"; ?></div>
+              <?php
+            }
+        }
+        else {
+          ?>
+          <div class="alert alert-danger" role="alert">โค๊ดส่วนลดไม่ถูกต้อง!</div>
+          <?php
+        }
+
+    }
+
     if (isset($_POST['product_id'])){
 
       if ($_SESSION['cart'][0] == ''){
@@ -89,7 +127,7 @@
                  ?>
                 <tr>
                   <th colspan="2">ราคาทั้งหมด</th>
-                  <th colspan="2"><?php echo $total_price; ?></th>
+                  <th colspan="2"><?php echo $total_price-($total_price*($_SESSION['discount_percent']/100)); ?></th>
                 </tr>
                 <tr>
                   <th colspan="4"><button>Update Cart</button></th>
@@ -99,12 +137,13 @@
           </div>
           <div>
             <form method="POST">
-            โค๊ดส่วนลด <input type="text" name="discoutCode" class="form-control" placeholder="โค๊ดส่วนลด">
+            โค๊ดส่วนลด <input type="text" name="discoutCode" class="form-control" placeholder="โค๊ดส่วนลด" <?php if(isset($_SESSION['discount_code'])){ ?> value="<?php echo $_SESSION['discount_code']; ?>"  <?php  } ?> required>
             <button class="btn btn-default"> Apply Coupon </button>
           </form>
 
           <form method="POST" action="checkout.php">
 
+            <input type="hidden" name="test" value="">
           <button class="btn btn-default"
           <?php  if (!isset($_SESSION['username'])){echo 'disabled';?>> กรุณาล็อคอินก่อน <?php }
                else {

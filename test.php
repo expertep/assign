@@ -22,16 +22,21 @@
   <?php
 session_start();
 
-$_SESSION['cart'][0]  = '1';
-$_SESSION['cart'][1]  = '1';
-$_SESSION['cart'][2]  = '2';
-$_SESSION['cart'][3]  = '1';
+if ($_POST){
 
-echo array_search('2',$_SESSION['cart']);
+ if (isset($_POST['test'])){
+   echo "asdasd";
+ }
+ else {
+   echo "maidai";
+ }
+}
 
    ?>
-
-
+   <form method="POST">
+   <input type="text" name="test" value="<?php echo $use; ?>">
+   <button>asdasd</button>
+ </form>
 
   </body>
 </html>

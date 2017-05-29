@@ -17,6 +17,12 @@ function checkname(){
   }
 }
 </script>
+<?php
+if ($_POST){
+
+
+
+ ?>
 
 <div class="main">
   <div class="panel panel-default">
@@ -56,6 +62,7 @@ function checkname(){
         else{?>
           ชื่อจริง <?php echo $_SESSION['firstname'] ?><br>
           นามสกุล <?php echo $_SESSION['lastname'] ?><br>
+
           <button type="submit" name="next" value="next" class="btn btn-primary">next</button>
         <?php } ?>
 
@@ -168,16 +175,23 @@ function checkname(){
            <?php } ?>
            <tr>
              <th colspan="2">ราคาทั้งหมด</th>
-             <th colspan="2"><?php echo $total_price; ?></th>
+             <th colspan="2"><?php echo $total_price-($total_price*($_SESSION['discount_percent']/100)); ?></th>
            </tr>
          </table>
      </div>
-     <form class="" action="checkout/pay.php" method="post">
+     <form class="" action="checkout/pay.php" method="POST">
+
        <button type="submit" class="btn btn-primary" name="pay" value="pay">เสร็จสิ้น</button>
        <a href="cart.php"><button class="btn btn-primary" name="pay" value="pay">ยกเลิก</button></a>
      </form>
    </div>
- <?php } ?>
+ <?php }
+
+    }
+    else {
+  header('location:member/..');
+
+}?>
 
 </div>
 <?php
