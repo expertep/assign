@@ -26,7 +26,8 @@ if (isset($_POST['discount'])){
 
 
 <form method="POST">
-โค๊ดส่วนลด : <input type="text" name="discount" class="form-control" placeholder"ระบุส่วนลด" required>
-
+โค๊ดส่วนลด : <input type="text" name="discount" class="form-control" placeholder="ระบุส่วนลด" required><br>
+เปอร์เซ็นลด : <input type="number" name="percent" class="form-control" placeholder="เปอร์เซ็นลด" required>
+ลดถึงวันที่ : <input type="date" name="date" class="form-control" placeholder="ลดถึงวันที่" required>
 <button class="form-control">เพิ่มโค๊ดส่วนลด</button>
 </form>
