@@ -58,6 +58,9 @@ INNER JOIN table_member tmem ON torder.member_id=tmem.member_id WHERE pay="s"OR 
       สถานะ
     </th>
     <th>
+      total
+    </th>
+    <th>
       slip
     </th>
     <!--<th>
@@ -103,6 +106,9 @@ INNER JOIN table_member tmem ON torder.member_id=tmem.member_id WHERE pay="s"OR 
         <?php if($rowspan[$row['order_id']]!=0){ ?>
         <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
           <?php echo $row['pay']; ?>
+        </td>
+        <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
+            <?php echo $row['total']; ?>
         </td>
 
         <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>

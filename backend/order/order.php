@@ -62,6 +62,9 @@ INNER JOIN table_member tmem ON torder.member_id=tmem.member_id WHERE pay="w"';
       address
     </th>
     <th>
+      total
+    </th>
+    <th>
      Action
    </th>
   </tr>
@@ -117,7 +120,9 @@ INNER JOIN table_member tmem ON torder.member_id=tmem.member_id WHERE pay="w"';
         <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
             <?php echo $row['address']; ?>
         </td>
-
+        <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
+            <?php echo $row['total']; ?>
+        </td>
         <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
           <?php $read='';
           if($row['amount']<$row['product_number']){//ล็อคconfirm

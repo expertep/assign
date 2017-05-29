@@ -18,7 +18,7 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`views`, `date`) VALUES
-(1157, '2017-05-12'),
+(1209, '2017-05-12'),
 (100, '2017-04-12'),
 (75, '2017-03-12'),
 (34, '2017-02-12'),
@@ -78,7 +78,11 @@ INSERT INTO `table_bill` (`bill_id`, `order_id`, `product_id`, `amount`) VALUES
 (31, 0, 6, 1),
 (32, 0, 21, 1),
 (33, 0, 6, 1),
-(34, 31, 18, 1);
+(34, 31, 18, 1),
+(35, 32, 3, 1),
+(36, 32, 8, 1),
+(37, 0, 7, 1),
+(38, 33, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -121,33 +125,36 @@ CREATE TABLE `table_order` (
   `date` date NOT NULL,
   `pay` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'w',
   `payslip` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `destination` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+  `destination` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `total` int(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `table_order`
 --
 
-INSERT INTO `table_order` (`order_id`, `member_id`, `date`, `pay`, `payslip`, `destination`) VALUES
-(3, 7, '2017-05-08', 's', 'order/slip/772102.PNG', ''),
-(5, 7, '2017-05-08', 's', '', ''),
-(7, 7, '2017-05-08', 'f', '', ''),
-(8, 7, '2017-05-09', 'f', '', ''),
-(10, 7, '2017-05-09', 'f', '', ''),
-(11, 7, '2017-05-09', 's', '', ''),
-(18, 4, '2017-05-15', 's', 'order/slip/8922424.PNG', ''),
-(19, 4, '2017-05-16', 's', NULL, ''),
-(20, 4, '2017-04-19', 's', NULL, ''),
-(21, 4, '2017-04-13', 's', NULL, ''),
-(22, 4, '2017-03-15', 's', NULL, ''),
-(23, 4, '2017-02-10', 's', NULL, ''),
-(24, 4, '2017-01-19', 's', NULL, ''),
-(25, 4, '2017-01-15', 's', NULL, ''),
-(26, 4, '2017-05-26', 'f', NULL, ''),
-(27, 4, '2017-05-26', 'w', NULL, ''),
-(28, 4, '2017-05-26', 'w', NULL, ''),
-(29, 4, '2017-05-29', 'w', NULL, ''),
-(31, 4, '2017-05-29', 's', NULL, 'บ้าน');
+INSERT INTO `table_order` (`order_id`, `member_id`, `date`, `pay`, `payslip`, `destination`, `total`) VALUES
+(3, 7, '2017-05-08', 's', 'order/slip/772102.PNG', '', 0),
+(5, 7, '2017-05-08', 's', '', '', 0),
+(7, 7, '2017-05-08', 'f', '', '', 0),
+(8, 7, '2017-05-09', 'f', '', '', 0),
+(10, 7, '2017-05-09', 'f', '', '', 0),
+(11, 7, '2017-05-09', 's', '', '', 0),
+(18, 4, '2017-05-15', 's', 'order/slip/8922424.PNG', '', 0),
+(19, 4, '2017-05-16', 's', NULL, '', 0),
+(20, 4, '2017-04-19', 's', NULL, '', 0),
+(21, 4, '2017-04-13', 's', NULL, '', 0),
+(22, 4, '2017-03-15', 's', NULL, '', 0),
+(23, 4, '2017-02-10', 's', NULL, '', 0),
+(24, 4, '2017-01-19', 's', NULL, '', 0),
+(25, 4, '2017-01-15', 's', NULL, '', 0),
+(26, 4, '2017-05-26', 'f', NULL, '', 0),
+(27, 4, '2017-05-26', 'w', NULL, '', 0),
+(28, 4, '2017-05-26', 'w', NULL, '', 0),
+(29, 4, '2017-05-29', 'w', NULL, '', 0),
+(31, 4, '2017-05-29', 's', NULL, 'บ้าน', 0),
+(32, 4, '2017-05-29', 'w', NULL, 'มจพ.', 0),
+(33, 4, '2017-05-30', 'w', NULL, 'มจพ.', 119);
 
 -- --------------------------------------------------------
 
@@ -192,7 +199,10 @@ INSERT INTO `table_product` (`product_id`, `product_name`, `product_price`, `pro
 (19, 'INTER TAPE เทปกาวย่น ขนาด3/4นิ้ว ยาว10หลา', 30, 'ยึดติด-เทป-กาว', 'เทปกาว', 'product/image/19.jpg', 19, 'เทปย่น ตรา อินเตอร์เทป\r\nขนาด 3/4นิ้วx10หลา\r\nบรรจุ 5 ม้วนต่อ 1 แถว\r\n่1 แพ็ค มี 10 แถว(รวม 50 ม้วน)\r\nใช้สำหรับ\r\nอุปกรณ์การเรียน\r\nอุปกรณ์สำนักงาน\r\nมีความเหนียว แน่น ติดทนทาน\r\nเหมาะสำหรับ พ่นสีรถยนต์'),
 (20, 'SCG กาวตราช้างทาท่อ PVC ขนิดเข้มข้น ปริมาณ 125 กรัม', 120, 'ประปา', 'กาว', 'product/image/20.jpg', 12, 'SCG กาวตราช้างทาท่อ PVC ขนิดเข้มข้น ปริมาณ 125 กรัมสำหรับท่อพีวีซี และข้อต่อพีวีซี ชนิดเข็มข้นใช้กับท่อพีวีซีและข้อต่อนาดใหญ่ ได้ดีมาก\r\nรับแรงดันน้ำได้สูง มากกว่า น้ำยาประสานท่อพีวีซีแบบกระป๋อง\r\nแห้งเร็ว ซ่อมไว\r\n\r\nสินค้าคุณภาพ ยอดนิยม\r\nProfessional Products\r\n\r\nSCG Apply PVC pipe glue tubes concentration of 2 \r\n125 g tube .\r\n\r\nFor PVC pipe And PVC Type needle with thick PVC pipe and fittings\r\n the large very well.Water pressure has been higher than PVC bonding agents Cans .\r\nFast drying repair deviceTop quality productsProfessional Products'),
 (21, 'ข้องอฉาก pvc 4หุน 1/2', 4, 'ประปา', 'ข้อต่อ', 'product/image/21.jpg', 120, 'อุปกรณ์PVCชนิดไม่รับแรงดัน ( ท่อสำหรับใช้เป็นท่อน้ำทิ้ง)\r\n- ผลิตตามมาตรฐานนผลิตภัณฑ์อุตสาหกรรม เลขที่ มอก.17-2532 มีสีฟ้า\r\n- อุปกรณ์ท่อPVC ตราช้าง\r\n- สำหรับใช้เป็นท่อน้ำเสีย  ท่อระบายน้ำทิ้งและสิ่งปฎิกูล'),
-(22, 'BCC สายไฟ VAF-GRD 2*2.5/2.5 SQ.MM สีขาว (100 เมตร) ', 3000, 'ไฟฟ้า', 'สายไฟ', 'product/image/22.jpg', 7, 'สายไฟ vaf-grd 2x2.5/2.5 mm2 แบบมีกราวด์สายแบน\r\nสายไฟฟ้าสำหรับงานเดินลอย ตีกิ๊บ ตัวนำผลิตจากทองแดงบริสุทธิ์ สามารถนำกระแสไฟฟ้าได้ดี และมีอายุการใช้งานยาวนาน');
+(22, 'BCC สายไฟ VAF-GRD 2*2.5/2.5 SQ.MM สีขาว (100 เมตร) ', 3000, 'ไฟฟ้า', 'สายไฟ', 'product/image/22.jpg', 7, 'สายไฟ vaf-grd 2x2.5/2.5 mm2 แบบมีกราวด์สายแบน\r\nสายไฟฟ้าสำหรับงานเดินลอย ตีกิ๊บ ตัวนำผลิตจากทองแดงบริสุทธิ์ สามารถนำกระแสไฟฟ้าได้ดี และมีอายุการใช้งานยาวนาน'),
+(26, 'ไขควงตอก แกนทะลุ 6 นิ้ว', 60, 'เครื่องมือ', 'ไขควง', 'product/image/660675Champion_Screwdriver_1800F_Slot.jpg', 20, 'ชุดไขควงตอกขนาด 4นิ้ว,6นิ้ว,10นิ้ว,\r\nปากแบน-ปากแฉก อย่างละ 1 ชิ้น,\r\nแกนไขควงยาวทะลุถึงปลายด้าม,\r\nค้อนตอกท้ายด้ามเพิ่มแรงได้,\r\nผลิตจากเหล็ก High Carbon C-50\r\nปลายไขควงมีแม่เหล็ก,\r\nจับกระชับมือ,  \r\nมาพร้อมชุดไขควงหุ้มฉนวน ขนาด 2-1/2นิ้ว แบน-แฉก'),
+(27, 'STANLEY ไขควงเอนกประสงค์ 8ตัวชุด รุ่น STHT92004-8', 690, 'เครื่องมือ', 'ไขควง', 'product/image/389771stanley-aikhkhwnge-nkprasngkh-8tawchud-run-stht92004-8-6578-8314527-26e7189b5967d0736e5874eec9f10a71-product.jpg', 20, 'ไขควงแกนกลม ผลิตจากเหล็กโครมวานาเดี่ยม CR-V\r\nด้ามยาง จับกระชับมือ ตามหลักสรีระศาสตร์\r\nปากเป็นแม่เหล็ก สำหรับยึด/ดูดน็อต สกรู สดวกสำหรับการใช้งาน'),
+(28, 'ก๊อกน้ำดื่ม-น้ำใช้สแตนเลส คอสวิงแบบตั้งพื้น พร้อมสต็อปวาล์ว 3 ทาง', 500, 'ประปา', 'ก๊อก', 'product/image/999725vrh-3-duo-1419-746487-1-catalog_233.jpg', 5, 'ผลิตจาก สแตนเลสเกรด 304\r\nพื้นผิวไม่หลุกลอก\r\nมีฟิลเตอร์ประหยัดน้ำ\r\n15" x 5" x 5"');
 
 --
 -- Indexes for dumped tables
@@ -230,7 +240,7 @@ ALTER TABLE `table_product`
 -- AUTO_INCREMENT for table `table_bill`
 --
 ALTER TABLE `table_bill`
-  MODIFY `bill_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `bill_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `table_member`
 --
@@ -240,12 +250,12 @@ ALTER TABLE `table_member`
 -- AUTO_INCREMENT for table `table_order`
 --
 ALTER TABLE `table_order`
-  MODIFY `order_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `order_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `table_product`
 --
 ALTER TABLE `table_product`
-  MODIFY `product_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `product_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
