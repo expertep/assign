@@ -7,15 +7,12 @@ include_once 'template/header.php';
 ?>
 <div class="body">
   <?php
-
+  if($_SESSION['user_status'] == '1'){
   if(!isset($_GET['action'])){
     include_once 'template/dashboard.php';
   }
   if (isset($_GET['action'])){
-
-
     if($_GET['action'] == "product"){
-
      include_once 'product/product.php';
     }
     else if ($_GET['action'] == "insertproduct"){
@@ -48,6 +45,10 @@ include_once 'template/header.php';
       exit;
     }
   }
+}
+else {
+  header('Location:../');
+}
   ?>
 </div>
   <?php
