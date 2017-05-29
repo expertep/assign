@@ -16,8 +16,8 @@ if($connect->connect_errno){
   $result = $connect->query($sql);
  ?>
  ประเภท
- <select class="form-control" name="product_type">
-   <option value="" id='text2'></option>
+ <select class="form-control" name="product_type" required>
+   <option value="" id='text2'>please select</option>
      <?php
          while ($row = $result->fetch_assoc()) {
       ?>

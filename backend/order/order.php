@@ -125,13 +125,13 @@ INNER JOIN table_member tmem ON torder.member_id=tmem.member_id WHERE pay="w"';
           }else $read='$("#confirm'.$row['order_id'].'").attr("disabled");';
           ?>
 
-          <button type="submit" name="sent" id="confirm<?php echo $row['order_id']; ?>" class="btn btn-default btn-sm" aria-label="Left Align" disabled="disabled">
+          <button type="submit" name="sent" id="confirm<?php echo $row['order_id']; ?>" class="btn btn-success btn-sm" aria-label="Left Align" disabled="disabled">
             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Comfirm
           </button>
           <script type="text/javascript">
             <?php echo $read; ?>
           </script>
-          <button type="submit" name="cancel" class="btn btn-default btn-sm" aria-label="Left Align">
+          <button type="submit" name="cancel" class="btn btn-danger btn-sm" aria-label="Left Align">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
           </button>
           <?php $rowspan[$row['order_id']]=0; }?>

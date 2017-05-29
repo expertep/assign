@@ -75,7 +75,7 @@ function typeselect() {
       <input type="text" id='cat' class="form-control" placeholder="หมวดหมู่">
     </div>
     <div class="col-xs-3 col-md-3">หมวดหมู่
-    <select class="form-control" id='catselect' name="product_category" onchange="typeselect()">
+    <select class="form-control" id='catselect' name="product_category" onchange="typeselect()" required>
       <option value="" id='text1'>dsa d</option>
         <?php $sql='SELECT product_category FROM table_product GROUP BY product_category';
             $result = $connect->query($sql);
@@ -96,9 +96,10 @@ function typeselect() {
               <div class="col-xs-6 col-md-6">สินค้าลดราคา <input type="text" name="sale_product" class="form-control" ></div>
 
                 <div class="col-xs-12 col-md-12">คำอธิบาย <textarea class="form-control" name="product_desc"></textarea></div><br>
-                <br>
-            <div class="col-xs-4 col-md-4">  <button class="form-control" >เพิ่มสินค้า!</button> </div>
-
+                <br><br>
+                <center>
+            <div class="col-xs-12">  <button class="btn btn-primary">เพิ่มสินค้า!</button> </div>
+                </center>
   </div>
 </form>
 <?php  //echo str_replace("\"","\"\"","ผลิตจาก สแตนเลสเกรด 304 พื้นผิวไม่หลุกลอก มีฟิลเตอร์ประหยัดน้ำ 15" x 5" x 5""); ?>
