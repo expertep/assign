@@ -33,6 +33,7 @@
         $(".buy1."+id).css({"background-color":"rgb(171, 32, 32)","color":"#FFFFFF"});
       document.getElementById("count").innerHTML =1+parseInt(document.getElementById("count").innerHTML);
       document.getElementById("count1").innerHTML =1+parseInt(document.getElementById("count1").innerHTML);
+
       var str="cart.php";
       $.ajax({
         type: 'POST',
@@ -69,7 +70,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="active"><a href="member/.."><span class="glyphicon glyphicon-home" aria-hidden="true"></span> HOME<span class="sr-only">(current)</span></a></li>
-            <li><a href="#foot">AboutUs</a></li>
+            <!--<li><a href="#foot">AboutUs</a></li>-->
           </ul>
       <form action="listproduct.php" method="get" class="navbar-form navbar-left">
         <div class="form-group">

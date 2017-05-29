@@ -171,6 +171,8 @@ border-bottom-color: #fff;
           <li>
             <a href="#foot">Contact</a>
           </li>
+
+          <?php }?>
           <li><a href="cart.php">
             <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
               <span class="badge" id='count1'>
@@ -183,7 +185,7 @@ border-bottom-color: #fff;
              }
             ?>
             </span></span></a></li>
-          <?php }if(!isset($_SESSION['username'])){ ?>
+          <?php if(!isset($_SESSION['username'])){ ?>
 
           <li>
             <a href="member.php?action=login">Login</a>
