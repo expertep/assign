@@ -215,7 +215,7 @@ border-bottom-color: #fff;
 
   </div>
 <center>
-  <div class="jumbotron product">
+  <!--<div class="jumbotron product">
     <div class="container">
       <h2>promotion</h2>
       <div class="promotion" style="background-image:url(backend/promotion/images.jpg)">
@@ -226,7 +226,7 @@ border-bottom-color: #fff;
       </div>
 
     </div>
-  </div>
+  </div>-->
 
 <div class="jumbotron product" >
       <div  id="list">

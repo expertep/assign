@@ -2,6 +2,7 @@
   <div class="jumbotron cart">
 
     <?php
+    $_SESSION['discount_percent'] =0;
     if (isset($_POST['discoutCode'])){
       $discount_code = $_POST['discoutCode'];
 
