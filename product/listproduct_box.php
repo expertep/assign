@@ -1,5 +1,6 @@
 <?php
-//include_once "../config/config.php";
+if(!isset($connect))
+  include_once "../config/config.php";
 //require_once '../config/config.php';
 $item=10;
 ?>

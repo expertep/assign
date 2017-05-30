@@ -59,7 +59,7 @@ w=wait s=sent f=fail
       slip
     </th>
     <th>
-      address
+      destination
     </th>
     <th>
       total
@@ -118,7 +118,7 @@ w=wait s=sent f=fail
           <?php } ?>
         </td>
         <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
-            <?php echo $row['address']; ?>
+            <?php echo $row['destination']; ?>
         </td>
         <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
             <?php echo $row['total']; ?>

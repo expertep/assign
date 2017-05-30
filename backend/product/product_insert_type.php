@@ -1,13 +1,5 @@
 <?php
-$db_host = "localhost";
-$db_username = "root";
-$db_password = "a0879804209";
-$db_name = "assignment";
-$connect = new mysqli($db_host,$db_username,$db_password,$db_name);
-$connect->query('SET names utf8');
-if($connect->connect_errno){
-  $connect->connect_error;
-}
+require_once '../config/config.php';
   $cat='';
   if(isset($_POST['cat'])){
     $cat=$_POST['cat'];

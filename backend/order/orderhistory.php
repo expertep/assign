@@ -58,6 +58,9 @@ w=wait s=sent f=fail
       สถานะ
     </th>
     <th>
+      ปลายทาง
+    </th>
+    <th>
       total
     </th>
     <th>
@@ -106,6 +109,9 @@ w=wait s=sent f=fail
         <?php if($rowspan[$row['order_id']]!=0){ ?>
         <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
           <?php echo $row['pay']; ?>
+        </td>
+        <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
+          <?php echo $row['destination']; ?>
         </td>
         <td rowspan=<?php echo '"'.$rowspan[$row['order_id']].'"'; ?>>
             <?php echo $row['total']; ?>

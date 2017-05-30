@@ -7,9 +7,11 @@ $(document).ready(function(){//แถบหาย
 $(document).scroll(function(){
   var opacity=($(".body").scrollTop()-300)/200;
   var str="none";
+  var str1="block";
         if(opacity>0){str="block";}
+        if(opacity>1){str1="none";}
         $("nav").css({"opacity":opacity,"display":str});
-        $(".menucover").css({"opacity":1-opacity});
+        $(".menucover").css({"opacity":1-opacity,"display":str1});
 });
 
 </script>

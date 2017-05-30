@@ -46,14 +46,14 @@ Passwsord : <input type="password" name="password" placeholder="Password" class=
 <input type="submit" name="checklogin" class="btn btn-default" value="ลงชื่อเข้าใช้">
         </form>
        </div>
-       <div class="col-xs-6 .col-sm-2" style="border-left:2px solid black; ">
+       <!--<div class="col-xs-6 .col-sm-2" style="border-left:2px solid black; ">
          <br><br>
          <form class="" action="" method="post">
            <img src="image/facebook.png" style="width:150px; height:130px;">
            <a href="member/loginfacebook.html"><button type="button" name="flogin">login with facebook</button></a>
          </form>
 
-         </div>
+         </div>-->
 </div>
 </div>
 </div>

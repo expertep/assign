@@ -20,8 +20,6 @@ function checkname(){
 <?php
 if ($_POST){
 
-
-
  ?>
 
 <div class="main">
@@ -173,9 +171,9 @@ if ($_POST){
              <td><?php  echo $_SESSION['cartqty'][$i]; ?></td>
            </tr>
            <?php } ?>
-           <tr>
+           <tr><?php $total_price=$total_price-($total_price*($_SESSION['discount_percent']/100)); ?>
              <th colspan="2">ราคาทั้งหมด</th>
-             <th colspan="2"><?php echo $total_price-($total_price*($_SESSION['discount_percent']/100)); ?></th>
+             <th colspan="2"><?php echo $total_price; ?></th>
            </tr>
          </table>
      </div>

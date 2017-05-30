@@ -18,7 +18,7 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`views`, `date`) VALUES
-(1209, '2017-05-12'),
+(1259, '2017-05-12'),
 (100, '2017-04-12'),
 (75, '2017-03-12'),
 (34, '2017-02-12'),
@@ -73,16 +73,55 @@ INSERT INTO `table_bill` (`bill_id`, `order_id`, `product_id`, `amount`) VALUES
 (26, 27, 3, 1),
 (27, 28, 1, 300),
 (28, 29, 5, 1),
-(29, 0, 3, 2),
-(30, 0, 2, 1),
-(31, 0, 6, 1),
-(32, 0, 21, 1),
-(33, 0, 6, 1),
 (34, 31, 18, 1),
 (35, 32, 3, 1),
 (36, 32, 8, 1),
-(37, 0, 7, 1),
-(38, 33, 1, 1);
+(38, 33, 1, 1),
+(39, 34, 10, 1),
+(40, 34, 6, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `table_detail_discount`
+--
+
+CREATE TABLE `table_detail_discount` (
+  `Detail_ID_Discount` int(10) NOT NULL,
+  `ID_Discount` int(3) NOT NULL,
+  `member_id` int(10) NOT NULL,
+  `Code_Discount` varchar(50) CHARACTER SET utf8mb4 NOT NULL,
+  `Date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `table_detail_discount`
+--
+
+INSERT INTO `table_detail_discount` (`Detail_ID_Discount`, `ID_Discount`, `member_id`, `Code_Discount`, `Date`) VALUES
+(2, 1, 4, '10YEAR', '2017-05-29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `table_discount`
+--
+
+CREATE TABLE `table_discount` (
+  `ID_Discount` int(3) NOT NULL,
+  `Code_Discount` varchar(50) CHARACTER SET utf8mb4 NOT NULL,
+  `Percent_Discount` int(5) NOT NULL,
+  `Start_Discount` date NOT NULL,
+  `End_Discount` date NOT NULL,
+  `Status_Discount` varchar(2) CHARACTER SET utf8mb4 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `table_discount`
+--
+
+INSERT INTO `table_discount` (`ID_Discount`, `Code_Discount`, `Percent_Discount`, `Start_Discount`, `End_Discount`, `Status_Discount`) VALUES
+(1, '10YEAR', 5, '2017-05-29', '1995-02-17', '1');
 
 -- --------------------------------------------------------
 
@@ -134,27 +173,28 @@ CREATE TABLE `table_order` (
 --
 
 INSERT INTO `table_order` (`order_id`, `member_id`, `date`, `pay`, `payslip`, `destination`, `total`) VALUES
-(3, 7, '2017-05-08', 's', 'order/slip/772102.PNG', '', 0),
-(5, 7, '2017-05-08', 's', '', '', 0),
-(7, 7, '2017-05-08', 'f', '', '', 0),
-(8, 7, '2017-05-09', 'f', '', '', 0),
-(10, 7, '2017-05-09', 'f', '', '', 0),
-(11, 7, '2017-05-09', 's', '', '', 0),
-(18, 4, '2017-05-15', 's', 'order/slip/8922424.PNG', '', 0),
-(19, 4, '2017-05-16', 's', NULL, '', 0),
-(20, 4, '2017-04-19', 's', NULL, '', 0),
-(21, 4, '2017-04-13', 's', NULL, '', 0),
-(22, 4, '2017-03-15', 's', NULL, '', 0),
-(23, 4, '2017-02-10', 's', NULL, '', 0),
-(24, 4, '2017-01-19', 's', NULL, '', 0),
-(25, 4, '2017-01-15', 's', NULL, '', 0),
-(26, 4, '2017-05-26', 'f', NULL, '', 0),
-(27, 4, '2017-05-26', 'w', NULL, '', 0),
-(28, 4, '2017-05-26', 'w', NULL, '', 0),
-(29, 4, '2017-05-29', 'w', NULL, '', 0),
-(31, 4, '2017-05-29', 's', NULL, 'บ้าน', 0),
-(32, 4, '2017-05-29', 'w', NULL, 'มจพ.', 0),
-(33, 4, '2017-05-30', 'w', NULL, 'มจพ.', 119);
+(3, 7, '2017-05-08', 's', 'order/slip/772102.PNG', 'บ้าน', 70),
+(5, 7, '2017-05-08', 's', '', 'พระจอมเกล้าพระนครเหนือ', 289),
+(7, 7, '2017-05-08', 'f', '', 'บ้าน', 289),
+(8, 7, '2017-05-09', 'f', '', 'บ้าน', 20),
+(10, 7, '2017-05-09', 'f', '', 'บ้าน', 279),
+(11, 7, '2017-05-09', 's', '', 'บ้าน', 279),
+(18, 4, '2017-05-15', 's', 'order/slip/8922424.PNG', 'บ้าน', 150),
+(19, 4, '2017-05-16', 's', NULL, 'บ้าน', 485),
+(20, 4, '2017-04-19', 's', NULL, 'บ้าน', 860),
+(21, 4, '2017-04-13', 's', NULL, 'พระจอมเกล้าพระนครเหนือ', 215),
+(22, 4, '2017-03-15', 's', NULL, 'บ้าน', 119),
+(23, 4, '2017-02-10', 's', NULL, 'บ้าน', 476),
+(24, 4, '2017-01-19', 's', NULL, 'บ้าน', 129),
+(25, 4, '2017-01-15', 's', NULL, 'บ้าน', 119),
+(26, 4, '2017-05-26', 'f', NULL, 'พระจอมเกล้าพระนครเหนือ', 485),
+(27, 4, '2017-05-26', 'w', NULL, 'บ้าน', 215),
+(28, 4, '2017-05-26', 'w', NULL, 'บ้าน', 35700),
+(29, 4, '2017-05-29', 'w', NULL, 'พระจอมเกล้าพระนครเหนือ', 395),
+(31, 4, '2017-05-29', 's', NULL, 'บ้าน', 220),
+(32, 4, '2017-05-29', 'w', NULL, 'บ้าน', 565),
+(33, 4, '2017-05-30', 'w', NULL, 'พระจอมเกล้าพระนครเหนือ', 119),
+(34, 4, '2017-05-31', 'w', NULL, 'บ้าน', 830);
 
 -- --------------------------------------------------------
 
@@ -215,6 +255,18 @@ ALTER TABLE `table_bill`
   ADD PRIMARY KEY (`bill_id`);
 
 --
+-- Indexes for table `table_detail_discount`
+--
+ALTER TABLE `table_detail_discount`
+  ADD PRIMARY KEY (`Detail_ID_Discount`);
+
+--
+-- Indexes for table `table_discount`
+--
+ALTER TABLE `table_discount`
+  ADD PRIMARY KEY (`ID_Discount`);
+
+--
 -- Indexes for table `table_member`
 --
 ALTER TABLE `table_member`
@@ -240,7 +292,17 @@ ALTER TABLE `table_product`
 -- AUTO_INCREMENT for table `table_bill`
 --
 ALTER TABLE `table_bill`
-  MODIFY `bill_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `bill_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+--
+-- AUTO_INCREMENT for table `table_detail_discount`
+--
+ALTER TABLE `table_detail_discount`
+  MODIFY `Detail_ID_Discount` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `table_discount`
+--
+ALTER TABLE `table_discount`
+  MODIFY `ID_Discount` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `table_member`
 --
@@ -250,7 +312,7 @@ ALTER TABLE `table_member`
 -- AUTO_INCREMENT for table `table_order`
 --
 ALTER TABLE `table_order`
-  MODIFY `order_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `order_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `table_product`
 --
