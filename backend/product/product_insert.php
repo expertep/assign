@@ -95,11 +95,11 @@ function typeselect() {
             <div class="col-xs-6 col-md-6">จำนวนสินค้า <input type="text" name="product_number" class="form-control"  required></div>
               <div class="col-xs-6 col-md-6">สินค้าลดราคา <input type="text" name="sale_product" class="form-control" ></div>
 
-                <div class="col-xs-12 col-md-12">คำอธิบาย <textarea class="form-control" name="product_desc"></textarea></div><br>
-                <br><br>
-                <center>
-            <div class="col-xs-12">  <button class="btn btn-primary">เพิ่มสินค้า!</button> </div>
+                <div class="col-xs-12 col-md-12">คำอธิบาย <textarea class="form-control" name="product_desc"></textarea></div>
+                <div class="col-xs-12 col-md-12 btn-sm"><center>
+                  <button class="btn btn-primary">เพิ่มสินค้า!</button>
                 </center>
+                </div>
   </div>
 </form>
 <?php  //echo str_replace("\"","\"\"","ผลิตจาก สแตนเลสเกรด 304 พื้นผิวไม่หลุกลอก มีฟิลเตอร์ประหยัดน้ำ 15" x 5" x 5""); ?>

@@ -4,6 +4,11 @@
     width:15%;
   }
 }
+@media screen and (min-width: 1270px) {
+  .body{
+    margin-left: 250px!important;
+  }
+}
 .panel.panel-default{
   margin: 10px auto;
 }
@@ -16,9 +21,8 @@
 #myChart2{
     height:300px !important;
 }*/
-.btn{margin-top: 10px !important;}
+.btn-sm{margin-top: 10px !important;}
 .body{
-
   margin-left: 20%;
   padding: 10px;
   margin-top: 0px !important;
@@ -207,17 +211,18 @@ body {
   padding: 0px;
 }
 .edit{
-  width:5vw;
+  width:100%;
   background:transparent;
   border:none;
 }
+.check{
+  width:20px;
+}
 .text{
-  width:13vw;
-
+  min-width: 100px;
 }
 .textmember{
-  width:10vw;
-
+  min-width: 50px;
 }
 .edit.img{
   width:30px;

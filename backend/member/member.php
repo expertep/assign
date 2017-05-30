@@ -43,6 +43,9 @@
       lastname
     </th>
     <th>
+      status
+    </th>
+    <th>
       address
     </th>
     <th>
@@ -71,7 +74,13 @@
           <td>
             <?php echo $select_product['firstname']; ?>
           <td>
-            <?php echo $select_product['lastname']; ?>
+            <?php echo $select_product['lastname'];?>
+          </td>
+          <td>
+            <!--<input class="edit <?php //echo $select_product['member_id']; ?>" type="text" name="status" value="<?php //echo $select_product['status'] ?>" readonly>-->
+            use<input class="check <?php echo $select_product['member_id']; ?>" type="radio" name="status" value="0" <?php echo ($select_product['status']=='0') ? 'checked' :'';  ?> disabled><br>
+            ad<input class="check <?php echo $select_product['member_id']; ?>" type="radio" name="status" value="1" <?php echo ($select_product['status']=='1') ? 'checked' :'';  ?> disabled>
+            <!--<input type="radio" name="status" value="1">-->
           </td>
           <td>
             <textarea rows="2" class="edit textmember <?php echo $select_product['member_id']; ?>" name="address" readonly><?php echo $select_product['address'] ?></textarea>

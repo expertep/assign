@@ -33,7 +33,7 @@ INNER JOIN table_member tmem ON torder.member_id=tmem.member_id WHERE pay="s"OR 
   }
 
 ?>
-
+w=wait s=sent f=fail
 <table class="table" style="border:1px solid black;">
   <tr>
     <th>
@@ -127,4 +127,3 @@ INNER JOIN table_member tmem ON torder.member_id=tmem.member_id WHERE pay="s"OR 
     }
 ?>
 </table>
-w=wait s=sent f=fail
